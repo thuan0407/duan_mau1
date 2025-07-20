@@ -16,5 +16,22 @@ class Dangnhap_dangkyController {
         $this->categoryModel = new CategoryModel();
     }
 
+    public function dieu_huong(){
+        include "views/dangnhap_dangky/dieu_huong.php";
+    }
+
+    public function dangnhap(){
+        include "views/dangnhap_dangky/dangnhap.php";
+    }
+
+    public function trangchu_user(){
+        include "views/user/trangchu_user.php";
+    }
+
+    public function dangky(){
+        include "views/dangnhap_dangky/dangky.php";
+    }
+
+
 }
 ?>
