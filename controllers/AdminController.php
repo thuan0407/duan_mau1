@@ -16,5 +16,9 @@ class AdminController{
         $this->categoryModel = new CategoryModel();
     }
 
+    public function trangchu_admin(){
+    include "views/admin/trangchu_admin.php";
+}
+
 }
 ?>

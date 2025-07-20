@@ -22,7 +22,6 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     //phẩn của đăng nhập đăng xuất đăng ký
     '/'               =>(new Dangnhap_dangkyController())->dieu_huong(),
-    'trangchu_user'   =>(new Dangnhap_dangkyController())->trangchu_user(),
     'dangnhap'        =>(new Dangnhap_dangkyController())->dangnhap(),
     'dangky'          =>(new Dangnhap_dangkyController())->dangky(),
 
@@ -30,10 +29,12 @@ match ($act) {
 
     //phần user
     // Trang chủ
+    'trangchu_user'   =>(new UserController())->trangchu_user(),
     
 
 
     
     //phần của admin
+    'trangchu_admin'   =>(new AdminController())->trangchu_admin(),
 
 };

@@ -17,8 +17,8 @@ class UserController {
     }
 
     //trang chủ
-    public function trangchu(){
-        include "views/user/trangchu.php";
+    public function trangchu_user(){
+        include "views/user/trangchu_user.php";
     }
 }
 ?>
