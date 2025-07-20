@@ -6,7 +6,7 @@ require_once './commons/env.php'; // Khai báo biến môi trường
 require_once './commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
-require_once './controllers/ProductController.php';
+require_once './controllers/UserController.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
@@ -18,7 +18,16 @@ $act = $_GET['act'] ?? '/';
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
 
 match ($act) {
+    //phẩn của đăng nhập đăng xuất đăng ký
+
+
+
+    //phần user
     // Trang chủ
-    '/'=>(new ProductController())->Home(),
+    '/'=>(new UserController())->trangchu(),
+
+
+    
+    //phần của admin
 
 };
