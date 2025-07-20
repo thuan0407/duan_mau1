@@ -15,6 +15,7 @@ require_once './models/ProductModel.php';
 
 // Route
 $act = $_GET['act'] ?? '/';
+$id = $_GET['id'] ?? '';
 
 
 // Để bảo bảo tính chất chỉ gọi 1 hàm Controller để xử lý request thì mình sử dụng match
@@ -35,6 +36,11 @@ match ($act) {
 
     
     //phần của admin
-    'trangchu_admin'   =>(new AdminController())->trangchu_admin(),
+    'trangchu_admin'         => (new AdminController())->trangchu_admin(),
+    'quanly_sanpham'         => (new AdminController())->quanly_sanpham(),
+    'quanly_danhmuc'         => (new AdminController())->quanly_danhmuc(),
+    'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
+    'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
+    'quanly_donhang'         => (new AdminController())->quanly_donhang(),
 
 };

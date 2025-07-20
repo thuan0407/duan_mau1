@@ -1,0 +1,29 @@
+        .anh{
+            width:100px;
+            height:100px;
+            margin:30px 70px;
+            
+        }
+        .anh img{
+            width:100%;
+            border-radius: 50%;
+            height:100px;
+        }
+        .menu{
+            position: fixed;
+            margin:0px 0px;
+            width: 250px;
+            background-color: rgb(225, 221, 221);
+            height:700px;
+            
+        }
+        li{
+            margin:30px 10px;
+        }
+        a{
+            text-decoration: none;
+        }
+        a.active{
+            font-weight: bold;
+            color:red;
+        }

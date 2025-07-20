@@ -18,7 +18,27 @@ class AdminController{
 
     public function trangchu_admin(){
     include "views/admin/trangchu_admin.php";
-}
+    }
+
+    public function quanly_danhmuc(){
+    include "views/admin/quanly_danhmuc/noidung.php";
+    }
+
+    public function quanly_taikhoan(){
+    include "views/admin/quanly_taikhoan/noidung.php";
+    }
+
+    public function quanly_sanpham(){
+    include "views/admin/quanly_taikhoan/noidung.php";
+    }
+
+    public function quanly_binhluan(){
+    include "views/admin/quanly_binhluan/noidung.php";
+    }
+
+    public function quanly_donhang(){
+    include "views/admin/quanly_donhang/noidung.php";
+    }
 
 }
 ?>
