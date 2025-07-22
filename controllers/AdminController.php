@@ -26,14 +26,14 @@ class AdminController{
         $thanhcong="";
         $loi="";
         $danhmuc = new Category();
-        if(isset($_POST['create'])){
+        if(isset($_POST['create_danhmuc'])){
             $danhmuc->name  = $_POST['name_danhmuc'];
             $danhmuc->date  = date("Y-m-d H:i:s");
             if(empty($danhmuc->name)){
                 $loi="kiểm tra lại dữ liệu";
             }
             else{
-                $ketqua = $this->categoryQuery->create($danhmuc);
+                $ketqua = $this->categoryModel->create_danhmuc($danhmuc);
                 if($ketqua ===1){
                     $thanhcong="tạo danh mục thành công";
                 }
@@ -43,6 +43,55 @@ class AdminController{
             }
         }
     include "views/admin/quanly_danhmuc/noidung.php";
+    }
+
+    public function delete_danhmuc($id) {                //xóa danh mục
+        $danhmuc = $this->categoryModel->find($id);
+        $thongbao = "";
+        $loi="";
+        $thanhcong="";
+
+        // Kiểm tra tồn tại và số lượng sản phẩm
+        if (!$danhmuc) {
+            $thongbao = "Danh mục không tồn tại!";
+        } else if ($danhmuc->sum > 0) {
+            $thongbao = "Không thể xóa khi danh mục vẫn còn sản phẩm.";
+        } else {
+            // Cho phép xóa
+            $ketqua = $this->categoryModel->delete_danhmuc($id);
+            if ($ketqua === 1) {
+                header("Location: ?act=quanly_danhmuc");
+                exit;
+            } else {
+                $thongbao = "Xóa danh mục thất bại.";
+            }
+        }
+
+        // Load lại danh sách danh mục và view
+        $danhsach = $this->categoryModel->all();
+        include "views/admin/quanly_danhmuc/noidung.php";
+    }
+
+    public function update_danhmuc($id){
+        $ten_danhmuc_cu=$this->categoryModel->find($id);
+        $thanhcong="";
+        $loi="";
+        $danhmuc= new Category();
+        if(isset($_POST['update_danhmuc'])){
+            $danhmuc->id   = $id;
+            $danhmuc->name = $_POST['name_danhmuc'];
+            if(empty($danhmuc->name)){
+                $loi="kiểm tra lại dữ liệu";
+            }
+            else{
+                 $ketqua =$this->categoryModel->update_danhmuc($danhmuc);
+                if($ketqua >0){
+                    $thanhcong="sửa thành công tên thư mục";
+                }
+            }
+        }
+
+        include "views/admin/quanly_danhmuc/update_danhmuc.php";
     }
 
     public function quanly_taikhoan(){

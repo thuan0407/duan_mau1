@@ -18,10 +18,10 @@
                 <tr>
                     <th>Tên danh mục</th>
                     <td><input type="text" name="name_danhmuc">
-            <button tpye="submit" name="create">Tạo</button>
-            <span><?=$thanhcong?></span>
-             <span><?=$loi?></span>
-             </td></tr>
+                    <button tpye="submit" name="create_danhmuc">Tạo</button>
+                    <span><?=$thanhcong?></span>
+                    <span><?=$loi?></span>
+                    </td></tr>
             </table>
         </form>
 
@@ -42,8 +42,8 @@
                 <td><?=$tt->sum?></td>
                 <td><?=$tt->date?></td>
                 <td>
-                <a href="?action=update_danhmuc&id=<?=$tt->id?>">Sửa / </a>
-                <a href="?action=delete_danhmuc&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
+                <a href="?act=update_danhmuc&id=<?=$tt->id?>">Sửa / </a>
+                <a href="?act=delete_danhmuc&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
                 </td>
             </tr>
             <?php

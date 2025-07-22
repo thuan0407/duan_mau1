@@ -42,6 +42,9 @@ match ($act) {
     'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
     'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
     'quanly_donhang'         => (new AdminController())->quanly_donhang(),
+
     'create_sanpham'         => (new AdminController())->create_sanpham(),
+    'delete_danhmuc'         => (new AdminController())->delete_danhmuc($id),
+    'update_danhmuc'         => (new AdminController())->update_danhmuc($id),
 
 };

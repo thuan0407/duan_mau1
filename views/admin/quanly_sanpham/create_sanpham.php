@@ -4,20 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-        <style>
-        body{
-            margin:0 auto;
-            width:1200px;
-        }
-        main{
-            margin-left:500px;
-        }
-        h1{
-            margin:0px;
-        }
-    </style>
+     <link rel="stylesheet" href="./public/admin/quanly_sanpham_create.css">
 </head>
 <body>
+    <?php  require_once __DIR__ . '/../header.php';?>
     <main>
 <h1>Trang Create sản phẩm</h1>
 <form action="" method="post" enctype="multipart/form-data">
@@ -51,7 +41,7 @@
             <td><input type="number" name="hot"></td>
         </tr>
         <tr>
-            <th>giấ</th>
+            <th>giá</th>
             <td><input type="number" name="price" ></td>
         </tr>
         <tr>
@@ -69,7 +59,7 @@
 
     </table>
     <button type="submit" name="create_sanpham">Create</button>
-    <a href="?action=<?='quanly_sanpham'?>">quay lại</a>
+    <a href="?act=<?='quanly_sanpham'?>">quay lại</a>
     <span><?= $loi?></span>
     <span><?= $thanhcong?></span>
     </main>
