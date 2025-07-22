@@ -46,6 +46,29 @@ class ProductModel
         }
 
 
+            public function find($id){                                     //tìm
+            try{
+                $sql="SELECT * FROM `product` WHERE id = $id";
+                $data=$this->conn->query($sql)->fetch();
+                if($data !== false){
+                    $sanpham = new Product();
+                    $sanpham->id          =$data['id'];
+                    $sanpham->name        = $data['name'];
+                    $sanpham->image       = $data['image'];
+                    $sanpham->price       = $data['price'];
+                    $sanpham->category_id  = $data['category_id'];
+                    $sanpham->description = $data['description'];
+                    $sanpham->hot         = $data['hot'];
+                    $sanpham->discount    = $data['discount'];
+                    $sanpham->quantity    = $data['quantity'];
+                    return $sanpham;
+                }
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
+
         public function create(Product $sanpham){        //thêm sản phẩm
             try{
                 $sql="INSERT INTO `product` (`id`, `image`, `price`, `category_id`, `hot`, `quantity`, `description`, `discount`, `name`)
@@ -63,7 +86,21 @@ class ProductModel
         public function delete_sanpham($id){                                //xóa sản phẩm
             try{
                 $sql="DELETE FROM product WHERE `product`.`id` = $id";
-                $data=$this->pdo->exec($sql);
+                $data=$this->conn->exec($sql);
+                return $data;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
+
+        public function update(Product $sanpham){                  //upate sản phẩm
+            try{
+                $id=(int)$sanpham->id;
+                $sql="UPDATE `product` SET `image` = '".$sanpham->image."', `price` = '".$sanpham->price."',
+                 `category_id` = '".$sanpham->category_id."', `hot` = '".$sanpham->hot."', `quantity` = '".$sanpham->quantity."', `description` = '".$sanpham->description."', 
+                 `discount` = '".$sanpham->discount."', `name` = '".$sanpham->name."' WHERE `product`.`id` = $id;";
+                $data=$this->conn->exec($sql);
                 return $data;
 
             }catch (PDOException $err) {

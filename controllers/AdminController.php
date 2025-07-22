@@ -186,8 +186,8 @@ class AdminController {
         include "views/admin/quanly_sanpham/create_sanpham.php";
     }
 
-    public function delete_sanpham($id) {
-        $ketqua = $this->productModel->delete($id);
+    public function delete_sanpham($id) {                            /////xóa sản phẩm
+        $ketqua = $this->productModel->delete_sanpham($id);
         if ($ketqua === 1) {
             header("Location: ?act=quanly_sanpham");
             exit;
@@ -205,5 +205,50 @@ class AdminController {
     public function quanly_donhang() {
         include "views/admin/quanly_donhang/noidung.php";
     }
+
+public function update_sanpham($id) {
+    // Lấy sản phẩm theo ID để hiển thị lên form
+    $loi ="";
+    $thanhcong="";
+    $sanpham = $this->productModel->find($id);
+    $danhsach =$this->categoryModel->all();
+
+    if (isset($_POST['update_sanpham'])) {
+        // Cập nhật dữ liệu mới từ form
+
+        $sanpham->id         =$id;
+        $sanpham->name        = $_POST['name'];
+        
+        if ($_FILES['anh_sp']['size'] > 0) {
+            $uploadPath = uploadFile($_FILES['anh_sp'], 'public/uploads/');
+            if ($uploadPath) {
+                $sanpham->image = str_replace('public/uploads/', '', $uploadPath);
+            }
+        }
+        $sanpham->price       = $_POST['price'];
+        $sanpham->category_id  = $_POST['category_id'];
+        $sanpham->description = $_POST['description'];
+        $sanpham->hot         = $_POST['hot'];
+        $sanpham->discount    = $_POST['discount'];
+        $sanpham->quantity    = $_POST['quantity'];
+
+        if($sanpham->name ===""){
+            $loi = "kiểm tra lại các trường giữ liệu";
+        }
+        else{
+            $ketqua_update = $this->productModel->update($sanpham);
+                if($ketqua_update >0){
+                    $thanhcong="update sản phẩm thành công";
+                }
+                else{
+                    $loi ='update sản phẩm thất bại';
+                }
+            }
+        }
+    
+
+    // Hiển thị giao diện sửa
+    include "views/admin/quanly_sanpham/update_sanpham.php";
+}
 }
 ?>

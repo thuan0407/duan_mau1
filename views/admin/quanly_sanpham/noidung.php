@@ -36,7 +36,7 @@
                         <tr>
                         <td>
                            
-                           <img src="<?= ANH_IMG . $tt->image ?>" alt="ảnh sản phẩm" width="200">
+                           <img src="<?= ANH_IMG . $tt->image ?>" alt="ảnh sản phẩm" width="100" height="120">
                         </td>
                         <td><?= $tt->name?></td>
                         <td><?= $tt->price?></td>
@@ -45,8 +45,8 @@
                         <td><?= $tt->hot?></td>
                         <td><?= $tt->quantity?></td>
                         <td>
-                            <a href="?act=updeta_sanpham&id=<?=$tt->id?>">Sửa /</a>
-                            <a href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
+                            <a style="border:1px solid black; margin-right:5px; padding:2px 5px; color:white; background-color:blue;border-radius: 10px; "href="?act=update_sanpham&id=<?=$tt->id?>">Sửa </a>
+                            <a style="border:1px solid black; padding:2px 5px; color:white; background-color:red; border-radius: 10px;" href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
                         </td>
                         </tr>
                         <?php

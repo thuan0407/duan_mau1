@@ -37,10 +37,13 @@ match ($act) {
     
     //phần của admin
     'trangchu_admin'         => (new AdminController())->trangchu_admin(),
-    'quanly_sanpham'         => (new AdminController())->quanly_sanpham(),
-    'quanly_danhmuc'         => (new AdminController())->quanly_danhmuc(),
-    'delete_sanpham'         => (new AdminController())->delete_sanpham($id),
 
+    'quanly_sanpham'         => (new AdminController())->quanly_sanpham(),
+    'delete_sanpham'         => (new AdminController())->delete_sanpham($id),
+    'update_sanpham'         => (new AdminController())->update_sanpham($id),
+    
+
+    'quanly_danhmuc'         => (new AdminController())->quanly_danhmuc(),
     'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
     'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
     'quanly_donhang'         => (new AdminController())->quanly_donhang(),
