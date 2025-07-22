@@ -107,4 +107,79 @@ class ProductModel
             echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
         }
         }
+
+        public function all_hot(){//hiện toàn bộ thông tin
+            try{
+                $sql="SELECT * FROM `product` Where `hot` = 1 LIMIT 4";
+                $data=$this->conn->query($sql)->fetchAll();
+                $dulieu=[];
+                foreach($data as $tt){
+                    $sanpham = new Product();
+                    $sanpham->id=$tt['id'];
+                    $sanpham->name        = $tt['name'];
+                    $sanpham->image       = $tt['image'];
+                    $sanpham->price       = $tt['price'];
+                    $sanpham->category_id = $tt['category_id'];
+                    $sanpham->description = $tt['description'];
+                    $sanpham->hot         = $tt['hot'];
+                    $sanpham->discount    = $tt['discount'];
+                    $sanpham->quantity    = $tt['quantity'];
+                    $dulieu[]=$sanpham;
+                }
+                return $dulieu;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
+
+        public function all_moi(){//hiện toàn bộ thông tin
+            try{
+                $sql="SELECT * FROM `product` Where `hot` = 2 LIMIT 4";
+                $data=$this->conn->query($sql)->fetchAll();
+                $dulieu=[];
+                foreach($data as $tt){
+                    $sanpham = new Product();
+                    $sanpham->id=$tt['id'];
+                    $sanpham->name        = $tt['name'];
+                    $sanpham->image       = $tt['image'];
+                    $sanpham->price       = $tt['price'];
+                    $sanpham->category_id = $tt['category_id'];
+                    $sanpham->description = $tt['description'];
+                    $sanpham->hot         = $tt['hot'];
+                    $sanpham->discount    = $tt['discount'];
+                    $sanpham->quantity    = $tt['quantity'];
+                    $dulieu[]=$sanpham;
+                }
+                return $dulieu;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
+
+        public function all_khuyenmai(){//hiện toàn bộ thông tin
+            try{
+                $sql="SELECT * FROM `product` Where `hot` = 3 LIMIT 4";
+                $data=$this->conn->query($sql)->fetchAll();
+                $dulieu=[];
+                foreach($data as $tt){
+                    $sanpham = new Product();
+                    $sanpham->id=$tt['id'];
+                    $sanpham->name        = $tt['name'];
+                    $sanpham->image       = $tt['image'];
+                    $sanpham->price       = $tt['price'];
+                    $sanpham->category_id = $tt['category_id'];
+                    $sanpham->description = $tt['description'];
+                    $sanpham->hot         = $tt['hot'];
+                    $sanpham->discount    = $tt['discount'];
+                    $sanpham->quantity    = $tt['quantity'];
+                    $dulieu[]=$sanpham;
+                }
+                return $dulieu;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
 }

@@ -30,7 +30,10 @@ match ($act) {
 
     //phần user
     // Trang chủ
-    'trangchu_user'   =>(new UserController())->trangchu_user(),
+    'trangchu_user'           =>(new UserController())->trangchu_user(),
+    'sanpham_hot'             =>(new UserController())->sanpham_hot(),
+    'sanpham_moi'             =>(new UserController())->sanpham_moi(),
+    'khuyen_mai'              =>(new UserController())->khuyen_mai(),
     
 
 

@@ -1,0 +1,15 @@
+p{
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    font-size: ;
+    text-align: center;
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: repeat(1fr,4);
+    border-radius: 10px;
+    box-shadow: ;
+    color: rgb(176, 176, 170);
+    background-image: url(../mvc-oop-basic-duanmau/public/img/hinh-nen-vu-tru-72.jpg);
+
+}

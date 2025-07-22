@@ -1,13 +1,69 @@
+<?php require_once "header_user.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            width: 1200px;
+            margin: 0 auto;
+            /* background-image: url(../mvc-oop-basic-duanmau/public/img/hinh-nen-mau-tim-cho-power-point_040931275.jpg); */
+        }
+        main{
+           
+        }
+
+        .banner img {
+            width: 100%;
+            height: 300px;
+        }
+        .menu {
+            background-color: #222;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .menu a {
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .menu a:hover {
+            color: yellow;
+        }
+        .menu a {
+            font-size:25px ;
+            color:white;
+            text-decoration: none;
+            margin-left:20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>trang chủ user</h1>
-    <img src="<?php echo ANH_IMG . 'anh/1753109019-12.jpg'; ?>" alt="">
-    <img src="public/uploads/anh/1753109019-12.jpg" alt="">
+
+<main>
+        <div class="banner">
+        <img src="../mvc-oop-basic-duanmau/public/img/banner1.jpg" alt="">
+
+<div class="menu">
+    <a href="?act=sanpham_hot"   target="contentFrame">sản phẩm hot</a>
+    <a href="?act=sanpham_moi"   target="contentFrame">Sản phẩm mới</a>
+    <a href="?act=khuyen_mai"    target="contentFrame">sản phẩm khuyến mãi</a>
+</div>
+
+<!-- Iframe -->
+<div class="content">
+    <iframe name="contentFrame" src="?act=sanpham_hot" width="100%" height="1000px" style="border: none;"></iframe>
+
+
+</div>
+
+</main>
+
 </body>
 </html>
+<?php require_once "foodter_user.php" ?>
