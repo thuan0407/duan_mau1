@@ -17,8 +17,13 @@ $page = $_GET['page'] ?? 'dashboard'; // Mặc định trang dashboard
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/admin/header.css">
     <title>Document</title>
+     <link rel="stylesheet" href="public/admin/header.css">
+     <style>
+        .menu{
+            background-color:pink;
+        }
+     </style>
 </head>
 <body>
     <div class="menu">

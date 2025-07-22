@@ -58,4 +58,16 @@ class ProductModel
             echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
         }
         }
+
+
+        public function delete_sanpham($id){                                //xóa sản phẩm
+            try{
+                $sql="DELETE FROM product WHERE `product`.`id` = $id";
+                $data=$this->pdo->exec($sql);
+                return $data;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
 }

@@ -19,6 +19,7 @@ body{
     width: 250px;
     background-color: rgb(225, 221, 221);
     height:700px;
+     background-color: pink !important;
     
 }
 li{

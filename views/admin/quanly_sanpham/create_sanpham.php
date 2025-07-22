@@ -38,7 +38,7 @@
         </tr>
         <tr>
             <th>hot</th>
-            <td><input type="number" name="hot"></td>
+            <td><input type="number" name="hot" min=1 max=3></td>
         </tr>
         <tr>
             <th>giá</th>
@@ -57,11 +57,15 @@
             <td><input type="number" name="quantity"></td>
         </tr>
 
+        <tr>
+            <td><a  href="?act=<?='quanly_sanpham'?>">quay lại</a></td>
+            <td><button type="submit" name="create_sanpham">Tạo</button></td>
+        </tr>
+
     </table>
-    <button type="submit" name="create_sanpham">Create</button>
-    <a href="?act=<?='quanly_sanpham'?>">quay lại</a>
-    <span><?= $loi?></span>
-    <span><?= $thanhcong?></span>
+
+    <span style="color:red;"><?= $loi?></span>
+    <span style="color:green;"><?= $thanhcong?></span>
     </main>
     
 </form>
