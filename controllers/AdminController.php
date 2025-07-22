@@ -107,5 +107,50 @@ class AdminController{
     include "views/admin/quanly_donhang/noidung.php";
     }
 
+
+public function create_sanpham() {
+    // Lấy sản phẩm theo ID để hiển thị lên form
+    $loi ="";
+    $thanhcong="";
+    $sanpham = new Product();
+    $danhsach =$this->categoryModel->all();
+
+    if (isset($_POST['create_sanpham'])) {
+        // Cập nhật dữ liệu mới từ form
+        $sanpham->name        = $_POST['name'];
+
+
+        if ($_FILES['anh_sp']['size'] > 0) {
+            $uploadPath = uploadFile($_FILES['anh_sp'], 'public/uploads/');
+            if ($uploadPath) {
+                $sanpham->image = str_replace('public/uploads/', '', $uploadPath);
+            }
+        }
+
+        $sanpham->price       = $_POST['price'];
+        $sanpham->category_id  = $_POST['category_id'];
+        $sanpham->description = $_POST['description'];
+        $sanpham->hot         = $_POST['hot'];
+        $sanpham->discount    = $_POST['discount'];
+        $sanpham->quantity    = $_POST['quantity'];
+
+        if($sanpham->name ===""){
+            $loi = "kiểm tra lại các trường giữ liệu";
+        }
+        else{
+            $ketqua_update = $this->productModel->create($sanpham);
+                if($ketqua_update ===1){
+                    $thanhcong="create sản phẩm thành công";
+                }
+                else{
+                    $loi ='create sản phẩm thất bại';
+                }
+            }
+        }
+    
+
+    // Hiển thị giao diện sửa
+    include "views/admin/quanly_sanpham/create_sanpham.php";
+}
 }
 ?>

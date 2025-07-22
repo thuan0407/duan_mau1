@@ -7,5 +7,7 @@
 </head>
 <body>
     <h1>trang chủ user</h1>
+    <img src="<?php echo ANH_IMG . 'anh/1753109019-12.jpg'; ?>" alt="">
+    <img src="public/uploads/anh/1753109019-12.jpg" alt="">
 </body>
 </html>

@@ -11,7 +11,7 @@
         <div class="content">
             <h1>Sản phẩm</h1>
             <div class="right">
-                <a href="?action=create_sanpham">Thêm sản phẩm</a><br>
+                <a href="?act=create_sanpham">Thêm sản phẩm</a><br>
 
                 <form action="" method="post" enctype="multipart/form-data">
                 <button type="submit" name="tim">Search</button> <input type="text" name="tukhoa">
@@ -35,17 +35,18 @@
                         ?>
                         <tr>
                         <td>
-                            <img src="<?= BASE_ASSETS_UPLOADS .$tt->image?>" alt="" width=100>
+                           
+                           <img src="<?= ANH_IMG . $tt->image ?>" alt="ảnh sản phẩm" width="200">
                         </td>
                         <td><?= $tt->name?></td>
                         <td><?= $tt->price?></td>
                         <td><?= $tt->discount?></td>
-                        <td><?= $tt->idcategory?></td>
+                        <td><?= $tt->category_id?></td>
                         <td><?= $tt->hot?></td>
                         <td><?= $tt->quantity?></td>
                         <td>
-                            <a href="?action=updeta_sanpham&id=<?=$tt->id?>">Sửa /</a>
-                            <a href="?action=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
+                            <a href="?act=updeta_sanpham&id=<?=$tt->id?>">Sửa /</a>
+                            <a href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
                         </td>
                         </tr>
                         <?php
