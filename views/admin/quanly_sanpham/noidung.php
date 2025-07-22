@@ -11,7 +11,7 @@
         <div class="content">
             <h1>Sản phẩm</h1>
             <div class="right">
-                <a href="?act=create_sanpham">Thêm sản phẩm</a><br>
+                <a style="border:1px solid black; padding:2px 5px; color:white; background-color:green; border-radius: 10px; " href="?act=create_sanpham">Thêm sản phẩm</a><br>
 
                 <form action="" method="post" enctype="multipart/form-data">
                 <button type="submit" name="tim">Search</button> <input type="text" name="tukhoa">

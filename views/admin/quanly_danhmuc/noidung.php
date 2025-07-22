@@ -5,6 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./public/admin/quanly_danhmuc.css">
+    <style>
+body{
+    width:1200px;
+    margin:0 auto;
+}
+.content{
+    margin-left:300px;
+}
+.right{
+    text-align: right;
+}
+table {
+    border-collapse: separate;
+    border-spacing: 0 12px; /* tạo khoảng cách dọc giữa các <tr> */
+    width: 100%;
+}
+
+th, td {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+button{
+    background-color:blue;
+    color:white;
+    border-radius:20px;
+    width:70px;
+    height:35px;
+}
+    </style>
 </head>
 <body>
     <?php  require_once __DIR__ . '/../header.php';?>
@@ -17,10 +51,10 @@
             <table>
                 <tr>
                     <th>Tên danh mục</th>
-                    <td><input type="text" name="name_danhmuc">
+                    <td><input type="text" name="name_danhmuc" style="height:30px; width:200px;border-radius:20px;">
                     <button tpye="submit" name="create_danhmuc">Tạo</button>
-                    <span><?=$thanhcong?></span>
-                    <span><?=$loi?></span>
+                    <span style="color:green;"><?=$thanhcong?></span>
+                    <span style="color:red;"><?=$loi?></span>
                     </td></tr>
             </table>
         </form>
@@ -42,8 +76,8 @@
                 <td><?=$tt->sum?></td>
                 <td><?=$tt->date?></td>
                 <td>
-                <a href="?act=update_danhmuc&id=<?=$tt->id?>">Sửa / </a>
-                <a href="?act=delete_danhmuc&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
+                <a style="color:black;" href="?act=update_danhmuc&id=<?=$tt->id?>">Sửa / </a>
+                <a style="color:black;" href="?act=delete_danhmuc&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
                 </td>
             </tr>
             <?php
