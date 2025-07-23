@@ -6,19 +6,22 @@
     <title>Document</title>
     <style>
         main{
-            display:flex;
+            display:grid;
+            grid:30px;
+            grid-template-columns: repeat(4,1fr);
             text-align: center;
+            padding:50px;
         }
         .item{
-            width:23%;
+            width:70%;
             border:1px solid black;
             margin:0 auto;
             text-align: center;
             padding:20px;
             margin:10px;
-            height:350px;
+            height:320px;
             border-radius:20px;
-            box-shadow:5px 5px 5px 5px  rgb(176, 176, 170) ;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 
         }
         .item img{
@@ -32,6 +35,7 @@
         
         }
         .mua{
+            padding:50px;
             color:white;
             border:1px solid black;
             background-color:red;
@@ -68,8 +72,8 @@
          <div class="item">
             <img src="<?= ANH_IMG. $tt->image?>" alt=""> <br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-            <span class="gia_sp"><?=$tt->price?>đ</span> <br>
-            <a href="?action=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+            <span class="gia_sp" style="color:red;"><?=$tt->price?>đ</span> <br>
+            <a href="?action=chi_tiet_sp&id=<?=$tt->id?>" style="color:blue;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏi hàng</p> <br>

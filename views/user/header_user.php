@@ -14,10 +14,17 @@
             justify-content: space-between;
             align-items: center;
         }
+        .logo{
+            font-size:30px;
+            background: linear-gradient(to right, #cf54d3ff, #e94795ff);
+            padding:5px;
+            border-radius: 10px;
+        }
         .vien_tren {
             max-width: 100%;
             height: 50px;
-            background-color: black;
+            background-image: url(../mvc-oop-basic-duanmau/public/img/unnamed.jpg);
+            background-size: cover;
         }
         nav {
             max-width: 100%;
@@ -40,6 +47,8 @@
             display:flex;
             align-items: center;
             list-style: none;
+            justify-content: space-between;
+            align-items: center;
         }
         form{
             margin-right:20px;   
@@ -56,6 +65,8 @@
             width:50px;
             background-color: transparent;
         }
+        .gio_hang{
+        }
 
     </style>
 </head>
@@ -63,7 +74,7 @@
         <div class="vien_tren"></div>
     <nav>
         <div class="header">
-            <div class="logo">logo</div>
+            <div class="logo">Mobishop</div>
             <div class="menu_tren">
                 <ul>
                     <li><a href="">Trang chủ</a></li>
@@ -77,7 +88,9 @@
                 <form action="" method="get">
                     <input type="text"> <button>tìm</button>
                 </form>
-                <div class="gioi_hang">giỏi hàng</div>
+                <div class="gioi_hang">
+                    <button style="border:none; outline:none;font-size: 30px;" >🛒</button>
+                </div>
             </div>
 
         </div>

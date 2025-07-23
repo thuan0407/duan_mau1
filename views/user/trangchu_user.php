@@ -9,10 +9,9 @@
         body {
             width: 1200px;
             margin: 0 auto;
-            /* background-image: url(../mvc-oop-basic-duanmau/public/img/hinh-nen-mau-tim-cho-power-point_040931275.jpg); */
+            /* background-image: url(../mvc-oop-basic-duanmau/public/img/hinh-nen-dien-thoai-mau-xanh-da-troi-nhat-1-18-16-09-30.jpg); */
         }
         main{
-           
         }
 
         .banner img {
@@ -24,7 +23,7 @@
             padding: 15px;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            
         }
         .menu a {
             font-size: 20px;

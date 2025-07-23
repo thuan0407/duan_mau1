@@ -110,7 +110,7 @@ class ProductModel
 
         public function all_hot(){//hiện toàn bộ thông tin
             try{
-                $sql="SELECT * FROM `product` Where `hot` = 1 LIMIT 4";
+                $sql="SELECT * FROM `product` Where `hot` = 1 LIMIT 8";
                 $data=$this->conn->query($sql)->fetchAll();
                 $dulieu=[];
                 foreach($data as $tt){
@@ -135,7 +135,7 @@ class ProductModel
 
         public function all_moi(){//hiện toàn bộ thông tin
             try{
-                $sql="SELECT * FROM `product` Where `hot` = 2 LIMIT 4";
+                $sql="SELECT * FROM `product` Where `hot` = 2 LIMIT 8";
                 $data=$this->conn->query($sql)->fetchAll();
                 $dulieu=[];
                 foreach($data as $tt){
@@ -160,7 +160,7 @@ class ProductModel
 
         public function all_khuyenmai(){//hiện toàn bộ thông tin
             try{
-                $sql="SELECT * FROM `product` Where `hot` = 3 LIMIT 4";
+                $sql="SELECT * FROM `product` Where `hot` = 3 LIMIT 8";
                 $data=$this->conn->query($sql)->fetchAll();
                 $dulieu=[];
                 foreach($data as $tt){
