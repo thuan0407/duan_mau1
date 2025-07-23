@@ -11,8 +11,6 @@
             margin: 0 auto;
             /* background-image: url(../mvc-oop-basic-duanmau/public/img/hinh-nen-dien-thoai-mau-xanh-da-troi-nhat-1-18-16-09-30.jpg); */
         }
-        main{
-        }
 
         .banner img {
             width: 100%;
@@ -40,6 +38,62 @@
             text-decoration: none;
             margin-left:20px;
         }
+
+        .content{
+            display:grid;
+            grid:30px;
+            grid-template-columns: repeat(4,1fr);
+            text-align: center;
+            padding:50px;
+        }
+        .item{
+            width:70%;
+            border:1px solid black;
+            margin:0 auto;
+            text-align: center;
+            padding:20px;
+            margin:10px;
+            height:320px;
+            border-radius:20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+
+        }
+        .item img{
+            width:70%;
+            height:200px;;
+        }
+        .chiadoi{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        
+        }
+        .mua{
+            color:white;
+            border:1px solid black;
+            background-color:red;
+            width:100px;
+            height:30px;
+            display:flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            margin:0;
+            font-weight: bold;
+        }
+        .ten_sp, .gia_sp, .a, .thêm{
+            font-weight: bold;
+        }
+        .active{
+            color:red;
+        }
+        .menu a:hover{
+            color:red;
+        }
+        .chiadoi a{
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -49,14 +103,82 @@
         <img src="../mvc-oop-basic-duanmau/public/img/banner1.jpg" alt="">
 
 <div class="menu">
-    <a href="?act=sanpham_hot"   target="contentFrame">sản phẩm hot</a>
-    <a href="?act=sanpham_moi"   target="contentFrame">Sản phẩm mới</a>
-    <a href="?act=khuyen_mai"    target="contentFrame">sản phẩm khuyến mãi</a>
+    <a href="?act=sanpham_hot">sản phẩm hot</a>
+    <a href="?act=sanpham_moi">Sản phẩm mới</a>
+    <a href="?act=khuyen_mai" >sản phẩm khuyến mãi</a>
 </div>
 
 <!-- Iframe -->
 <div class="content">
-    <iframe name="contentFrame" src="?act=sanpham_hot" width="100%" height="1000px" style="border: none;"></iframe>
+    <?php
+    $act = $_GET['act'] ?? 'sanpham_hot';
+    switch($act){
+        case 'sanpham_hot': 
+        foreach($sanpham_hot as $tt){
+            ?>
+                <div class="item">
+                        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+                        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+                        <span class="gia_sp"><?=$tt->price?>đ</span> <br>
+                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+                        <div class="chiadoi">
+                            <a href="#" class="mua">Mua</a>
+                            <p class="thêm">Thêm vào giỏi hàng</p> <br>
+                        </div>
+                </div>
+                            <?php
+                    }
+            break;
+        case 'sanpham_moi':
+        foreach($sanpham_moi as $tt){
+            ?>
+                <div class="item">
+                        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+                        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+                        <span class="gia_sp"><?=$tt->price?>đ</span> <br>
+                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+                        <div class="chiadoi">
+                            <a href="#" class="mua">Mua</a>
+                            <p class="thêm">Thêm vào giỏi hàng</p> <br>
+                        </div>
+                </div>
+                            <?php
+                    }
+            break;
+        case 'khuyen_mai':
+        foreach($khuyen_mai as $tt){
+            ?>
+                <div class="item">
+                        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+                        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+                        <span class="gia_sp"><?=$tt->price?>đ</span> <br>
+                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+                        <div class="chiadoi">
+                            <a href="#" class="mua">Mua</a>
+                            <p class="thêm">Thêm vào giỏi hàng</p> <br>
+                        </div>
+                </div>
+                            <?php
+                    }
+            break;
+         default: 
+        foreach($sanpham_hot as $tt){
+            ?>
+                <div class="item">
+                        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+                        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+                        <span class="gia_sp"><?=$tt->price?>đ</span> <br>
+                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+                        <div class="chiadoi">
+                            <a href="#" class="mua">Mua</a>
+                            <p class="thêm">Thêm vào giỏi hàng</p> <br>
+                        </div>
+                </div>
+                            <?php  
+                    }
+            break;  
+    }
+    ?>
 
 
 </div>

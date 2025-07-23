@@ -18,6 +18,9 @@
 
         //trang chủ
         public function trangchu_user(){
+            $sanpham_hot =$this->productModel->all_hot();
+            $sanpham_moi =$this->productModel->all_moi();
+            $khuyen_mai  =$this->productModel->all_khuyenmai();
             include "views/user/trangchu_user.php";
         }
 
@@ -36,17 +39,17 @@
 
         public function sanpham_hot(){
             $sanpham_hot =$this->productModel->all_hot();
-            include "views/user/sanpham_hot.php";
+            include "views/user/trangchu_user.php";
         }
 
         public function sanpham_moi(){
             $sanpham_moi =$this->productModel->all_moi();
-            include "views/user/sanpham_moi.php";
+            include "views/user/trangchu_user.php";
         }
 
         public function khuyen_mai(){
             $khuyen_mai =$this->productModel->all_khuyenmai();
-            include "views/user/khuyen_mai.php";
+            include "views/user/trangchu_user.php";
         }
 
         public function chi_tiet_sp($id){
