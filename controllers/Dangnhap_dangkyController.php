@@ -83,6 +83,11 @@ class Dangnhap_dangkyController {
        include "views/dangnhap_dangky/dangky.php";
     }
 
-
+    public function dangxuat(){
+        session_start();
+        session_destroy();
+        header("Location: ?act=/"); // chuyển về trang điều hướng
+        exit;
+    }
 }
 ?>

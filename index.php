@@ -23,9 +23,9 @@ $id = $_GET['id'] ?? '';
 match ($act) {
     //phẩn của đăng nhập đăng xuất đăng ký
     '/'               =>(new Dangnhap_dangkyController())->dieu_huong(),
+    'dangxuat'       =>(new Dangnhap_dangkyController())->dangxuat(),
     'dangnhap'        =>(new Dangnhap_dangkyController())->dangnhap(),
     'dangky'          =>(new Dangnhap_dangkyController())->dangky(),
-
 
 
     //phần user

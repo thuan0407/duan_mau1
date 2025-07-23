@@ -2,12 +2,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-// Xử lý đăng xuất
-if (isset($_GET['act']) && $_GET['act'] === 'dangxuat') {
-    session_destroy();
-    header("Location: ?act=dangxuat");
-    exit;
-}
 $currentPage = $_GET['act'] ?? 'trangchu_admin';
 $page = $_GET['page'] ?? 'dashboard'; // Mặc định trang dashboard
 
