@@ -1,10 +1,26 @@
+<?php require_once "header_user.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
+        <style>
+        .chia{
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        select{
+            margin-right:50px;
+            height:30px;
+            background-color: color:rgb(222, 56, 216);
+        }
+        h1{
+            margin-left:50px;
+            color:red;
+        }
+        
         main{
             display:grid;
             grid:30px;
@@ -63,11 +79,21 @@
     </style>
 </head>
 <body>
-    <h1>sản phẩm mới</h1>
-    <main>
+    <div class="chia">
+        <h1>Các sản phẩm </h1>
+        <select name="" id="">
+            <option value="">Dưới 5 Triệu</option>
+            <option value="">Từ 5 -> 10 Triệu</option>
+            <option value="">Từ 10 -> 20 Triệu</option>
+            <option value="">Từ 20 -> 30 Triệu</option>
+            <option value="">Trên 30 Triệu</option>
+        </select>
+    </div>
+    
+        <main>
 
         <?php
-        foreach($sanpham_moi as $tt){?>
+        foreach($danhsach_sp as $tt){?>
          <div class="item">
             <img src="<?= ANH_IMG. $tt->image?>" alt=""> <br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
@@ -85,3 +111,4 @@
     </main>
 </body>
 </html>
+<?php require_once "footer_user.php" ?>

@@ -69,6 +69,37 @@ class ProductModel
         }
         }
 
+            public function find_lien_quan($loai) {
+                try {
+                    $sql = "SELECT * FROM `product` WHERE category_id = :loai";
+                    $stmt = $this->conn->prepare($sql);
+                    $stmt->execute([':loai' => $loai]);
+                    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                    $list_sanpham = [];
+
+                    foreach ($result as $data) {
+                        $sanpham = new Product();
+                        $sanpham->id          = $data['id'];
+                        $sanpham->name        = $data['name'];
+                        $sanpham->image       = $data['image'];
+                        $sanpham->price       = $data['price'];
+                        $sanpham->category_id = $data['category_id']; 
+                        $sanpham->description = $data['description'];
+                        $sanpham->hot         = $data['hot'];
+                        $sanpham->discount    = $data['discount'];
+                        $sanpham->quantity    = $data['quantity'];
+
+                        $list_sanpham[] = $sanpham;
+                    }
+
+                    return $list_sanpham;
+
+                } catch (PDOException $err) {
+                    echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+                }
+            }
+
         public function create(Product $sanpham){        //thêm sản phẩm
             try{
                 $sql="INSERT INTO `product` (`id`, `image`, `price`, `category_id`, `hot`, `quantity`, `description`, `discount`, `name`)

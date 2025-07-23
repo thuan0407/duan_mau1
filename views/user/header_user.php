@@ -77,10 +77,10 @@
             <div class="logo">Mobishop</div>
             <div class="menu_tren">
                 <ul>
-                    <li><a href="">Trang chủ</a></li>
-                    <li><a href="">Giới thiệu</a></li>
-                    <li><a href="">liên hệ</a></li>
-                    <li><a href="">Sản phẩm</a></li>
+                    <li><a href="?act=trangchu_user">Trang chủ</a></li>
+                    <li><a href="?act=trangsp_user">Sản phẩm</a></li>
+                    <li><a href="?act=gioi_thieu">Giới thiệu</a></li>
+                    <li><a href="?act=lien_he">liên hệ</a></li>
                 </ul>
             </div>
 

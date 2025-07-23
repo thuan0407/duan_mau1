@@ -10,7 +10,7 @@
             width:1200px;
         }
         footer{
-            width:1200px;
+            max-width:100%;
             background-image: url(../mvc-oop-basic-duanmau/public/img/unnamed.jpg);
             background-size: cover;
             text-align: center;

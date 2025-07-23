@@ -65,4 +65,4 @@
 
 </body>
 </html>
-<?php require_once "foodter_user.php" ?>
+<?php require_once "footer_user.php" ?>
