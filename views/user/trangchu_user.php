@@ -96,11 +96,11 @@
         }
     </style>
 </head>
-<body>
+<body onload="start()">
 
 <main>
         <div class="banner">
-        <img id="anh_banner" src="../mvc-oop-basic-duanmau/public/img/banner1.jpg" alt="">
+        <img id="anh_banner" src="../mvc-oop-basic-duanmau/public/img/banner0.jpg" alt="">
 
 <div class="menu">
     <a href="?act=sanpham_hot">Sản phẩm hot</a>
@@ -184,7 +184,28 @@
 </div>
 
 </main>
+    <script>
+     
+        let anh_banner = document.getElementById('anh_banner');
+        let index=0;
+        let t;
+        let arr=[];
+        //mảng
+        for(i=0 ;i<5;i++){
+            arr[i]= new Image();
+            arr[i].src ='../mvc-oop-basic-duanmau/public/img/banner' + i + '.jpg';
+        }
 
+        function start(){
+            anh_banner.src = arr[index].src;
+            index++;
+            if(index == 5){
+                index=0;
+            } 
+            t=setTimeout(start,2000);
+        }
+    
+    </script>
 </body>
 </html>
 <?php require_once "footer_user.php" ?>
