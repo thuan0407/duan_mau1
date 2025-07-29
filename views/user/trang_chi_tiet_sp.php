@@ -1,4 +1,7 @@
-<?php require_once "header_user.php" ?>
+<?php if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+ require_once "header_user.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,25 +14,60 @@
             margin:0 auto;
         }
         .content{ 
-            width: 50%;
+            width:100%;
             display:flex;
+            justify-content: space-between;
+            height:350px;
+
         }
         .sanpham{
+            max-width:600px;
             border:1px solid black;
             padding:50px;
-            display:flex;
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
             width: 100%;
             justify-content: center;
             align-items: center;
+            margin:20px;
+            border-radius:20px;
         }
         .sanpham img{
-            width:50%;
+            max-width:100%;
+            height:100%;
         }
         span{
             text-align: center;
         }
         h1{
             margin-top:50px;
+        }
+        .thong_tin{
+            width:100%;
+            border:1px solid black;
+            margin:20px;
+            border-radius:20px;
+        }
+        .GB{
+            display:flex;
+            justify-content: center;
+            padding:20px;
+        }
+        .GB button{
+            width:70px;
+            border-radius:10px;
+            margin:0 20px;
+        }
+        .nut{
+            display:flex;
+            justify-content: center;
+            padding:20px;
+        }
+        .nut button{
+            width:200px;
+            border-radius:10px;
+            margin:0 30px;
+            height:40px;
         }
 
         .binh_luan{      /* css phần bình luận */
@@ -47,6 +85,9 @@
         .binhluan_truoc{
             text-align: left;
             margin:20px;
+            height:300px;
+            text-overflow: ellipsis;
+            overflow-x: auto;
         }
 
         .sp_lien_quan{  /* css phần sản phẩm liên quan */
@@ -93,6 +134,11 @@
         .ten_sp, .gia_sp, .a, .thêm{
             font-weight: bold;
         }
+        button:hover{
+            background-color:aqua;
+
+        }
+        
 
     </style>
 </head>
@@ -101,6 +147,7 @@
     <h3><?=$chi_tiet_sp->name?></h3>
 
     <div class="content">
+
      <div class="sanpham">
         <img src="<?= ANH_IMG.$chi_tiet_sp->image?>" alt="">
 
@@ -108,7 +155,22 @@
     </div>
 
 
-    <div class="thong_tin"></div>
+    <div class="thong_tin">
+        <div class="GB">
+        <button>64GB</button>
+        <button>128GB</button>
+        <button>256GB</button>
+        <button>512GB</button>
+        </div>
+        <div class="nut">
+            <button style="border:1px solid #0099FF; color:#0099FF;">Thêm vào giỏ hàng</button>
+            <button style="background-color:red; color:white;">Mua hàng</button>
+        </div>
+        <button style="margin-left:90px; width:400px; height:40px; border-radius:10px; color:white; background-color:#0099FF">Trả góp</button> <br><br>
+        <span style="margin:210px; width:400px; height:40px; border-radius:10px; color:red; font-size:32px; text-decoration: underline;">
+            <?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ
+        </span>
+    </div>
 
     </div>
 
@@ -116,24 +178,25 @@
     <h1>Bình luận</h1> <!-- phần bình luận-->
     <div class="binh_luan">
         <?php
-        if(!empty($_SESSION['user'])): ?>
+        if(!empty($_SESSION['user']['id'])): ?>
         <form action="" method="post">
             <input type="text" name="comment" placeholder="bạn đang nghĩ gì ?">
             <button type="submit" name="gui" style="background-color:red; color:white; border-radius:10px;">Gửi</button>
             </form>
         <?php else:?>
-            <a href="?action=dangnhap">Đăng nhập</a>
+            <a href="?act=dangnhap">Đăng nhập</a>
             <?php endif;
         ?>
 
 
  <div class="binhluan_truoc"> <!-- các bình luận trước đó-->
-        <!-- <?php
+        <?php
         foreach($comment as $cmt){
             ?>
-            <?=$cmt->nameUser?>:  <?=$cmt->content?> <br>
+            <?=$cmt->name_User?>:  <?=$cmt->content?> :   <?= $cmt->date?><br>
+            <hr>
             <?php
-        }  ?> -->
+        }  ?>
         </div>
 
     </div>

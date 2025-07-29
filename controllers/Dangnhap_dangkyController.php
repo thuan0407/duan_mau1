@@ -21,6 +21,7 @@ class Dangnhap_dangkyController {
     }
 
     public function dangnhap(){
+        session_start();
         $loi="";
         $dulieu_taikhoan = $this->userModel->all();
 
@@ -33,7 +34,11 @@ class Dangnhap_dangkyController {
             foreach($dulieu_taikhoan as $tt){
                 if($email === $tt->email && $password === $tt->password && $role === (int)$tt->role){
                     $kiemtra = true;
-                    
+                     $_SESSION['user'] = [  //lấyy thông tin người dùng tạo session
+                    'id'   => $tt->id,
+                    'name' => $tt->name,
+                ];
+
                     if($role ===0){
                         header("Location: ?act=trangchu_admin");
                         exit;
@@ -49,7 +54,7 @@ class Dangnhap_dangkyController {
                     $loi ="kiểm tra lại các dữ liệu của bạn!";
                 }
         }
-        include "views/dangnhap_dangky/dangnhap.php";
+            include "views/dangnhap_dangky/dangnhap.php";
     }
 
 

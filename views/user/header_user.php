@@ -1,3 +1,10 @@
+<?php  
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$nameUser = $_SESSION['user']['name'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +28,14 @@
             border-radius: 10px;
         }
         .vien_tren {
+            display:flex;
             max-width: 100%;
             height: 50px;
             background-image: url(../mvc-oop-basic-duanmau/public/img/unnamed.jpg);
             background-size: cover;
+            justify-content: space-between;
+            align-items: center;
+            padding:0px 20px;
         }
         nav {
             max-width: 100%;
@@ -71,10 +82,22 @@
     </style>
 </head>
 <body>
-        <div class="vien_tren"></div>
+
+        <div class="vien_tren">
+            <p>lot line: 19001228</p>
+         <form action="" method="post">
+        <?php if(!empty($_SESSION['user']['name'])): ?>
+            <a style="text-decoration: none;" href="?act=dangxuat">Đăng xuất</a>
+            <?php else :?>
+            <a style="text-decoration: none;" href="?act=dangnhap">Đăng nhập</a>
+                <?php endif;
+            ?>
+      </form>
+        </div>
     <nav>
         <div class="header">
-            <div class="logo">Mobishop</div>
+            <a style="text-decoration: none;" href="?act=trangchu_user"><div class="logo">Mobishop</div></a>
+    
             <div class="menu_tren">
                 <ul>
                     <li><a href="?act=trangchu_user">Trang chủ</a></li>
@@ -94,7 +117,7 @@
                 </form>
 
                 <div class="gioi_hang">
-                    <button style="border:none; outline:none;font-size: 30px;" >🛒</button>
+                    <button style="border:none; outline:none;font-size: 30px; margin-bottom:15px;" >🛒</button>
                 </div>
             </div>
 

@@ -85,10 +85,31 @@ public function trangchu_user(){
         }
 
         public function chi_tiet_sp($id){
+            session_start();
             $chi_tiet_sp = $this->productModel->find($id);      // dữ liệu chi tiết của sản phẩm
             $loai= $chi_tiet_sp->category_id;                        // loại của sản phẩm trực thuộc
             $sp_lien_quan =$this->productModel->find_lien_quan($loai); // dữ liệu các sản phẩm liên quan
-            // $comment =$this->productModel->find_comment($id);   // nội dung bình luận của sản phẩm
+            $comment =$this->commentModel->find_comment_idpro($id);   // nội dung bình luận của sản phẩm
+                    $comment1 = new Comment();
+                    if(isset($_POST['gui'])){
+                        $comment1->content        = $_POST['comment'];
+                        $comment1->date           = date("Y-m-d H:i:s");
+                        $comment1->product_id     = $id;
+                        $comment1->user_id        = $_SESSION['user']['id'];
+                        
+                        $noidung =$_POST['comment'];
+                        if(!empty($noidung)){   //kiểm tra nội dung xem có trống không
+                            $ketqua = $this->commentModel->create($comment1);
+                            if($ketqua ===1){
+                                $comment = $this->commentModel->find_comment_idpro($id);
+                            }
+                            else{
+                            $loi= "không thể create ";
+                            }
+                        }
+
+
+                    }
             include "views/user/trang_chi_tiet_sp.php";
         }
     }

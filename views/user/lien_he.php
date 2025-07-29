@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        p{
+     span{
             width:900px;
             margin-left:200px;
             line-height: 28px; /* khoảng cách 28px giữa các dòng */
@@ -15,7 +15,7 @@
 
 </head>
 <body>
-    <p>
+    <span>
         📞 LIÊN HỆ VỚI Mobishop <br>
 Chúng tôi luôn sẵn sàng hỗ trợ và lắng nghe mọi thắc mắc, góp ý từ quý khách hàng.  Nếu bạn có câu hỏi về sản phẩm, đơn hàng, bảo hành hoặc cần tư vấn, hãy liên hệ với chúng tôi qua các thông tin dưới đây:
 🏬 Địa chỉ cửa <br>
@@ -35,7 +35,7 @@ Zalo: zalo.me/mobishop<br>
 Instagram: @mobishop<br>
 📝 Gửi tin nhắn cho chúng tôi<br>
  Chúng tôi sẽ liên hệ lại sớm nhất:<br>
-    </p>
+    </span>
 </body>
 </html>
 <?php
