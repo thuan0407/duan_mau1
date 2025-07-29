@@ -57,8 +57,8 @@
                 <td><input type="number" name="quantity" value="<?=$sanpham->quantity?>"></td>
             </tr>
             <tr>
-                <td><a href="?act=<?='quanly_sanpham'?>">quay lại</a></td>
-                <td><button type="submit" name="update_sanpham">update</button></td>
+                <td><a style="border: none;"  href="?act=<?='quanly_sanpham'?>">quay lại</a></td>
+                <td><button style="border: none;"  type="submit" name="update_sanpham">update</button></td>
             </tr>
         </table>
             <span><?= $loi?></span>

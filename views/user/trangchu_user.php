@@ -100,12 +100,12 @@
 
 <main>
         <div class="banner">
-        <img src="../mvc-oop-basic-duanmau/public/img/banner1.jpg" alt="">
+        <img id="anh_banner" src="../mvc-oop-basic-duanmau/public/img/banner1.jpg" alt="">
 
 <div class="menu">
-    <a href="?act=sanpham_hot">sản phẩm hot</a>
+    <a href="?act=sanpham_hot">Sản phẩm hot</a>
     <a href="?act=sanpham_moi">Sản phẩm mới</a>
-    <a href="?act=khuyen_mai" >sản phẩm khuyến mãi</a>
+    <a href="?act=khuyen_mai" >Sản phẩm khuyến mãi</a>
 </div>
 
 <!-- Iframe -->

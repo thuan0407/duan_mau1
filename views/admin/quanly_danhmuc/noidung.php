@@ -52,7 +52,7 @@ button{
                 <tr>
                     <th>Tên danh mục</th>
                     <td><input type="text" name="name_danhmuc" style="height:30px; width:200px;border-radius:20px;">
-                    <button tpye="submit" name="create_danhmuc">Tạo</button>
+                    <button style="border: none;" tpye="submit" name="create_danhmuc">Tạo</button>
                     <span style="color:green;"><?=$thanhcong?></span>
                     <span style="color:red;"><?=$loi?></span>
                     </td></tr>

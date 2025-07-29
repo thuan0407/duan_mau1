@@ -11,10 +11,11 @@
         <div class="content">
             <h1>Sản phẩm</h1>
             <div class="right">
-                <a style="border:1px solid black; padding:2px 5px; color:white; background-color:green; border-radius: 10px; " href="?act=create_sanpham">Thêm sản phẩm</a><br>
+                <a style="border:1px solid black; padding:2px 5px; color:white; background-color:green; border-radius: 10px; border: none;" href="?act=create_sanpham">Thêm sản phẩm</a><br>
 
                 <form action="" method="post" enctype="multipart/form-data">
-                <button type="submit" name="tim">Search</button> <input type="text" name="tukhoa">
+                <button style="margin:10px 0px; border-radius:20px; height:35px; background-color: #3498db; color:white; width:60px; border: none;" type="submit" name="tim">Tìm</button> 
+                <input type="text" name="tukhoa" style="margin:10px 0px; border-radius:20px; height:30px; width:250px;">
                 <span style="color:red;"> <?=$err?></span>
                 </form>
 
@@ -45,8 +46,8 @@
                         <td><?= $tt->hot?></td>
                         <td><?= $tt->quantity?></td>
                         <td>
-                            <a style="border:1px solid black; margin-right:5px; padding:2px 5px; color:white; background-color:blue;border-radius: 10px; "href="?act=update_sanpham&id=<?=$tt->id?>">Sửa </a>
-                            <a style="border:1px solid black; padding:2px 5px; color:white; background-color:red; border-radius: 10px;" href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
+                            <a style="border:1px solid black; margin-right:5px; padding:2px 5px; color:white; background-color:blue;border-radius: 10px; border: none;"href="?act=update_sanpham&id=<?=$tt->id?>">Sửa </a>
+                            <a style="border:1px solid black; padding:2px 5px; color:white; background-color:red; border-radius: 10px; border: none;" href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
                         </td>
                         </tr>
                         <?php

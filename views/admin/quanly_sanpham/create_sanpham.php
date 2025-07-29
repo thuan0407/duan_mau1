@@ -58,8 +58,8 @@
         </tr>
 
         <tr>
-            <td><a  href="?act=<?='quanly_sanpham'?>">quay lại</a></td>
-            <td><button type="submit" name="create_sanpham">Tạo</button></td>
+            <td><a style="border: none;"  href="?act=<?='quanly_sanpham'?>">quay lại</a></td>
+            <td><button style="border: none;"  type="submit" name="create_sanpham">Tạo</button></td>
         </tr>
 
     </table>
