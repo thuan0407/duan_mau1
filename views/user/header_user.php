@@ -85,9 +85,14 @@
             </div>
 
             <div class="right">
-                <form action="" method="get">
-                    <input type="text"> <button>tìm</button>
+                <form action="index.php" method="get">
+                    <!-- Gửi thêm act để router nhận đúng hàm controller -->
+                    <input type="hidden" name="act" value="trangchu_user">
+                    <input type="text" name="key_name" placeholder="Nhập tên sản phẩm...">
+                    <button type="submit" name="search">Tìm</button> <br>
+                    <span><?= $thongbao ?? '' ?></span>
                 </form>
+
                 <div class="gioi_hang">
                     <button style="border:none; outline:none;font-size: 30px;" >🛒</button>
                 </div>

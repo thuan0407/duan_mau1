@@ -1,0 +1,89 @@
+<?php include_once "header_user.php" ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .content{
+            display:grid;
+            grid:30px;
+            grid-template-columns: repeat(4,1fr);
+            text-align: center;
+            padding:50px;
+        }
+        .item{
+            width:70%;
+            border:1px solid black;
+            margin:0 auto;
+            text-align: center;
+            padding:20px;
+            margin:10px;
+            height:320px;
+            border-radius:20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+
+        }
+        .item img{
+            width:70%;
+            height:200px;;
+        }
+        .chiadoi{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        
+        }
+        .mua{
+            color:white;
+            border:1px solid black;
+            background-color:red;
+            width:100px;
+            height:30px;
+            display:flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            margin:0;
+            font-weight: bold;
+        }
+        .ten_sp, .gia_sp, .a, .thêm{
+            font-weight: bold;
+        }
+        .active{
+            color:red;
+        }
+        .menu a:hover{
+            color:red;
+        }
+        .chiadoi a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hiển thị sản phẩm theo tên</h1>
+    <div class="content">
+        <?php
+        foreach($list_product as $tt){?>
+        <div class="item">
+        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+        <span class="gia_sp"><?=$tt->price?>đ</span> <br>
+        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+        <div class="chiadoi">
+            <a href="#" class="mua">Mua</a>
+            <p class="thêm">Thêm vào giỏi hàng</p> <br>
+        </div>
+        </div>
+        <?php
+        }
+        ?>
+    </div>
+
+
+</body>
+</html>
+<?php include_once "footer_user.php" ?>

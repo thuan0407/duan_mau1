@@ -17,12 +17,44 @@
         }
 
         //trang chủ
-        public function trangchu_user(){
-            $sanpham_hot =$this->productModel->all_hot();
-            $sanpham_moi =$this->productModel->all_moi();
-            $khuyen_mai  =$this->productModel->all_khuyenmai();
-            include "views/user/trangchu_user.php";
+public function trangchu_user(){
+    $thongbao = "";
+    $sanpham_hot = $this->productModel->all_hot();
+    $sanpham_moi = $this->productModel->all_moi();
+    $khuyen_mai  = $this->productModel->all_khuyenmai();
+    $list_product = $this->productModel->all();
+
+    // Xử lý tìm kiếm
+    if (isset($_GET['search'])) {
+        $key_name = trim($_GET['key_name']); // loại bỏ khoảng trắng
+
+        if ($key_name === "") {
+            $thongbao = "Bạn chưa nhập thông tin";
+        } else {
+            $result = [];
+
+            // Tìm kiếm không phân biệt hoa/thường
+            foreach ($list_product as $tt) {
+                if (stripos($tt->name, $key_name) !== false) {
+                    $result[] = $tt;
+                }
+            }
+
+            if (empty($result)) {
+                $thongbao = "Không tìm thấy";
+            } else {
+                // Gán kết quả tìm được cho list_product
+                $list_product = $result;
+                // Include view hiển thị kết quả tìm kiếm
+                include "views/user/hien_thi_sp_theo_ten.php";
+                return; // dừng tại đây, không load trang chủ
+            }
         }
+    }
+
+    // Nếu không tìm kiếm hoặc không có kết quả → load trang chủ
+    include "views/user/trangchu_user.php";
+}
 
         public function trangsp_user(){
             $danhsach_sp =$this->productModel->all();
