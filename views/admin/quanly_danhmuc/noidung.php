@@ -6,38 +6,41 @@
     <title>Document</title>
     <link rel="stylesheet" href="./public/admin/quanly_danhmuc.css">
     <style>
-body{
-    width:1200px;
-    margin:0 auto;
-}
-.content{
-    margin-left:300px;
-}
-.right{
-    text-align: right;
-}
-table {
-    border-collapse: separate;
-    border-spacing: 0 12px; /* tạo khoảng cách dọc giữa các <tr> */
-    width: 100%;
-}
+        body{
+            width:1200px;
+            margin:0 auto;
+        }
+        .content{
+            margin-left:300px;
+        }
+        .right{
+            text-align: right;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0 12px; /* tạo khoảng cách dọc giữa các <tr> */
+            width: 100%;
+        }
 
-th, td {
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    text-align: center;
-}
+        th, td {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
 
-th {
-    background-color: #f2f2f2;
-}
-button{
-    background-color:blue;
-    color:white;
-    border-radius:20px;
-    width:70px;
-    height:35px;
-}
+        th {
+            background-color: #f2f2f2;
+        }
+        button{
+            background-color: rgba(201, 43, 201, 1);
+            color:white;
+            border-radius:20px;
+            width:70px;
+            height:35px;
+        }
+        button:hover{
+            background-color: rgba(180, 59, 180, 1);
+        }
     </style>
 </head>
 <body>

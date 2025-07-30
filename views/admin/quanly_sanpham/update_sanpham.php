@@ -4,7 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <link rel="stylesheet" href="./public/admin/quanly_sanpham_update.css">
+    <style>
+        body{
+            margin:0 auto;
+            width:1200px;
+        }
+        main{
+            margin-left:260px;
+            background-color:	#f5f5f5; /* hồng pastel */
+            color: #333;
+            font-family: 'Segoe UI', sans-serif;    
+            padding-bottom:100px;
+        }
+
+        input {
+            margin-top:20px;
+            width:400px;
+            height:30px;
+            border-radius: 10px;
+        }
+
+        button{
+            margin-right:150px;
+            background-color: rgb(217, 28, 217);
+            border-radius: 10px;
+            height:30px;
+            width:90px;
+            color:white;
+            margin-top:20px;
+        }
+        button:hover{
+            background-color: rgba(179, 51, 179, 1);
+        }
+        td a{
+            color:black;
+            padding: 3px;
+            margin: 20px 15px;
+        }
+
+    </style>
 </head>
 <body>
     <?php  require_once __DIR__ . '/../header.php';?>
@@ -61,8 +99,8 @@
                 <td><button style="border: none;"  type="submit" name="update_sanpham">update</button></td>
             </tr>
         </table>
-            <span><?= $loi?></span>
-            <span><?= $thanhcong?></span>
+            <span style="color:red;"><?= $loi?></span>
+            <span style="color:green;"><?= $thanhcong?></span>
     </form>
     </main>
 

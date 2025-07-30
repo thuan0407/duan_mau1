@@ -111,9 +111,8 @@ $nameUser = $_SESSION['user']['name'] ?? '';
                 <form action="index.php" method="get">
                     <!-- Gửi thêm act để router nhận đúng hàm controller -->
                     <input type="hidden" name="act" value="trangchu_user">
-                    <input type="text" name="key_name" placeholder="Nhập tên sản phẩm...">
+                    <input type="text" name="key_name" placeholder="Nhập tên sản phẩm..." value="<?= $thongbao ?? '' ?>">
                     <button type="submit" name="search">Tìm</button> <br>
-                    <span><?= $thongbao ?? '' ?></span>
                 </form>
 
                 <div class="gioi_hang">

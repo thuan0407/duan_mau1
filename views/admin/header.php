@@ -20,9 +20,13 @@ $page = $_GET['page'] ?? 'dashboard'; // Mặc định trang dashboard
     <title>Document</title>
      <link rel="stylesheet" href="./public/admin/header..css">
      <style>
+        .menu{
+            background-color:rgba(121, 46, 121, 1);
+        }
         h1{
             margin:0px;
         }
+        
      </style>
 </head>
 <body>
