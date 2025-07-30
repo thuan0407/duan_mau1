@@ -213,4 +213,29 @@ class ProductModel
             echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
         }
         }
+
+        public function all_product_user($sql){//hiện toàn bộ thông tin
+            try{
+                $data=$this->conn->query($sql)->fetchAll();
+                $dulieu=[];
+                foreach($data as $tt){
+                    $sanpham = new Product();
+                    $sanpham->id          =$tt['id'];
+                    $sanpham->name        = $tt['name'];
+                    $sanpham->image       = $tt['image'];
+                    $sanpham->price       = $tt['price'];
+                    $sanpham->category_id = $tt['category_id'];
+                    $sanpham->description = $tt['description'];
+                    $sanpham->hot         = $tt['hot'];
+                    $sanpham->discount    = $tt['discount'];
+                    $sanpham->quantity    = $tt['quantity'];
+                    $dulieu[]=$sanpham;
+                }
+                return $dulieu;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
+
 }

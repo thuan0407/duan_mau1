@@ -57,7 +57,34 @@ public function trangchu_user(){
 }
 
         public function trangsp_user(){
-            $danhsach_sp =$this->productModel->all();
+            $thongbao="";
+            $priceFilter = isset($_GET['price']) ? $_GET['price'] : null; // khai báo biến
+                        
+           $sql = "SELECT * FROM `product` WHERE 1"; // Mặc định query lấy tất cả sản phẩm
+
+           switch($priceFilter){
+                case '1':
+                    $sql .= " AND price < 5000000"; // dưới 5 triệu
+                    break;
+                case '2':
+                    $sql .= " AND price BETWEEN 5000000 AND 10000000";
+                    break;
+                case '3':
+                    $sql .= " AND price BETWEEN 10000000 AND 20000000";
+                    break;
+                case '4':
+                    $sql .= " AND price BETWEEN 20000000 AND 30000000";
+                    break;
+                case '5':
+                    $sql .= " AND price > 30000000";
+                    break;
+            
+           }
+            $danhsach_sp = $this->productModel->all_product_user($sql);
+            if(empty($danhsach_sp)){
+                $thongbao="không có sản phẩm nào";
+            }
+
             include "views/user/trangsp_user.php";
         }
 

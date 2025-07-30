@@ -1,4 +1,5 @@
-<?php require_once "header_user.php" ?>
+<?php require_once "header_user.php" 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,14 +81,19 @@
 </head>
 <body>
     <div class="chia">
-        <h1>Các sản phẩm </h1>
-        <select name="" id="">
-            <option value="">Dưới 5 Triệu</option>
-            <option value="">Từ 5 -> 10 Triệu</option>
-            <option value="">Từ 10 -> 20 Triệu</option>
-            <option value="">Từ 20 -> 30 Triệu</option>
-            <option value="">Trên 30 Triệu</option>
-        </select>
+        <h1>Các sản phẩm </h1>  <h1> <?=$thongbao?></h1>
+            <form method="get" action="index.php">
+                <select name="price" onchange="this.form.submit()">
+                    <option value="" disabled selected>Lọc theo mức giá</option>
+                    <option value="1">Dưới 5 Triệu</option>
+                    <option value="2">Từ 5 -> 10 Triệu</option>
+                    <option value="3">Từ 10 -> 20 Triệu</option>
+                    <option value="4">Từ 20 -> 30 Triệu</option>
+                    <option value="5">Trên 30 Triệu</option>
+                </select>
+                <!-- giữ act để không mất route -->
+                <input type="hidden" name="act" value="danhsach_sanpham">
+            </form>
     </div>
     
         <main>
