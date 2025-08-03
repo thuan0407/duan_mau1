@@ -84,7 +84,7 @@ $nameUser = $_SESSION['user']['name'] ?? '';
 <body>
 
         <div class="vien_tren">
-            <p>lot line: 19001228</p>
+            <p>lot line: 1900 0102 4</p>
          <form action="" method="post">
         <?php if(!empty($_SESSION['user']['name'])): ?>
             <a style="text-decoration: none;" href="?act=dangxuat">Đăng xuất</a>

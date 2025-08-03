@@ -37,7 +37,7 @@
             padding:20px;
             margin:10px;
             height:320px;
-            border-radius:20px;
+            border-radius:5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 
         }
@@ -103,8 +103,8 @@
          <div class="item">
             <img src="<?= ANH_IMG. $tt->image?>" alt=""> <br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-            <span class="gia_sp" style="color:red;"><?=$tt->price?>đ</span> <br>
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:blue;">>>Xem chi tiết</a>
+            <span class="gia_sp" style="color:red;"><?= number_format($tt->price, 0, ',', '.') ?>đ  </span> <br>
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏi hàng</p> <br>

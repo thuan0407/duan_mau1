@@ -1,227 +1,334 @@
-<?php if (session_status() === PHP_SESSION_NONE) {
+<?php 
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
- require_once "header_user.php" ?>
+require_once "header_user.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chi tiết sản phẩm</title>
     <style>
-        .body{
-            width:1200px;
-            margin:0 auto;
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
-        .content{ 
-            width:100%;
-            display:flex;
-            justify-content: space-between;
-            height:350px;
-
+        body {
+            background-color: #f9f9f9;
+            color: #333;
         }
-        .sanpham{
-            max-width:600px;
-            border:1px solid black;
-            padding:50px;
-            display:grid;
-            grid-template-columns: repeat(2,1fr);
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-            margin:20px;
-            border-radius:20px;
-        }
-        .sanpham img{
-            max-width:100%;
-            height:100%;
-        }
-        span{
+        h1, h3 {
             text-align: center;
-        }
-        h1{
-            margin-top:50px;
-        }
-        .thong_tin{
-            width:100%;
-            border:1px solid black;
-            margin:20px;
-            border-radius:20px;
-        }
-        .GB{
-            display:flex;
-            justify-content: center;
-            padding:20px;
-        }
-        .GB button{
-            width:70px;
-            border-radius:10px;
-            margin:0 20px;
-        }
-        .nut{
-            display:flex;
-            justify-content: center;
-            padding:20px;
-        }
-        .nut button{
-            width:200px;
-            border-radius:10px;
-            margin:0 30px;
-            height:40px;
+            margin: 20px 0;
         }
 
-        .binh_luan{      /* css phần bình luận */
+        .body {
             width: 1200px;
-            background-color:rgba(239, 236, 231, 1);
-            text-align: center;v
-        }
-        .binh_luan input{
-            text-align: center;
-            width:80%;
-            height:50px;
-            margin:20px 0;
-            border-radius:30px;
-        }
-        .binhluan_truoc{
-            text-align: left;
-            margin:20px;
-            height:300px;
-            text-overflow: ellipsis;
-            overflow-x: auto;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        .sp_lien_quan{  /* css phần sản phẩm liên quan */
-            width:1000px;
+        /* Layout trên */
+        .content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        /* Khối sản phẩm */
+        .sanpham {
+            flex: 1;
+            max-width: 600px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #fff;
+        }
+        .sanpham img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+        .mota h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #d433caff;
+        }
+        .mota ul {
+            list-style: disc;
+            margin-left: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .mota p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Khối thông tin */
+        .thong_tin {
+            flex: 1;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 20px;
+            background: #fff;
+        }
+        .price {
+            display: block;
+            text-align: center;
+            color: red;
+            font-size: 28px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 15px;
+        }
+        .GB {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .GB button {
+            width:100px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 1px solid #ae34b3ff;
+            background: #f8f0fbff;
+            cursor: pointer;
+            transition: 0.3s;
+         
+        }
+        .GB button:hover {
+            background: #fb00ffff;
+            color: #fff;
+        }
+        .nut {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        .nut button {
+            width: 180px;
+            height: 40px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .nut button:first-child {
+            border: 1px solid #e53ee5ff;
+            background: #fff;
+            color: #d43de8ff;
+        }
+        .nut button:first-child:hover {
+            background: #c33fd7ff;
+            color: #fff;
+        }
+        .nut button:last-child {
+            background: red;
+            color: #fff;
+        }
+        .nut button:last-child:hover {
+            opacity: 0.8;
+        }
+        .tra-gop {
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+            background: #d72acfff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        /* Ưu đãi */
+        .uu-dai {
+            margin-top: 20px;
+            border-top: 1px dashed #ccc;
+            padding-top: 15px;
+        }
+        .uu-dai h4 {
+            color: #cf34e1ff;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+        .uu-dai ul {
+            list-style: circle;
+            margin-left: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Phần bình luận + sản phẩm liên quan giữ nguyên */
+        .binh_luan {
+            width: 1200px;
+            background-color: #f5f0fa;
+            text-align: center;
+            margin: 30px auto;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .binh_luan input {
+            width: 80%;
+            height: 50px;
+            margin: 20px 0;
+            border-radius: 30px;
+            text-align: center;
+        }
+        .binhluan_truoc {
+            text-align: left;
+            margin: 20px;
+            height: 300px;
+            overflow-y: auto;
+        }
+        .sp_lien_quan {
+            width: 1000px;
             display: grid;
             grid-template-columns: repeat(4,1fr);
             text-align: center;
-            gap:20px;
-            margin:50px;
+            gap: 20px;
+            margin: 50px auto;
         }
-        .item{
-            max-width:100%;
-            padding:50px 30px;
-            border:1px solid black;
-            padding-bottom:0;
+        .item {
+            max-width: 100%;
+            padding: 20px;
+            border: 1px solid black;
+            border-radius: 10px;
+            background: #fff;
         }
-        .item:hover{
-            background-color:antiquewhite;
+        .item:hover {
+            background-color: antiquewhite;
         }
-        .item img{
-            width:80%;
-            height:230px;
+        .item img {
+            width: 80%;
+            height: 230px;
         }
-        .chiadoi{
-            display:flex;
+        .chiadoi {
+            display: flex;
             justify-content: center;
             align-items: center;
-            
+            gap: 10px;
         }
-        .mua{
-            color:white;
-            border:1px solid black;
-            background-color:red;
-            width:100px;
-            height:30px;
-            display:flex;
+        .mua {
+            color: white;
+            border: 1px solid black;
+            background-color: red;
+            width: 100px;
+            height: 30px;
+            display: flex;
             text-align: center;
             justify-content: center;
             align-items: center;
             border-radius: 10px;
-            margin:0;
             font-weight: bold;
         }
-        .ten_sp, .gia_sp, .a, .thêm{
+        .ten_sp, .gia_sp, .a, .thêm {
             font-weight: bold;
         }
-        button:hover{
-            background-color:aqua;
-
-        }
-        
-
     </style>
 </head>
 <body>
+
+<div class="body">
+
     <h1>Trang chi tiết</h1>
     <h3><?=$chi_tiet_sp->name?></h3>
 
     <div class="content">
 
-     <div class="sanpham">
-        <img src="<?= ANH_IMG.$chi_tiet_sp->image?>" alt="">
-
-        <div class="mota"><p><?=$chi_tiet_sp->description?></span></div>
-    </div>
-
-
-    <div class="thong_tin">
-        <div class="GB">
-        <button>64GB</button>
-        <button>128GB</button>
-        <button>256GB</button>
-        <button>512GB</button>
+        <!-- Khối sản phẩm -->
+        <div class="sanpham">
+            <img src="<?= ANH_IMG.$chi_tiet_sp->image?>" alt="">
+            <div class="mota">
+                <h4>Đặc điểm nổi bật</h4>
+                <ul>
+                    <li><?=$chi_tiet_sp->description?></li>
+                </ul>
+            </div>
         </div>
-        <div class="nut">
-            <button style="border:1px solid #0099FF; color:#0099FF;">Thêm vào giỏ hàng</button>
-            <button style="background-color:red; color:white;">Mua hàng</button>
+
+        <!-- Khối thông tin mua -->
+        <div class="thong_tin">
+            <span class="price"><?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ</span>
+
+            <div class="GB">
+                <button>64GB</button>
+                <button>128GB</button>
+                <button>256GB</button>
+                <button>512GB</button>
+            </div>
+
+            <div class="nut">
+                <button>Thêm vào giỏ hàng</button>
+                <button>Mua hàng</button>
+            </div>
+
+            <button class="tra-gop">Mua trả góp 0% lãi suất</button>
+
+            <div class="uu-dai">
+                <h4>Ưu đãi thêm</h4>
+                <ul>
+                    <li>Giảm ngay 500k khi thanh toán qua ví điện tử</li>
+                    <li>Tặng ốp lưng + dán cường lực miễn phí</li>
+                    <li>Miễn phí vận chuyển toàn quốc</li>
+                </ul>
+            </div>
         </div>
-        <button style="margin-left:90px; width:400px; height:40px; border-radius:10px; color:white; background-color:#0099FF">Trả góp</button> <br><br>
-        <span style="margin:210px; width:400px; height:40px; border-radius:10px; color:red; font-size:32px; text-decoration: underline;">
-            <?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ
-        </span>
-    </div>
 
     </div>
 
-
-    <h1>Bình luận</h1> <!-- phần bình luận-->
+    <!-- BÌNH LUẬN -->
+    <h1>Bình luận</h1>
     <div class="binh_luan">
-        <?php
-        if(!empty($_SESSION['user']['id'])): ?>
-        <form action="" method="post">
-            <input type="text" name="comment" placeholder="bạn đang nghĩ gì ?">
-            <button type="submit" name="gui" style="background-color:red; color:white; border-radius:10px;">Gửi</button>
+        <?php if(!empty($_SESSION['user']['id'])): ?>
+            <form action="" method="post">
+                <input type="text" name="comment" placeholder="bạn đang nghĩ gì ?">
+                <button type="submit" name="gui" style="background-color:red; color:white; border-radius:10px;">Gửi</button>
             </form>
-        <?php else:?>
+        <?php else: ?>
             <a href="?act=dangnhap">Đăng nhập</a>
-            <?php endif;
-        ?>
+        <?php endif; ?>
 
-
- <div class="binhluan_truoc"> <!-- các bình luận trước đó-->
-        <?php
-        foreach($comment as $cmt){
-            ?>
-            <?=$cmt->name_User?>:  <?=$cmt->content?> :   <?= $cmt->date?><br>
-            <hr>
-            <?php
-        }  ?>
+        <div class="binhluan_truoc">
+            <?php foreach($comment as $cmt): ?>
+                <?=$cmt->name_User?>  -->     <?=$cmt->content?> : <?= $cmt->date?><br> <br>
+                <hr>
+            <?php endforeach; ?>
         </div>
-
     </div>
 
-
-    <h1>Sản phẩm liên quan</h1> <!--các sản phẩm liên quan -->
+    <!-- SẢN PHẨM LIÊN QUAN -->
+    <h1>Sản phẩm liên quan</h1>
     <div class="sp_lien_quan">
-            <?php
-        foreach($sp_lien_quan as $tt){
-            ?>
-    <div class="item">
-            
+        <?php foreach($sp_lien_quan as $tt): ?>
+        <div class="item">
             <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-            <span class="gia_sp"><?=$tt->price?>đ</span> <br>
+            <span class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
             <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
-                <p class="thêm">Thêm vào giỏi hàng</p> <br>
+                <p class="thêm">Thêm vào giỏ hàng</p> <br>
             </div>
+        </div>
+        <?php endforeach; ?>
     </div>
-                <?php
-        }
-        ?>
-    </div>
+
+</div>
 
 </body>
 </html>
