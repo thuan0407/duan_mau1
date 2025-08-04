@@ -54,4 +54,14 @@ class UserModel
         }
         }
 
+        public function delete_tk($id){                                //xóa tài khoản
+            try{
+                $sql="DELETE FROM user WHERE `user`.`id` = $id";
+                $data=$this->conn->exec($sql);
+                return $data;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
 }

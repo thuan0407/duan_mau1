@@ -131,8 +131,7 @@
                 <td><?=$tt->number?></td>
                 <td><?=$tt->role?></td>
                 <td>
-                    <a style="color:black;" href="">Xem chi tiết / </a>
-                    <a style="color:black;" href="">Khóa</a>
+ <a style="color:red; margin-left:30px;" href="?act=delete_tk&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này không?')">Xoá</a>
                 </td>
             </tr>
             <?php

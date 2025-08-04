@@ -83,8 +83,8 @@
                         <td><?= $tt->hot?></td>
                         <td><?= $tt->quantity?></td>
                         <td>
-                            <a style="color:black;" href="?act=update_sanpham&id=<?=$tt->id?>">Sửa /</a>
-                            <a style="color:black;" href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
+                            <a style="color:rgba(221, 7, 213, 1);" href="?act=update_sanpham&id=<?=$tt->id?>">Sửa /</a>
+                            <a style="color:red;" href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
                         </td>
                         </tr>
                         <?php

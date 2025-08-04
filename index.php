@@ -46,18 +46,20 @@ match ($act) {
     //phần của admin
     'trangchu_admin'         => (new AdminController())->trangchu_admin(),
 
+    'quanly_danhmuc'         => (new AdminController())->quanly_danhmuc(),
+    'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
+    'delete_danhmuc'         => (new AdminController())->delete_danhmuc($id),
+    'update_danhmuc'         => (new AdminController())->update_danhmuc($id),
+
     'quanly_sanpham'         => (new AdminController())->quanly_sanpham(),
     'delete_sanpham'         => (new AdminController())->delete_sanpham($id),
     'update_sanpham'         => (new AdminController())->update_sanpham($id),
-    
-
-    'quanly_danhmuc'         => (new AdminController())->quanly_danhmuc(),
-    'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
-    'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
-    'quanly_donhang'         => (new AdminController())->quanly_donhang(),
-
     'create_sanpham'         => (new AdminController())->create_sanpham(),
-    'delete_danhmuc'         => (new AdminController())->delete_danhmuc($id),
-    'update_danhmuc'         => (new AdminController())->update_danhmuc($id),
+    
+    'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
+    'chi_tiet_bl'            => (new AdminController())->chi_tiet_bl($id),
+
+    'delete_tk'              => (new AdminController())->delete_tk($id),
+    
 
 };

@@ -18,6 +18,7 @@ class AdminController {
     }
 
     public function trangchu_admin() {
+        $today = date("y-m-d");
         include "views/admin/trangchu_admin.php";
     }
 
@@ -198,13 +199,6 @@ class AdminController {
         }
     }
 
-    public function quanly_binhluan() {
-        include "views/admin/quanly_binhluan/noidung.php";
-    }
-
-    public function quanly_donhang() {
-        include "views/admin/quanly_donhang/noidung.php";
-    }
 
 public function update_sanpham($id) {
     // Lấy sản phẩm theo ID để hiển thị lên form
@@ -250,5 +244,70 @@ public function update_sanpham($id) {
     // Hiển thị giao diện sửa
     include "views/admin/quanly_sanpham/update_sanpham.php";
 }
+
+
+    public function delete_tk($id) {                            /////xóa tài khoản
+        $ketqua = $this->userModel->delete_tk($id);
+        if ($ketqua === 1) {
+            header("Location: ?act=quanly_taikhoan");
+            exit;
+        } else {
+            $loi = "không thể xóa";
+            $danhsach = $this->userModel->all();
+            include "views/admin/quanly_taikhoan/noidung.php";
+        }
+
+    }
+
+
+    public function quanly_binhluan() {
+        $err = "";
+        $danhsach = $this->productModel->all();
+
+        if (isset($_POST['tim'])) {
+            $tukhoa = $_POST['tukhoa'];
+
+            if (empty($tukhoa)) {
+                $err = "bạn chưa nhập nội dung";
+            }
+
+            foreach ($danhsach as $tt) {
+                if (stripos($tt->name, $tukhoa) !== false) {
+                    $ketqua[] = $tt;
+                }
+            }
+
+            if (empty($ketqua)) {
+                $err = "không tìm thấy";
+                $danhsach = [];
+            } else {
+                $danhsach = $ketqua;
+            }
+        }
+        include "views/admin/quanly_binhluan/noidung.php";
+    }
+
+
+    public function chi_tiet_bl($id) {
+        $thongbao_thanhcong = "";
+        $thongbao_thatbai   = "";
+        $san_pham = $this->productModel->find($id);
+        $comment =$this->commentModel->find_comment_idpro($id);   // nội dung bình luận của sản phẩm
+
+        if (isset($_POST['delete_comment'])) {
+            $id_cmt = $_POST['comment_id']; // ID bình luận
+            $ketqua = $this->commentModel->delete_comment($id_cmt);
+
+            if ($ketqua === 1) {
+                $thongbao_thanhcong = "Xóa bình luận thành công";
+            } else {
+                $thongbao_thatbai = "Không thể xóa";
+            }
+        }
+        include "views/admin/quanly_binhluan/chi_tiet_bl.php";
+    }
 }
+
+
+
 ?>
