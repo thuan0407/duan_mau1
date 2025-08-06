@@ -71,7 +71,7 @@ class Dangnhap_dangkyController {
             $user->address=$_POST['address'];
             $user->number=$_POST['number'];
             $user->password=$_POST['password'];
-            $user->role=1;
+            $user->role=$_POST['role'];
 
 
             if(empty($user->name)===""||empty($user->address)===""||empty($user->number)===""||empty($user->password)==="" ||empty($user->email)===""){

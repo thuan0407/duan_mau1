@@ -55,31 +55,48 @@
      </style>
 </head>
 <body>
-     <form method="POST">
+    <form action="" onsubmit="return kiemtra()" method="POST">
     <table>
         <h2>Đăng ký</h2>
-        <tr>
-            <td>Tên:</td>
-            <td><input type="text" name="name" required placeholder="Nhập tên người dùng"></td>
-        </tr>
+<tr>
+    <td>Tên:</td>
+    <td>
+        <input id="name" type="text" name="name"  placeholder="Nhập tên người dùng"><br>
+        <span id="err-name" style="color:red;font-size:12px"></span>
+    </td>
+</tr>
 
-        <tr>
-            <td>email:</td>
-            <td><input type="email" name="email" required placeholder="Nhập email"></td>
-        </tr>
+<tr>
+    <td>Email:</td>
+    <td>
+        <input id="email" type="text" name="email"  placeholder="Nhập email"><br>
+        <span id="err-email" style="color:red;font-size:12px"></span>
+    </td>
+</tr>
 
-        <tr>
-            <td>Mật khẩu:</td>
-            <td><input type="password" name="password" required placeholder="Nhập mật khẩu"></td>
-        </tr>
-        <tr>
-            <td>Địa chỉ</td>
-            <td><input type="text" name="address" required placeholder="Nhập địa chỉ"></td>
-        </tr>
-        <tr>
-            <td>SDT:</td>
-            <td><input type="number" min="10" name="number" required placeholder="Nhập số điện thoại"></td>
-        </tr>
+<tr>
+    <td>Mật khẩu:</td>
+    <td>
+        <input id="password" type="text" name="password"  placeholder="Nhập mật khẩu"><br>
+        <span id="err-password" style="color:red;font-size:12px"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>Địa chỉ</td>
+    <td>
+        <input id="adress" type="text" name="address"  placeholder="Nhập địa chỉ"><br>
+        <span id="err-adress" style="color:red;font-size:12px"></span>
+    </td>
+</tr>
+
+<tr>
+    <td>SDT:</td>
+    <td>
+        <input id="number" type="text" name="number"  placeholder="Nhập số điện thoại">
+        <span id="err-number" style="color:red;font-size:12px"></span>
+    </td>
+</tr>
         
     </table><br>
 
@@ -89,6 +106,66 @@
            <br><br> <a href="?act=dangnhap">Đăng nhập</a>
     </form>
      </div>   
+
+<script>
+    function kiemtra(){
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let adress = document.getElementById('adress').value;
+    let number = document.getElementById('number').value;
+
+    //xóa lỗi 
+    document.querySelectorAll('span').forEach(span=>span.textContent='');
+
+    //kiểm tra
+    let check = true;
+    if(name.trim()===''){
+        document.getElementById('err-name').textContent='không được bỏ trống';
+        check =false;
+    }
+    if(email.trim()===''){
+        document.getElementById('err-email').textContent='không được bỏ trống';
+        check =false;
+    }
+    if(password.trim()===''){
+        document.getElementById('err-password').textContent='không được bỏ trống';
+        check =false;
+    }
+    if(adress.trim()===''){
+        document.getElementById('err-adress').textContent='không được bỏ trống';
+        check =false;
+    }
+    if(number.trim()===''){
+        document.getElementById('err-number').textContent='không được bỏ trống';
+        check =false;
+    }
+        // Kiểm tra định dạng email
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (email !== '' && !emailPattern.test(email)) {
+            document.getElementById('err-email').textContent = 'Email không hợp lệ';
+            check = false;
+        }
+
+        // Kiểm tra định dạng số điện thoại VN (0 hoặc +84, 10 số)
+        const phonePattern = /^(0|\+84)[0-9]{9}$/;
+        if (number !== '' && !phonePattern.test(number)) {
+            document.getElementById('err-number').textContent = 'Số điện thoại không hợp lệ (VD: 0912345678)';
+            check = false;
+        }
+
+        // **Kiểm tra độ mạnh mật khẩu**
+        const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,10}$/;
+        if (password !== '' && !passwordPattern.test(password)) {
+            document.getElementById('err-password').textContent =
+                'Mật khẩu phải 6-10 ký tự, có chữ hoa, chữ thường và số';
+            check = false;
+        }
+
+        return check; // trả về true/false cho onsubmit
+}
+
+</script>
 </body>
 </html>
 
