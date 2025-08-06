@@ -60,23 +60,28 @@
                 <img src="<?= ANH_IMG . $sanpham->image ?>" alt="ảnh sản phẩm" width="100" height="120">
             </tr>
             <tr>
-                <th>Loại</th>
+                <th>Danh mục</th>
                 <td>
                     <select name="category_id" id="">
-                    <option value="">chọn danh mục</option>
+                        <option><<--Chọn danh mục-->></option>
                     <?php
-                    foreach($danhsach as $tt){
+                        foreach($danhsach as $tt){
+                            ?>
+                        <option value="<?=$tt->id?>"><?=$tt->name?></option>
+                            <?php
+                        }
                         ?>
-                    <option value="<?=$tt->id?>"><?=$tt->name?></option>
-                        <?php
-                    }
-                    ?>
                 </select>
                 </td>
             </tr>
             <tr>
-                <th>Hot</th>
-                <td><input type="number" name="hot" value="<?=$sanpham->hot?>"> </td>
+                <th>loại</th>
+                <td> <select name="hot" id="">
+                <option value="disabled"><<--chọn loại--->></option>   
+                <option value="1">hot</option>
+                <option value="2">sản phẩm mới</option>
+                <option value="3">sản phẩm khuyến mãi</option>
+            </select></td>
             </tr>
             <tr>
                 <th>Giá</th>

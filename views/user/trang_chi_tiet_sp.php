@@ -316,8 +316,13 @@ require_once "header_user.php";
     <!-- SẢN PHẨM LIÊN QUAN -->
     <h1>Sản phẩm liên quan</h1>
     <div class="sp_lien_quan">
-        <?php foreach($sp_lien_quan as $tt): ?>
-        <div class="item">
+        <?php
+        foreach($sp_lien_quan as $tt):?>
+        <?php
+        $quantity_khuyen_mai = $tt->price - $tt-> discount;     //// giá khi Giảm
+        $phan_tram_giam = ($tt-> discount /$tt->price )*100;
+        if($tt->discount===0):?>
+                <div class="item">
             <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
@@ -327,7 +332,21 @@ require_once "header_user.php";
                 <p class="thêm">Thêm vào giỏ hàng</p> <br>
             </div>
         </div>
-        <?php endforeach; ?>
+        <?php else :?>
+            <div class="item">
+            <span style="color:red; margin-right:100px;">Giảm <?=$phan_tram_giam?>%</span>
+            <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
+            <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏi hàng</p> <br>
+            </div>
+        </div>
+               <?php endif; ?>
+            <?php endforeach; ?>
     </div>
 
 </div>

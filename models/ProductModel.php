@@ -102,9 +102,9 @@ class ProductModel
 
         public function create(Product $sanpham){        //thêm sản phẩm
             try{
-                $sql="INSERT INTO `product` (`id`, `image`, `price`, `category_id`, `hot`, `quantity`, `description`, `discount`, `name`)
-                 VALUES (NULL, '".$sanpham->image."', '".$sanpham->price."', '".$sanpham->category_id."', '".$sanpham->hot."',
-                  '".$sanpham->quantity."', '".$sanpham->description."', '".$sanpham->discount."', '".$sanpham->name."');";
+                $sql="INSERT INTO `product` (`id`, `image`, `price`, `category_id`, `hot`, `quantity`, `description`, `discount`, `name`) VALUES 
+                (NULL, '".$sanpham->image."', '".$sanpham->price."', '".$sanpham->category_id."', '".$sanpham->hot."'
+                , '".$sanpham->quantity."', '".$sanpham->description."', '".$sanpham->discount."', '".$sanpham->name."');";
                 $data=$this->conn->exec($sql);
                 return $data;
 

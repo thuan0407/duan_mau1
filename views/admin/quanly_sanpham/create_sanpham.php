@@ -66,10 +66,10 @@
         </td>
         </tr>
         <tr>
-            <th>loại</th>
+            <th>danh mục</th>
             <td>
                 <select name="category_id" id="">
-                    <option value="">chọn danh mục</option>
+                    <option value="disabled">chọn danh mục</option>
                     <?php
                     foreach($danhsach as $tt){
                         ?>
@@ -81,24 +81,29 @@
             </td>
         </tr>
         <tr>
-            <th>hot</th>
-            <td><input type="number" name="hot" min=1 max=3></td>
+            <th>loại</th>
+            <td> <select name="hot" id="">
+                <option value="disabled"><<--chọn loại-->></option>
+                <option value="1">hot</option>
+                <option value="2">sản phẩm mới</option>
+                <option value="3">sản phẩm khuyến mãi</option>
+            </select></td>
         </tr>
         <tr>
             <th>giá</th>
             <td><input type="number" name="price" ></td>
         </tr>
         <tr>
-            <th>giảm giá</th>
-            <td><input type="number" name="discount"></td>
+            <th>Giảm giá</th>
+            <td><input type="number" name="discount" min="0"></td>
         </tr>
         <tr>
             <th>Miêu tả</th>
-            <td><input type="text" name="description" ></td>
+            <td><input type="text" name="description"></td>
         </tr>
         <tr>
             <th>Số lượng</th>
-            <td><input type="number" name="quantity"></td>
+            <td><input type="number" name="quantity" min="1"></td>
         </tr>
 
         <tr>

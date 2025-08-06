@@ -103,21 +103,37 @@
         <main>
 
         <?php
-        foreach($danhsach_sp as $tt){?>
-         <div class="item">
-            <img src="<?= ANH_IMG. $tt->image?>" alt=""> <br>
+        foreach($danhsach_sp as $tt):?>
+        <?php
+        $quantity_khuyen_mai = $tt->price - $tt-> discount;     //// giá khi Giảm
+        $phan_tram_giam = ($tt-> discount /$tt->price )*100;
+        ?>
+        <?php if($tt->discount===0):?>
+                <div class="item">
+            <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-            <span class="gia_sp" style="color:red;"><?= number_format($tt->price, 0, ',', '.') ?>đ  </span> <br>
+            <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏ hàng</p> <br>
+            </div>
+        </div>
+        <?php else :?>
+            <div class="item">
+            <span style="color:red; margin-right:100px;">Giảm <?=round($phan_tram_giam,2)?>%</span>
+            <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
+            <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
             <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏi hàng</p> <br>
-                    </div>
-                </div>
             </div>
-        <?php
-        }
-        ?>
+        </div>
+    <?php endif; ?>
+<?php endforeach; ?>
     </main>
 </body>
 </html>

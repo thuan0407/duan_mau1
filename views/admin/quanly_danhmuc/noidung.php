@@ -66,7 +66,7 @@
         <span><?=$thongbao?></span>
         <tr>
             <th>Tên danh mục</th>
-            <th>Số lượng</th>
+            <th>Tổng lượng sản phẩm </th>
             <th>Ngày tạo</th>
             <th>Hành động</th>
 

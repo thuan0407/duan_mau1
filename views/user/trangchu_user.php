@@ -118,44 +118,84 @@
     $act = $_GET['act'] ?? 'sanpham_hot';
     switch($act){
         case 'sanpham_hot': 
-        foreach($sanpham_hot as $tt){
-            ?>
+        foreach($sanpham_hot as $tt):?>
+        <?php
+        $quantity_khuyen_mai = $tt->price - $tt-> discount;     //// giá khi Giảm
+        $phan_tram_giam = ($tt-> discount /$tt->price )*100;
+        ?>
+        <?php if($tt->discount==0):?>
                 <div class="item">
-                        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
-                        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-                        <span class="gia_sp" style="color:red;"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
-                        <div class="chiadoi">
-                            <a href="#" class="mua">Mua</a>
-                            <p class="thêm">Thêm vào giỏi hàng</p> <br>
-                        </div>
-                </div>
-                            <?php
-                    }
+            <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏ hàng</p> <br>
+            </div>
+        </div>
+         <?php else: ?>
+            <div class="item">
+            <span style="color:red; margin-right:100px;">Giảm <?=$phan_tram_giam?>%</span>
+            <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
+            <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏi hàng</p> <br>
+            </div>
+        </div>
+               <?php endif; ?>
+        <?php endforeach; ?>
+        <?php
             break;
         case 'sanpham_moi':
-        foreach($sanpham_moi as $tt){
-            ?>
+        foreach($sanpham_moi as $tt);
+        $quantity_khuyen_mai = $tt->price - $tt-> discount;     //// giá khi Giảm
+        $phan_tram_giam = ($tt-> discount /$tt->price )*100;
+        if($tt->discount===0){?>
                 <div class="item">
-                        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
-                        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-                        <span class="gia_sp" style="color:red;"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
-                        <div class="chiadoi">
-                            <a href="#" class="mua">Mua</a>
-                            <p class="thêm">Thêm vào giỏi hàng</p> <br>
-                        </div>
-                </div>
-                            <?php
-                    }
+            <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏ hàng</p> <br>
+            </div>
+        </div>
+        <?php
+        }
+        else{
+            ?>
+            <div class="item">
+            <span style="color:red; margin-right:100px;">Giảm <?=$phan_tram_giam?>%</span>
+            <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
+            <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏi hàng</p> <br>
+            </div>
+        </div>
+            <?php
+        }
             break;
         case 'khuyen_mai':
         foreach($khuyen_mai as $tt){
+            $quantity_khuyen_mai = $tt->price - $tt-> discount;     //// giá khi Giảm
+            $phan_tram_giam = ($tt-> discount /$tt->price )*100;
             ?>
                 <div class="item">
+                    <span style="color:red; margin-right:100px;">Giảm <?=$phan_tram_giam?>%</span>
                         <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
                         <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-                        <span class="gia_sp" style="color:red;"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
+                        <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
+                         <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
                         <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
                         <div class="chiadoi">
                             <a href="#" class="mua">Mua</a>
@@ -166,20 +206,38 @@
                     }
             break;
          default: 
-        foreach($sanpham_hot as $tt){
-            ?>
+        foreach($sanpham_hot as $tt);
+        $quantity_khuyen_mai = $tt->price - $tt-> discount;     //// giá khi Giảm
+        $phan_tram_giam = ($tt-> discount /$tt->price )*100;
+        if($tt->discount===0){?>
                 <div class="item">
-                        <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
-                        <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-                        <span class="gia_sp" style="color:red;"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
-                        <div class="chiadoi">
-                            <a href="#" class="mua">Mua</a>
-                            <p class="thêm">Thêm vào giỏi hàng</p> <br>
-                        </div>
-                </div>
-                            <?php  
-                    }
+            <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏ hàng</p> <br>
+            </div>
+        </div>
+        <?php
+        }
+        else{
+            ?>
+            <div class="item">
+            <span style="color:red; margin-right:100px;">Giảm <?=round($phan_tram_giam,2)?>%</span>
+            <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
+            <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
+            <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
+            <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <div class="chiadoi">
+                <a href="#" class="mua">Mua</a>
+                <p class="thêm">Thêm vào giỏi hàng</p> <br>
+            </div>
+        </div>
+            <?php
+        }
             break;  
     }
     ?>

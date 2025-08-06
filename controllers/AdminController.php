@@ -206,6 +206,7 @@ public function update_sanpham($id) {
     $thanhcong="";
     $sanpham = $this->productModel->find($id);
     $danhsach =$this->categoryModel->all();
+    $hehe  =$this->categoryModel->find($id);
 
     if (isset($_POST['update_sanpham'])) {
         // Cập nhật dữ liệu mới từ form

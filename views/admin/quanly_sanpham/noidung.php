@@ -64,7 +64,7 @@
                     <th>Giá</th>
                     <th>Khuyến mãi</th>
                     <th>Danh mục </th>
-                    <th>Hot</th>
+                    <th>loại</th>
                     <th>Số lượng</th>
                     <th>Hành động</th>
                 </tr>
@@ -80,7 +80,20 @@
                         <td><?= $tt->price?></td>
                         <td><?= $tt->discount?></td>
                         <td><?= $tt->category_id?></td>
-                        <td><?= $tt->hot?></td>
+                        <td>
+                            <?php
+                            if($tt->hot ===1){
+                                $tt->hot="sản phẩm hot";
+                            }
+                            elseif($tt->hot ===2){
+                                $tt->hot ="sản phẩm mới";
+                            }
+                            else{
+                                $tt->hot="sản phẩm khuyến mãi";
+                            }
+                            ?>
+                            <?=$tt->hot?>
+                        </td>
                         <td><?= $tt->quantity?></td>
                         <td>
                             <a style="color:rgba(221, 7, 213, 1);" href="?act=update_sanpham&id=<?=$tt->id?>">Sửa /</a>
