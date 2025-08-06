@@ -62,7 +62,7 @@
                 <tr>
                     <th>HÌnh ảnh</th>
                     <th>Tên sản phẩm</th>
-                    <th>Số lượng bình luận</th>
+                    <th>Số lượng</th>
                     <th>Hành động</th>
                 </tr>
                     <?php
@@ -74,7 +74,7 @@
                            <img src="<?= ANH_IMG . $tt->image ?>" alt="ảnh sản phẩm" width="100" height="120">
                         </td>
                         <td><?= $tt->name?></td>
-                        <td><?= $sanpham->total_comments?></td>
+                        <td><?= $tt->quantity ?></td>
                         <td>
                             <a style="color:rgba(221, 7, 213, 1);" href="?act=chi_tiet_bl&id=<?=$tt->id?>">>>Xem chi tiết các bình luận</a>
                         </td>

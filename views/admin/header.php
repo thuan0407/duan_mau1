@@ -8,7 +8,7 @@ if (isset($_GET['act']) && $_GET['act'] === 'dangxuat') {
     header("Location: ?act=dangxuat");
     exit;
 }
-$user = $_SESSION['user']['name'];
+$user = $_SESSION['user']['name'] ?? 'Khách';
 $currentPage = $_GET['act'] ?? 'trangchu_admin';
 $page = $_GET['page'] ?? 'dashboard'; // Mặc định trang dashboard
 

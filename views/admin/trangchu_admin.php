@@ -44,7 +44,7 @@
 </head>
 <body>
     <div class="content">
-    <h1> Chào mừng bạn đến với trang quản</h1>
+    <h1> Chào mừng bạn đến với trang quản trị</h1>
     Xin chào, <?=$user?>! Hôm nay là ngày <?=$today?> chúc bạn mộn ngày làm việc vui vẻ!
 
     <div class="so_lieu">

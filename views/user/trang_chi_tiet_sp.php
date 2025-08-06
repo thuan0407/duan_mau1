@@ -210,8 +210,9 @@ require_once "header_user.php";
             border-radius: 10px;
             background: #fff;
         }
-        .item:hover {
-            background-color: antiquewhite;
+        .item:hover{
+            border:1px solid #d51bb9;
+            background-color: #f9f4f8ff;
         }
         .item img {
             width: 80%;
@@ -245,8 +246,7 @@ require_once "header_user.php";
 
 <div class="body">
 
-    <h1>Trang chi tiết</h1>
-    <h3><?=$chi_tiet_sp->name?></h3>
+    <h1>Trang chi tiết</h1><br>
 
     <div class="content">
 
@@ -259,7 +259,9 @@ require_once "header_user.php";
                     <li><?=$chi_tiet_sp->description?></li>
                 </ul>
             </div>
+            <h3><?=$chi_tiet_sp->name?></h3>
         </div>
+        
 
         <!-- Khối thông tin mua -->
         <div class="thong_tin">
@@ -305,7 +307,7 @@ require_once "header_user.php";
 
         <div class="binhluan_truoc">
             <?php foreach($comment as $cmt): ?>
-                <?=$cmt->name_User?>  -->     <?=$cmt->content?> : <?= $cmt->date?><br> <br>
+                <?=$cmt->name_User?>  -->   : <?= $cmt->date?> :  <?=$cmt->content?><br> <br>
                 <hr>
             <?php endforeach; ?>
         </div>
@@ -318,8 +320,8 @@ require_once "header_user.php";
         <div class="item">
             <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
-            <span class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+            <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
+            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏ hàng</p> <br>

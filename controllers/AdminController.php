@@ -260,10 +260,17 @@ public function update_sanpham($id) {
     }
 
 
-    public function quanly_binhluan() {
-        $err = "";
-        $danhsach = $this->productModel->all();
+public function quanly_binhluan() {
+    $err = "";
+    $danhsach = $this->productModel->all();
 
+    // Tạo mảng số lượng bình luận ban đầu
+    $so_luong_bl = [];
+    foreach ($danhsach as $sp) {
+        $so_luong_bl[$sp->id] = $this->commentModel->find_comment_idpro($sp->id);
+    }
+
+    // Xử lý tìm kiếm
         if (isset($_POST['tim'])) {
             $tukhoa = $_POST['tukhoa'];
 
@@ -284,8 +291,10 @@ public function update_sanpham($id) {
                 $danhsach = $ketqua;
             }
         }
-        include "views/admin/quanly_binhluan/noidung.php";
-    }
+
+
+    include "views/admin/quanly_binhluan/noidung.php";
+}
 
 
     public function chi_tiet_bl($id) {
@@ -300,6 +309,7 @@ public function update_sanpham($id) {
 
             if ($ketqua === 1) {
                 $thongbao_thanhcong = "Xóa bình luận thành công";
+                $comment = $this->commentModel->find_comment_idpro($id);
             } else {
                 $thongbao_thatbai = "Không thể xóa";
             }

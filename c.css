@@ -1,10 +1,10 @@
 body{
     border-radius: 20px;
     border: rgb(190, 109, 122);
-    box-shadow: 1px 1px 1px 1px #992fe4;
+    box-shadow: 1px 1px 1px 1px #d51bb9;
     text-align: center;
     border-radius: 5px;
-    color: #992fe4;
+    color: antiquewhite;
     justify-content: center;
     align-items: center;
 }

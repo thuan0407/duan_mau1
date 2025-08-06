@@ -45,6 +45,10 @@
             width:70%;
             height:200px;;
         }
+        .item:hover{
+            border:1px solid #d51bb9;
+            background-color: #f9f4f8ff;
+        }
         .chiadoi{
         display:flex;
         justify-content: center;
