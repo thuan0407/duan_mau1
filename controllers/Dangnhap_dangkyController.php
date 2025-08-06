@@ -35,10 +35,10 @@ class Dangnhap_dangkyController {
                 if($email === $tt->email && $role === (int)$tt->role){
 
                     if(password_verify($password, $tt->password)){
-                    $kiemtra = true;
-                     $_SESSION['user'] = [  //lấyy thông tin người dùng tạo session
-                    'id'   => $tt->id,
-                    'name' => $tt->name,
+                        $kiemtra = true;
+                        $_SESSION['user'] = [  //lấyy thông tin người dùng tạo session
+                        'id'   => $tt->id,
+                        'name' => $tt->name,
                 ];
 
                     if($role ===0){
@@ -65,29 +65,44 @@ class Dangnhap_dangkyController {
         $loi="";
         $thanhcong="";
         $user = new User();
+        $usered = $this->userModel->all();
         if(isset($_POST['dangky'])){
             $user->name=$_POST['name'];
             $user->email=$_POST['email'];
             $user->address=$_POST['address'];
             $user->number=$_POST['number'];
             $user->password=$_POST['password'];
-            $user->role=$_POST['role'];
+            $user->role=(int)1;
 
-
-            if(empty($user->name)===""||empty($user->address)===""||empty($user->number)===""||empty($user->password)==="" ||empty($user->email)===""){
-                $loi="kiểm tra lại các trường giữ liệu";
+            $email_trung=false;
+            foreach($usered as $tt){              // kiểm tra xem email đã tồn tại trước đó hay chưa
+                if($user->email===$tt->email){
+                    $email_trung =true; 
+                    break;                        //dừng vòng lặp ngay lật tức
+                }
+            }
+            
+            if($email_trung){
+                $loi="email đã được đăng ký ";
+            }
+            else if($email_trung === false){
+                if(empty($user->name)||empty($user->address)||empty($user->number)||empty($user->password) ||empty($user->email)){
+                    $loi="kiểm tra lại các trường giữ liệu";
             }
             else{
                 $password = $_POST['password']; // Lấy mật khẩu gốc
                 $user->password = password_hash($password, PASSWORD_DEFAULT);
                 $ketqua = $this->userModel->create($user);
-                if($ketqua ===1){
-                    $thanhcong="Đăng ký thành công";
-                }
-                else{
-                    $loi="Đăng ký thất bại";
-                }
+            if($ketqua ===1){
+                $thanhcong="Đăng ký thành công";
             }
+            else{
+                $loi="Đăng ký thất bại";
+            }
+        }
+    }
+    
+        
         }
         
        include "views/dangnhap_dangky/dangky.php";
@@ -100,4 +115,5 @@ class Dangnhap_dangkyController {
         exit;
     }
 }
+    
 ?>

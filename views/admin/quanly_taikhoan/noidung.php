@@ -119,24 +119,23 @@
             <th>Tên </th>
             <th>email</th>
             <th>Điện thoại</th>
-            <th>role</th>
+            <th>Địa chỉ</th>
             <th>Hành động</th>
         </tr>
         <?php
-        foreach($danhsach as $tt){
-            ?>
+        foreach($danhsach as $tt):?>
+        <?php if($tt->role==1): ?>
             <tr>
                 <td><?=$tt->name?></td>
                 <td><?=$tt->email?></td>
                 <td><?=$tt->number?></td>
-                <td><?=$tt->role?></td>
+                <td><?=$tt->address?></td>
                 <td>
  <a style="color:red; margin-left:30px;" href="?act=delete_tk&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này không?')">Xoá</a>
                 </td>
             </tr>
-            <?php
-        }
-        ?>
+            <?php endif;?>
+            <?php endforeach;?>
     </table>
     </div>
 </body>
