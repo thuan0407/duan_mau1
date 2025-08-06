@@ -23,7 +23,7 @@ $nameUser = $_SESSION['user']['name'] ?? '';
         }
         .logo{
             font-size:30px;
-            background: linear-gradient(to right, #cf54d3ff, #e94795ff);
+            background: linear-gradient(to right, #af48b3ff, #e94795ff);
             padding:5px;
             border-radius: 10px;
         }
@@ -31,7 +31,7 @@ $nameUser = $_SESSION['user']['name'] ?? '';
             display:flex;
             max-width: 100%;
             height: 50px;
-            background-image: url(../mvc-oop-basic-duanmau/public/img/unnamed.jpg);
+            background: linear-gradient(to right, #d63384,  #8e44ad);
             background-size: cover;
             justify-content: space-between;
             align-items: center;
@@ -84,12 +84,12 @@ $nameUser = $_SESSION['user']['name'] ?? '';
 <body>
 
         <div class="vien_tren">
-            <p>lot line: 1900 0102 4</p>
+            <p style="color:white;">lot line: 1900 0102 4</p>
          <form action="" method="post">
         <?php if(!empty($_SESSION['user']['name'])): ?>
-            <a style="text-decoration: none;" href="?act=dangxuat">Đăng xuất</a>
+            <a style="text-decoration: none;color:white;" href="?act=dangxuat">Đăng xuất</a>
             <?php else :?>
-            <a style="text-decoration: none;" href="?act=dangnhap">Đăng nhập</a>
+            <a style="text-decoration: none;color:white;" href="?act=dangnhap">Đăng nhập</a>
                 <?php endif;
             ?>
       </form>

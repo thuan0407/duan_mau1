@@ -264,9 +264,28 @@ require_once "header_user.php";
         
 
         <!-- Khối thông tin mua -->
-        <div class="thong_tin">
-            <span class="price"><?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ</span>
-
+        <div class="thong_tin"> 
+            <?php
+            if ($chi_tiet_sp->discount > 0) {
+                // Có giảm giá
+                $price_after_discount = $chi_tiet_sp->price - $chi_tiet_sp->discount;
+                ?>
+                <span class="price" style="color:red; font-size:20px; font-weight:bold;">
+                    <?= number_format($price_after_discount, 0, ',', '.') ?>đ
+                </span>
+                <del class="price" style="font-size:16px; color:black; text-decoration: line-through; margin-left:8px;">
+                    <?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ
+                </del>
+            <?php
+            } else {
+                // Không giảm giá
+                ?>
+                <span class="price" style="color:red; font-size:20px; font-weight:bold;">
+                    <?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ
+                </span>
+            <?php
+            }
+            ?>
             <div class="GB">
                 <button>64GB</button>
                 <button>128GB</button>
