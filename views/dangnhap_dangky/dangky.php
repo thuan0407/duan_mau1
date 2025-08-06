@@ -140,6 +140,14 @@
         document.getElementById('err-number').textContent='không được bỏ trống';
         check =false;
     }
+
+        //kiểm tra tên người dùng
+        const namePattern = /^[\p{L}\p{N}\s]{3,30}$/u;
+        if (name !== '' && !namePattern.test(name)) {
+            document.getElementById('err-name').textContent = 'name không hợp lệ';
+            check = false;
+        }
+
         // Kiểm tra định dạng email
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email !== '' && !emailPattern.test(email)) {
