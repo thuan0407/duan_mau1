@@ -74,7 +74,7 @@
         </tr>
         <tr>
             <td>Địa chỉ</td>
-            <td><input type="text" name="address" required placeholder="Nhập địa chỉ" min = "10" max="10"></td>
+            <td><input type="text" name="address" required placeholder="Nhập địa chỉ"></td>
         </tr>
         <tr>
             <td>SDT:</td>

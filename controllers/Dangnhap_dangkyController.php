@@ -32,7 +32,9 @@ class Dangnhap_dangkyController {
             $kiemtra = false;
 
             foreach($dulieu_taikhoan as $tt){
-                if($email === $tt->email && $password === $tt->password && $role === (int)$tt->role){
+                if($email === $tt->email && $role === (int)$tt->role){
+
+                    if(password_verify($password, $tt->password)){
                     $kiemtra = true;
                      $_SESSION['user'] = [  //lấyy thông tin người dùng tạo session
                     'id'   => $tt->id,
@@ -48,6 +50,7 @@ class Dangnhap_dangkyController {
                         exit;
                     }
                 } 
+            }
 
             }
             if(!$kiemtra){
@@ -68,13 +71,15 @@ class Dangnhap_dangkyController {
             $user->address=$_POST['address'];
             $user->number=$_POST['number'];
             $user->password=$_POST['password'];
-            $user->role=(int)1;
+            $user->role=1;
 
 
             if(empty($user->name)===""||empty($user->address)===""||empty($user->number)===""||empty($user->password)==="" ||empty($user->email)===""){
                 $loi="kiểm tra lại các trường giữ liệu";
             }
             else{
+                $password = $_POST['password']; // Lấy mật khẩu gốc
+                $user->password = password_hash($password, PASSWORD_DEFAULT);
                 $ketqua = $this->userModel->create($user);
                 if($ketqua ===1){
                     $thanhcong="Đăng ký thành công";

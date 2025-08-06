@@ -64,4 +64,17 @@ class UserModel
             echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
         }
         }
+
+public function update_pass($id, $newHash) {
+    try {
+        $sql = "UPDATE `user` SET `password` = ? WHERE `id` = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$newHash, $id]);
+        return true;
+    } catch (PDOException $err) {
+        echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        return false;
+    }
+}
+
 }
