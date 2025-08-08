@@ -3,7 +3,6 @@ class User{
     public $id;
     public $name;
     public $email;
-    public $image;
     public $role;
     public $password;
     public $address;
@@ -27,7 +26,6 @@ class UserModel
                     $user = new User();
                     $user->id          = $tt['id'];
                     $user->name        = $tt['name'];
-                    $user->image       = $tt['image'];
                     $user->email       = $tt['email'];
                     $user->number      = $tt['number'];
                     $user->address     = $tt['address'];
@@ -44,8 +42,8 @@ class UserModel
 
                 public function create(User $user){        //thêm người dùng
             try{
-                $sql="INSERT INTO `user` (`id`, `name`, `email`, `image`, `role`, `password`, `address`, `number`) 
-                VALUES (NULL, '".$user->name."', '".$user->email."', '".$user->image."',
+                $sql="INSERT INTO `user` (`id`, `name`, `email`, `role`, `password`, `address`, `number`) 
+                VALUES (NULL, '".$user->name."', '".$user->email."',
                  '".$user->role."', '".$user->password."', '".$user->address."', '".$user->number."');";
                 $data=$this->conn->exec($sql);
                 return $data;

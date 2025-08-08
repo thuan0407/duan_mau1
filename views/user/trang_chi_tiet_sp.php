@@ -252,14 +252,18 @@ require_once "header_user.php";
 
         <!-- Khối sản phẩm -->
         <div class="sanpham">
-            <img src="<?= ANH_IMG.$chi_tiet_sp->image?>" alt="">
+            <div class="left">
+                <img src="<?= ANH_IMG.$chi_tiet_sp->image?>" alt="">
+                <h3><?=$chi_tiet_sp->name?></h3>
+            </div>
             <div class="mota">
                 <h4>Đặc điểm nổi bật</h4>
                 <ul>
                     <li><?=$chi_tiet_sp->description?></li>
                 </ul>
+                
             </div>
-            <h3><?=$chi_tiet_sp->name?></h3>
+            
         </div>
         
 
