@@ -204,10 +204,8 @@ public function update_sanpham($id) {
     // Lấy sản phẩm theo ID để hiển thị lên form
     $loi ="";
     $thanhcong="";
-    $sanpham = $this->productModel->find($id);
-    $danhsach =$this->categoryModel->all();
-    $hehe  =$this->categoryModel->find($id);
-
+    $sanpham     = $this->productModel->find($id);
+    $danhsach    =$this->categoryModel->all();
     if (isset($_POST['update_sanpham'])) {
         // Cập nhật dữ liệu mới từ form
 

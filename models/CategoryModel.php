@@ -88,4 +88,5 @@ class CategoryModel
             echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
         }
         }
+        
 }

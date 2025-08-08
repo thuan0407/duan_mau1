@@ -1,3 +1,13 @@
+<?php
+$hotText = '';
+if ((int)$sanpham->hot === 1) {
+    $hotText = 'Sản phẩm hot';
+} elseif ((int)$sanpham->hot === 2) {
+    $hotText = 'Sản phẩm mới';
+} else {
+    $hotText = 'Sản phẩm khuyến mãi';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,8 +72,8 @@
             <tr>
                 <th>Danh mục</th>
                 <td>
-                    <select name="category_id" id="">
-                        <option><<--Chọn danh mục-->></option>
+                    <select name="category_id" id="">   
+                        <option value="<?=$sanpham->category_id?>"><?=$sanpham->name_category?></option>
                     <?php
                         foreach($danhsach as $tt){
                             ?>
@@ -74,10 +84,11 @@
                 </select>
                 </td>
             </tr>
+
             <tr>
                 <th>loại</th>
                 <td> <select name="hot" id="">
-                <option value="disabled"><<--chọn loại--->></option>   
+                <option value="<?=$sanpham->hot?>"> <?=$hotText?></option>   
                 <option value="1">hot</option>
                 <option value="2">sản phẩm mới</option>
                 <option value="3">sản phẩm khuyến mãi</option>

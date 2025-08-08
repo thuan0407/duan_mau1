@@ -9,6 +9,7 @@
         public $hot;
         public $discount;
         public $quantity;
+        public $name_category;
 
     }
 // Có class chứa các function thực thi tương tác với cơ sở dữ liệu 
@@ -48,19 +49,23 @@ class ProductModel
 
             public function find($id){                                     //tìm
             try{
-                $sql="SELECT * FROM `product` WHERE id = $id";
+                $sql="SELECT pro.* , cate.name as name_category
+                FROM `product` as pro
+                JOIN `category` as cate
+                ON pro.category_id = cate.id WHERE pro.id = $id";
                 $data=$this->conn->query($sql)->fetch();
                 if($data !== false){
                     $sanpham = new Product();
-                    $sanpham->id          =$data['id'];
-                    $sanpham->name        = $data['name'];
-                    $sanpham->image       = $data['image'];
-                    $sanpham->price       = $data['price'];
-                    $sanpham->category_id  = $data['category_id'];
-                    $sanpham->description = $data['description'];
-                    $sanpham->hot         = $data['hot'];
-                    $sanpham->discount    = $data['discount'];
-                    $sanpham->quantity    = $data['quantity'];
+                    $sanpham->id               =$data['id'];
+                    $sanpham->name             = $data['name'];
+                    $sanpham->image            = $data['image'];
+                    $sanpham->price            = $data['price'];
+                    $sanpham->category_id      = $data['category_id'];
+                    $sanpham->description      = $data['description'];
+                    $sanpham->hot              = $data['hot'];
+                    $sanpham->discount         = $data['discount'];
+                    $sanpham->quantity         = $data['quantity'];
+                    $sanpham->name_category    = $data['name_category'];
                     return $sanpham;
                 }
 
