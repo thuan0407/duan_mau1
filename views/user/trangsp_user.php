@@ -121,7 +121,7 @@
         </div>
         <?php else :?>
             <div class="item">
-            <span style="color:red; margin-right:100px;">Giảm <?=round($phan_tram_giam,2)?>%</span>
+            <span style="color:red; margin-right:100px;display:block;">Giảm <?=round($phan_tram_giam,1)?>%</span>
             <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
