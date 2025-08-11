@@ -111,7 +111,7 @@
     <div class="content">
     <h1>Trang quản lý tài khoản</h1>
             <form action=""method="post" enctype ="multipart/form-data">
-            <button type="submit" name="tim">Tìm</button> <input type="text" name="user" style="border-radius:20px;">
+            <button type="submit" name="search">Tìm</button> <input type="text" name="user" style="border-radius:20px;">
             <span style="color:red;"> <?=$err?></span>
         </form>
     <table border="1">
@@ -123,7 +123,7 @@
             <th>Hành động</th>
         </tr>
         <?php
-        foreach($danhsach as $tt):?>
+        foreach($user_list as $tt):?>
         <?php if($tt->role==1): ?>
             <tr>
                 <td><?=$tt->name?></td>
@@ -131,7 +131,7 @@
                 <td>0<?=$tt->number?></td>
                 <td><?=$tt->address?></td>
                 <td>
- <a style="color:red; margin-left:30px;" href="?act=delete_tk&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này không?')">Xoá</a>
+                    <a style="color:red; margin-left:30px;" href="?act=delete_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này không?')">Xoá</a>
                 </td>
             </tr>
             <?php endif;?>

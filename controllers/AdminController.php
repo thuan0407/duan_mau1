@@ -94,37 +94,37 @@ class AdminController {
         include "views/admin/category_management/update_category.php";
     }
 
-    public function quanly_taikhoan() {
+    public function account_management() {
         $err = "";
-        $danhsach = $this->userModel->all();
+        $user_list= $this->userModel->all();
 
-        if (isset($_POST['tim'])) {
+        if (isset($_POST['search'])) {
             $user = $_POST['user'];
             if (empty($user)) {
                 $err = "bạn chưa nhập tên người dùng";
             }
 
-            foreach ($danhsach as $tt) {
+            foreach ($user_list as $tt) {
                 if (stripos($tt->email, $user) !== false || stripos($tt->name, $user) !== false) {
-                    $ketqua[] = $tt;
+                    $result[] = $tt;
                 }
             }
 
-            if (empty($ketqua)) {
+            if (empty($result)) {
                 $err = "không tìm thấy";
             } else {
-                $danhsach = $ketqua;
+                $user_list = $result;
             }
         }
 
-        include "views/admin/quanly_taikhoan/noidung.php";
+        include "views/admin/account_management/content.php";
     }
 
     public function product_management() {
         $err = "";
         $product_list = $this->productModel->all();
 
-        if (isset($_POST['tim'])) {
+        if (isset($_POST['search'])) {
             $key_words = $_POST['key_words'];
 
             if (empty($key_words)) {
@@ -244,15 +244,15 @@ public function update_product($id) {
 }
 
 
-    public function delete_tk($id) {                            /////xóa tài khoản
-        $ketqua = $this->userModel->delete_tk($id);
-        if ($ketqua === 1) {
-            header("Location: ?act=quanly_taikhoan");
+    public function delete_account($id) {                            /////xóa tài khoản
+        $result = $this->userModel->delete_account($id);
+        if ($result === 1) {
+            header("Location: ?act=account_management");
             exit;
         } else {
-            $loi = "không thể xóa";
-            $danhsach = $this->userModel->all();
-            include "views/admin/quanly_taikhoan/noidung.php";
+            $err = "không thể xóa";
+            $user_list = $this->userModel->all();
+            include "views/admin/account_management/content.php";
         }
 
     }

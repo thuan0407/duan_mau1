@@ -52,7 +52,7 @@ class UserModel
         }
         }
 
-        public function delete_tk($id){                                //xóa tài khoản
+        public function delete_account($id){                                //xóa tài khoản
             try{
                 $sql="DELETE FROM user WHERE `user`.`id` = $id";
                 $data=$this->conn->exec($sql);

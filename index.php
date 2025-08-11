@@ -46,7 +46,7 @@ match ($act) {
     //phần của admin
     'admin_home'             => (new AdminController())->admin_home(),
 
-    'category_management'   => (new AdminController())->category_management(),
+    'category_management'    => (new AdminController())->category_management(),
     'delete_category'         => (new AdminController())->delete_category($id),
     'update_category'         => (new AdminController())->update_category($id),
 
@@ -55,12 +55,12 @@ match ($act) {
     'update_product'         => (new AdminController())->update_product($id),
     'create_product'         => (new AdminController())->create_product(),
 
-    'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
+    'account_management'     => (new AdminController())->account_management(),
+    'delete_account'         => (new AdminController())->delete_account($id),
     
     'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
     'chi_tiet_bl'            => (new AdminController())->chi_tiet_bl($id),
 
-    'delete_tk'              => (new AdminController())->delete_tk($id),
     
 
 };
