@@ -50,18 +50,18 @@
                         <tr>
                         <td>
                            
-                           <img src="<?= ANH_IMG . $san_pham->image ?>" alt="ảnh sản phẩm" width="100" height="120">
+                           <img src="<?= ANH_IMG . $product->image ?>" alt="ảnh sản phẩm" width="100" height="120">
                         </td>
-                        <td><?= $san_pham->name?></td>
-                        <td><?= $san_pham->price?></td>
-                        <td><?= $san_pham->discount?></td>
-                        <td><?= $san_pham->category_id?></td>
-                        <td><?= $san_pham->hot?></td>
-                        <td><?= $san_pham->quantity?></td>
+                        <td><?= $product->name?></td>
+                        <td><?= $product->price?></td>
+                        <td><?= $product->discount?></td>
+                        <td><?= $product->category_id?></td>
+                        <td><?= $product->hot?></td>
+                        <td><?= $product->quantity?></td>
                         
             </table>
-            <span style="color:green;"><?=$thongbao_thanhcong?></span>
-            <span style="color:red;">  <?=$thongbao_thatbai?></span>
+            <span style="color:green;"><?=$success?></span>
+            <span style="color:red;">  <?=$err?></span>
 
             <form action="" method="post">
                 <?php foreach($comment as $cmt): ?>

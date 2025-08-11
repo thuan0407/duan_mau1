@@ -52,8 +52,8 @@
             <div class="right">
 
                 <form action="" method="post" enctype="multipart/form-data">
-                <button style="" type="submit" name="tim">Tìm</button> 
-                <input type="text" name="tukhoa" style="margin:10px 0px; border-radius:20px; height:30px; width:250px;">
+                <button style="" type="submit" name="search">Tìm</button> 
+                <input type="text" name="key_words" style="margin:10px 0px; border-radius:20px; height:30px; width:250px;">
                 <span style="color:red;"> <?=$err?></span>
                 </form>
 
@@ -66,7 +66,7 @@
                     <th>Hành động</th>
                 </tr>
                     <?php
-                    foreach($danhsach as $tt){
+                    foreach($product_list as $tt){
                         ?>
                         <tr>
                         <td>
@@ -76,7 +76,7 @@
                         <td><?= $tt->name?></td>
                         <td><?= $tt->quantity ?></td>
                         <td>
-                            <a style="color:rgba(221, 7, 213, 1);" href="?act=chi_tiet_bl&id=<?=$tt->id?>">>>Xem chi tiết các bình luận</a>
+                            <a style="color:rgba(221, 7, 213, 1);" href="?act=comment_destails&id=<?=$tt->id?>">>>Xem chi tiết các bình luận</a>
                         </td>
                         </tr>
                         <?php

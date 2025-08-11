@@ -47,8 +47,8 @@ match ($act) {
     'admin_home'             => (new AdminController())->admin_home(),
 
     'category_management'    => (new AdminController())->category_management(),
-    'delete_category'         => (new AdminController())->delete_category($id),
-    'update_category'         => (new AdminController())->update_category($id),
+    'delete_category'        => (new AdminController())->delete_category($id),
+    'update_category'        => (new AdminController())->update_category($id),
 
     'product_management'     => (new AdminController())->product_management(),
     'delete_product'         => (new AdminController())->delete_product($id),
@@ -58,8 +58,8 @@ match ($act) {
     'account_management'     => (new AdminController())->account_management(),
     'delete_account'         => (new AdminController())->delete_account($id),
     
-    'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
-    'chi_tiet_bl'            => (new AdminController())->chi_tiet_bl($id),
+    'comment_management'     => (new AdminController())->comment_management(),
+    'comment_destails'       => (new AdminController())->comment_destails($id),
 
     
 
