@@ -22,10 +22,10 @@ $id = $_GET['id'] ?? '';
 
 match ($act) {
     //phẩn của đăng nhập đăng xuất đăng ký
-    '/'               =>(new Dangnhap_dangkyController())->dieu_huong(),
-    'dangxuat'       =>(new Dangnhap_dangkyController())->dangxuat(),
-    'dangnhap'        =>(new Dangnhap_dangkyController())->dangnhap(),
-    'dangky'          =>(new Dangnhap_dangkyController())->dangky(),
+    '/'               =>(new Dangnhap_dangkyController())->navigation(),
+    'dangxuat'        =>(new Dangnhap_dangkyController())->dangxuat(),
+    'login'           =>(new Dangnhap_dangkyController())->login(),
+    'register'        =>(new Dangnhap_dangkyController())->register(),
 
 
     //phần user

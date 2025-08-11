@@ -16,14 +16,14 @@ class Dangnhap_dangkyController {
         $this->categoryModel = new CategoryModel();
     }
 
-    public function dieu_huong(){
-        include "views/dangnhap_dangky/dieu_huong.php";
+    public function navigation(){
+        include "views/Login_Register/navigation.php";
     }
 
-    public function dangnhap(){
+    public function login(){
         session_start();
         $loi="";
-        $dulieu_taikhoan = $this->userModel->all();
+        $account_data = $this->userModel->all();
 
         if(isset($_POST['dangnhap'])){
             $email    = trim($_POST['email']);
@@ -31,7 +31,7 @@ class Dangnhap_dangkyController {
             $role     = (int)$_POST['role'];
             $kiemtra = false;
 
-            foreach($dulieu_taikhoan as $tt){
+            foreach($account_data as $tt){
                 if($email === $tt->email && $role === (int)$tt->role){
 
                     if(password_verify($password, $tt->password)){
@@ -57,16 +57,16 @@ class Dangnhap_dangkyController {
                     $loi ="kiểm tra lại các dữ liệu của bạn!";
                 }
         }
-            include "views/dangnhap_dangky/dangnhap.php";
+            include "views/Login_Register/login.php";
     }
 
 
-    public function dangky(){
+    public function register(){
         $loi="";
         $thanhcong="";
         $user = new User();
         $usered = $this->userModel->all();
-        if(isset($_POST['dangky'])){
+        if(isset($_POST['register'])){
             $user->name=$_POST['name'];
             $user->email=$_POST['email'];
             $user->address=$_POST['address'];
@@ -105,7 +105,7 @@ class Dangnhap_dangkyController {
         
         }
         
-       include "views/dangnhap_dangky/dangky.php";
+       include "views/Login_Register/register.php";
     }
 
     public function dangxuat(){

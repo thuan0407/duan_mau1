@@ -82,7 +82,7 @@
         <button type="submit" name="dangnhap">Đăng nhập</button>
         <br>
         <span><?=$loi?></span>
-        <br> <a href="?act=dangky">Đăng ký tài khoản</a>
+        <br> <a href="?act=register">Đăng ký tài khoản</a>
     </form>
 </body>
 </html>

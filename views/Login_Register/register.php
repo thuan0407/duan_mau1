@@ -100,10 +100,10 @@
         
     </table><br>
 
-        <button type="submit" name="dangky">Đăng ký</button>
+        <button type="submit" name="register">Đăng ký</button>
            <span style="color:red;"> <?= $loi?></span>
            <span style="color:green;"> <?= $thanhcong?></span>
-           <br><br> <a href="?act=dangnhap">Đăng nhập</a>
+           <br><br> <a href="?act=login">Đăng nhập</a>
     </form>
      </div>   
 
