@@ -253,13 +253,13 @@ require_once "header_user.php";
         <!-- Khối sản phẩm -->
         <div class="sanpham">
             <div class="left">
-                <img src="<?= ANH_IMG.$chi_tiet_sp->image?>" alt="">
-                <h3><?=$chi_tiet_sp->name?></h3>
+                <img src="<?= ANH_IMG.$product_destails->image?>" alt="">
+                <h3><?=$product_destails->name?></h3>
             </div>
             <div class="mota">
                 <h4>Đặc điểm nổi bật</h4>
                 <ul>
-                    <li><?=$chi_tiet_sp->description?></li>
+                    <li><?=$product_destails->description?></li>
                 </ul>
                 
             </div>
@@ -270,22 +270,22 @@ require_once "header_user.php";
         <!-- Khối thông tin mua -->
         <div class="thong_tin"> 
             <?php
-            if ($chi_tiet_sp->discount > 0) {
+            if ($product_destails->discount > 0) {
                 // Có giảm giá
-                $price_after_discount = $chi_tiet_sp->price - $chi_tiet_sp->discount;
+                $price_after_discount = $product_destails->price - $product_destails->discount;
                 ?>
                 <span class="price" style="color:red; font-size:20px; font-weight:bold;">
                     <?= number_format($price_after_discount, 0, ',', '.') ?>đ
                 </span>
                 <del class="price" style="font-size:16px; color:black; text-decoration: line-through; margin-left:8px;">
-                    <?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ
+                    <?= number_format($product_destails->price, 0, ',', '.') ?>đ
                 </del>
             <?php
             } else {
                 // Không giảm giá
                 ?>
                 <span class="price" style="color:red; font-size:20px; font-weight:bold;">
-                    <?= number_format($chi_tiet_sp->price, 0, ',', '.') ?>đ
+                    <?= number_format($product_destails->price, 0, ',', '.') ?>đ
                 </span>
             <?php
             }
@@ -349,7 +349,7 @@ require_once "header_user.php";
             <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏ hàng</p> <br>
@@ -362,7 +362,7 @@ require_once "header_user.php";
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span class="gia_sp" style="color:red; display:block;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
             <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏi hàng</p> <br>

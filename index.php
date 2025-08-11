@@ -30,15 +30,15 @@ match ($act) {
 
     //phần user
     // Trang chủ
-    'danhsach_sanpham'        =>(new UserController())->trangsp_user(),
-    'trangchu_user'           =>(new UserController())->trangchu_user(),
-    'trangsp_user'            =>(new UserController())->trangsp_user(),
-    'lien_he'                 =>(new UserController())->lien_he(),
-    'gioi_thieu'              =>(new UserController())->gioi_thieu(),
+    'danhsach_sanpham'        =>(new UserController())->user_producs(),
+    'user_home'               =>(new UserController())->user_home(),
+    'user_producs'            =>(new UserController())->user_producs(),
+    'contact'                 =>(new UserController())->contact(),
+    'introduce'               =>(new UserController())->introduce(),
     'sanpham_hot'             =>(new UserController())->sanpham_hot(),
     'sanpham_moi'             =>(new UserController())->sanpham_moi(),
     'khuyen_mai'              =>(new UserController())->khuyen_mai(),
-    'chi_tiet_sp'             =>(new UserController())->chi_tiet_sp($id),
+    'product_destails'        =>(new UserController())->product_destails($id),
     
 
 

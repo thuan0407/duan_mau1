@@ -46,7 +46,7 @@ class Dangnhap_dangkyController {
                         exit;
                     }
                     elseif($role ===1){
-                        header("Location: ?act=trangchu_user");
+                        header("Location: ?act=user_home");
                         exit;
                     }
                 } 

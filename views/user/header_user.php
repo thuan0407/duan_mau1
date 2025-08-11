@@ -96,21 +96,21 @@ $nameUser = $_SESSION['user']['name'] ?? '';
         </div>
     <nav>
         <div class="header">
-            <a style="text-decoration: none;" href="?act=trangchu_user"><div class="logo">Mobishop</div></a>
+            <a style="text-decoration: none;" href="?act=user_home"><div class="logo">Mobishop</div></a>
     
             <div class="menu_tren">
                 <ul>
-                    <li><a href="?act=trangchu_user">Trang chủ</a></li>
-                    <li><a href="?act=trangsp_user">Sản phẩm</a></li>
-                    <li><a href="?act=gioi_thieu">Giới thiệu</a></li>
-                    <li><a href="?act=lien_he">liên hệ</a></li>
+                    <li><a href="?act=user_home">Trang chủ</a></li>
+                    <li><a href="?act=user_producs">Sản phẩm</a></li>
+                    <li><a href="?act=introduce">Giới thiệu</a></li>
+                    <li><a href="?act=contact">liên hệ</a></li>
                 </ul>
             </div>
 
             <div class="right">
                 <form action="index.php" method="get">
                     <!-- Gửi thêm act để router nhận đúng hàm controller -->
-                    <input type="hidden" name="act" value="trangchu_user">
+                    <input type="hidden" name="act" value="user_home">
                     <input type="text" name="key_name" placeholder="Nhập tên sản phẩm..." value="<?= $thongbao ?? '' ?>">
                     <button type="submit" name="search">Tìm</button> <br>
                 </form>

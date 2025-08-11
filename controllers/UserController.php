@@ -17,7 +17,7 @@
         }
 
         //trang chủ
-public function trangchu_user(){
+public function user_home(){
     $thongbao = "";
     $sanpham_hot = $this->productModel->all_hot();
     $sanpham_moi = $this->productModel->all_moi();
@@ -46,17 +46,17 @@ public function trangchu_user(){
                 // Gán kết quả tìm được cho list_product
                 $list_product = $result;
                 // Include view hiển thị kết quả tìm kiếm
-                include "views/user/hien_thi_sp_theo_ten.php";
+                include "views/user/search_results.php";
                 return; // dừng tại đây, không load trang chủ
             }
         }
     }
 
     // Nếu không tìm kiếm hoặc không có kết quả → load trang chủ
-    include "views/user/trangchu_user.php";
+    include "views/user/user_home.php";
 }
 
-        public function trangsp_user(){
+        public function user_producs(){
             $thongbao="";
             $priceFilter = isset($_GET['price']) ? $_GET['price'] : null; // khai báo biến
                         
@@ -85,36 +85,36 @@ public function trangchu_user(){
                 $thongbao="không có sản phẩm nào";
             }
 
-            include "views/user/trangsp_user.php";
+            include "views/user/user_producs.php";
         }
 
-        public function lien_he(){
-            include "views/user/lien_he.php";
+        public function contact(){
+            include "views/user/contact.php";
         }
 
-        public function gioi_thieu(){
-        include "views/user/gioi_thieu.php";
+        public function introduce(){
+        include "views/user/introduce.php";
         }
 
         public function sanpham_hot(){
             $sanpham_hot =$this->productModel->all_hot();
-            include "views/user/trangchu_user.php";
+            include "views/user/user_home.php";
         }
 
         public function sanpham_moi(){
             $sanpham_moi =$this->productModel->all_moi();
-            include "views/user/trangchu_user.php";
+            include "views/user/user_home.php";
         }
 
         public function khuyen_mai(){
             $khuyen_mai =$this->productModel->all_khuyenmai();
-            include "views/user/trangchu_user.php";
+            include "views/user/user_home.php";
         }
 
-        public function chi_tiet_sp($id){
+        public function product_destails($id){
             session_start();
-            $chi_tiet_sp = $this->productModel->find($id);      // dữ liệu chi tiết của sản phẩm
-            $loai= $chi_tiet_sp->category_id;                        // loại của sản phẩm trực thuộc
+            $product_destails = $this->productModel->find($id);      // dữ liệu chi tiết của sản phẩm
+            $loai= $product_destails->category_id;                        // loại của sản phẩm trực thuộc
             $sp_lien_quan =$this->productModel->find_lien_quan($loai); // dữ liệu các sản phẩm liên quan
             $comment =$this->commentModel->find_comment_idpro($id);   // nội dung bình luận của sản phẩm
                     $comment1 = new Comment();
@@ -137,7 +137,7 @@ public function trangchu_user(){
 
 
                     }
-            include "views/user/trang_chi_tiet_sp.php";
+            include "views/user/product_destails.php";
         }
     }
     ?>

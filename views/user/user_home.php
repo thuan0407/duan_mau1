@@ -128,7 +128,7 @@
             <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏ hàng</p> <br>
@@ -141,7 +141,7 @@
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
             <del class="gia_sp" style="color:black;"><?= number_format($tt->discount, 0, ',', '.') ?>đ</del> <br> 
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏi hàng</p> <br>
@@ -162,7 +162,7 @@
             <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏ hàng</p> <br>
@@ -175,7 +175,7 @@
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
             <del class="gia_sp" style="color:black;"><?= number_format($tt->discount, 0, ',', '.') ?>đ</del> <br> 
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏi hàng</p> <br>
@@ -196,7 +196,7 @@
                         <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
                         <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
                          <del class="gia_sp" style="color:black;"><?= number_format($tt->discount, 0, ',', '.') ?>đ</del> <br> 
-                        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+                        <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
                         <div class="chiadoi">
                             <a href="#" class="mua">Mua</a>
                             <p class="thêm">Thêm vào giỏi hàng</p> <br>
@@ -215,7 +215,7 @@
             <img src="<?= ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span style="color:red;" class="gia_sp"><?= number_format($tt->price, 0, ',', '.') ?>đ</span> <br>
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏ hàng</p> <br>
@@ -228,7 +228,7 @@
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
             <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
-            <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
+            <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>
                 <p class="thêm">Thêm vào giỏi hàng</p> <br>

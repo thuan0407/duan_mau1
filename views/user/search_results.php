@@ -72,7 +72,7 @@
         <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
         <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
         <span class="gia_sp"><?=$tt->price?>đ</span> <br>
-        <a href="?act=chi_tiet_sp&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
+        <a href="?act=product_destails&id=<?=$tt->id?>" style="color:red;">>>Xem chi tiết</a>
         <div class="chiadoi">
             <a href="#" class="mua">Mua</a>
             <p class="thêm">Thêm vào giỏi hàng</p> <br>
