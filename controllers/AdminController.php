@@ -96,6 +96,7 @@ class AdminController {
 
     public function account_management() {
         $err = "";
+        $success = "";
         $user_list= $this->userModel->all();
 
         if (isset($_POST['search'])) {
@@ -258,41 +259,79 @@ public function update_product($id) {
     }
 
 
-public function comment_management() {
-    $err = "";
-    $product_list = $this->productModel->all();
+    public function lock_account($id) {                                  // Khóa tài khoản
+        $err = "";
+        $success = "";
 
-    // Tạo mảng số lượng bình luận ban đầu
-    $comment_quantity = [];
-    foreach ($product_list as $sp) {
-        $comment_quantity[$sp->id] = $this->commentModel->find_comment_idpro($sp->id);
+        // Khóa tài khoản trực tiếp bằng ID
+        $result  = $this->userModel->lock_account($id);                   // truyền ID, không truyền object User
+
+        if ($result === 1) {
+            $success = "Khóa thành công";
+            header("Location: ?act=account_management");
+            exit;
+        } else {
+            $err = "Khóa thất bại";
+            $user_list = $this->userModel->all();
+        }
+
+        include "views/admin/account_management/content.php";
     }
 
-    // Xử lý tìm kiếm
-        if (isset($_POST['search'])) {
-            $key_words = $_POST['key_words'];
+public function open_account($id) {                                  // Khóa tài khoản
+    $err = "";
+    $success = "";
 
-            if (empty($key_words)) {
-                $err = "bạn chưa nhập nội dung";
-            }
+    // Khóa tài khoản trực tiếp bằng ID
+    $result  = $this->userModel->open_account($id);                   // truyền ID, không truyền object User
 
-            foreach ($product_list as $tt) {
-                if (stripos($tt->name, $key_words) !== false) {
-                    $result[] = $tt;
+    if ($result === 1) {
+        $success = "mở thành công";
+        header("Location: ?act=account_management");
+        exit;
+    } else {
+        $err = "mở thất bại";
+        $user_list = $this->userModel->all();
+    }
+
+    include "views/admin/account_management/content.php";
+}
+
+    public function comment_management() {
+        $err = "";
+        $product_list = $this->productModel->all();
+
+        // Tạo mảng số lượng bình luận ban đầu
+        $comment_quantity = [];
+        foreach ($product_list as $sp) {
+            $comment_quantity[$sp->id] = $this->commentModel->find_comment_idpro($sp->id);
+        }
+
+        // Xử lý tìm kiếm
+            if (isset($_POST['search'])) {
+                $key_words = $_POST['key_words'];
+
+                if (empty($key_words)) {
+                    $err = "bạn chưa nhập nội dung";
+                }
+
+                foreach ($product_list as $tt) {
+                    if (stripos($tt->name, $key_words) !== false) {
+                        $result[] = $tt;
+                    }
+                }
+
+                if (empty($result)) {
+                    $err = "không tìm thấy";
+                    $product_list = [];
+                } else {
+                    $product_list = $result;
                 }
             }
 
-            if (empty($result)) {
-                $err = "không tìm thấy";
-                $product_list = [];
-            } else {
-                $product_list = $result;
-            }
-        }
 
-
-    include "views/admin/comment_management/content.php";
-}
+        include "views/admin/comment_management/content.php";
+    }
 
 
     public function comment_destails($id) {

@@ -7,6 +7,7 @@ class User{
     public $password;
     public $address;
     public $number;
+    public $active;
 }
 // Có class chứa các function thực thi tương tác với cơ sở dữ liệu 
 class UserModel
@@ -31,6 +32,7 @@ class UserModel
                     $user->address     = $tt['address'];
                     $user->password    = $tt['password'];
                     $user->role        = $tt['role'];
+                    $user->active      = $tt['active'];
                     $dulieu[]=$user;
                 }
                 return $dulieu;
@@ -40,11 +42,33 @@ class UserModel
         }
         }
 
-                public function create(User $user){        //thêm người dùng
+            public function find_account($id){                                     //tìm tài khoản người dùng
             try{
-                $sql="INSERT INTO `user` (`id`, `name`, `email`, `role`, `password`, `address`, `number`) 
+                $sql="SELECT * FROM `user`= $id";
+                $data=$this->conn->query($sql)->fetch();
+                if($data !== false){
+                    $user = new User();
+                    $user->id          = $tt['id'];
+                    $user->name        = $tt['name'];
+                    $user->email       = $tt['email'];
+                    $user->number      = $tt['number'];
+                    $user->address     = $tt['address'];
+                    $user->password    = $tt['password'];
+                    $user->role        = $tt['role'];
+                    $user->active      = $tt['active'];
+                    return $user;
+                }
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
+
+        public function create(User $user){        //thêm người dùng
+            try{
+                $sql="INSERT INTO `user` (`id`, `name`, `email`, `role`, `password`, `address`, `number`,`active`) 
                 VALUES (NULL, '".$user->name."', '".$user->email."',
-                 '".$user->role."', '".$user->password."', '".$user->address."', '".$user->number."');";
+                 '".$user->role."', '".$user->password."', '".$user->address."', '".$user->number."', '".$user->active."');";
                 $data=$this->conn->exec($sql);
                 return $data;
             }catch (PDOException $err) {
@@ -63,16 +87,32 @@ class UserModel
         }
         }
 
-public function update_pass($id, $newHash) {
-    try {
-        $sql = "UPDATE `user` SET `password` = ? WHERE `id` = ?";
-        $stmt = $this->conn->prepare($sql);
-        $stmt->execute([$newHash, $id]);
-        return true;
-    } catch (PDOException $err) {
-        echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
-        return false;
-    }
-}
+        public function lock_account($id) {                            // Khóa tài khoản
+            try {
+                $id = (int)$id;
+                $active = 0;
+
+                $sql = "UPDATE `user` SET `active` = '$active' WHERE `user`.`id` = $id;";
+                $data = $this->conn->exec($sql);
+                return $data;
+
+            } catch (PDOException $err) {
+                echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+            }
+        }
+
+        public function open_account($id) {                            // mở tài khoản
+            try {
+                $id = (int)$id;
+                $active = 1;
+
+                $sql = "UPDATE `user` SET `active` = '$active' WHERE `user`.`id` = $id;";
+                $data = $this->conn->exec($sql);
+                return $data;
+
+            } catch (PDOException $err) {
+                echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+            }
+        }
 
 }

@@ -97,7 +97,18 @@
         <span id="err-number" style="color:red;font-size:12px"></span>
     </td>
 </tr>
-        
+
+<!-- 
+        <tr>
+            <td>Vai trò:</td>
+            <td>
+                <select name="role" id="">
+                    <option value="1">Khách hàng</option>
+                    <option value="0">Người quản trị</option>
+                </select>
+            </td>
+        </tr>
+         -->
     </table><br>
 
         <button type="submit" name="register">Đăng ký</button>

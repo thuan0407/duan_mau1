@@ -112,6 +112,7 @@
     <h1>Trang quản lý tài khoản</h1>
             <form action=""method="post" enctype ="multipart/form-data">
             <button type="submit" name="search">Tìm</button> <input type="text" name="user" style="border-radius:20px;">
+            <span style="color:green;"><?=$success?></span>
             <span style="color:red;"> <?=$err?></span>
         </form>
     <table border="1">
@@ -132,6 +133,14 @@
                 <td><?=$tt->address?></td>
                 <td>
                     <a style="color:red; margin-left:30px;" href="?act=delete_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này không?')">Xoá</a>
+                    <?php
+                    if($tt->active === 1){?>
+                        <a style="color:red; margin-left:30px;" href="?act=lock_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn khóa tài khoản này không?')">Khóa tài khoản</a><br>
+                    <?php }
+                    else{ ?>
+                        <a style="color:green; margin-left:30px;" href="?act=open_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn mở tài khoản này không?')">mở tài khoản</a><br>
+                    <?php }
+                    ?>
                 </td>
             </tr>
             <?php endif;?>

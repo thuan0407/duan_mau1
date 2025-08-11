@@ -66,22 +66,11 @@
             <td>Mật khẩu:</td>
             <td><input type="password" name="password" required placeholder="Nhập mật khẩu"></td>
         </tr>
-
-        <tr>
-            <td>Vai trò:</td>
-            <td>
-                <select name="role" id="">
-                    <option value="1">Khách hàng</option>
-                    <option value="0">Người quản trị</option>
-                </select>
-            </td>
-        </tr>
         
-    </table><br>
-
+    </table>
+    <span style="margin-left:100px;";><?=$err?></span><br>
         <button type="submit" name="login">Đăng nhập</button>
         <br>
-        <span><?=$loi?></span>
         <br> <a href="?act=register">Đăng ký tài khoản</a>
     </form>
 </body>

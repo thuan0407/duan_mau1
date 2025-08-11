@@ -22,30 +22,34 @@ class Login_Register_Controller {
 
     public function login(){
         session_start();
-        $loi="";
+        $err="";
         $account_data = $this->userModel->all();
 
         if(isset($_POST['login'])){
             $email    = trim($_POST['email']);
             $password = trim($_POST['password']);
-            $role     = (int)$_POST['role'];
-            $kiemtra = false;
+            $check = false;
 
             foreach($account_data as $tt){
-                if($email === $tt->email && $role === (int)$tt->role){
+                if($email === $tt->email){
 
-                    if(password_verify($password, $tt->password)){
-                        $kiemtra = true;
-                        $_SESSION['user'] = [  //lấyy thông tin người dùng tạo session
+                    if($tt->active !==1){                //nếu tài khoản bị khóa sẽ báo lỗi
+                        $err ="tài khoản của bạn đã bị khóa";
+                        break;
+                    }
+
+                    if(password_verify($password, $tt->password)){      //kiểm tra mật khẩu
+                        $check = true;
+                        $_SESSION['user'] = [        //lấyy thông tin người dùng tạo session
                         'id'   => $tt->id,
                         'name' => $tt->name,
                 ];
 
-                    if($role ===0){
+                    if($tt->role ===0){
                         header("Location: ?act=admin_home");
                         exit;
                     }
-                    elseif($role ===1){
+                    elseif($tt->role ===1){
                         header("Location: ?act=user_home");
                         exit;
                     }
@@ -53,8 +57,8 @@ class Login_Register_Controller {
             }
 
             }
-            if(!$kiemtra){
-                    $loi ="kiểm tra lại các dữ liệu của bạn!";
+            if(!$check && $err===""){
+                    $err ="kiểm tra lại các dữ liệu của bạn!";
                 }
         }
             include "views/Login_Register/login.php";
@@ -73,6 +77,7 @@ class Login_Register_Controller {
             $user->number=$_POST['number'];
             $user->password=$_POST['password'];
             $user->role=(int)1;
+            $user->active= (int)1;
 
             $email_trung=false;
             foreach($usered as $tt){              // kiểm tra xem email đã tồn tại trước đó hay chưa

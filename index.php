@@ -57,6 +57,8 @@ match ($act) {
 
     'account_management'     => (new AdminController())->account_management(),
     'delete_account'         => (new AdminController())->delete_account($id),
+    'lock_account'           => (new AdminController())->lock_account($id),
+    'open_account'           => (new AdminController())->open_account($id),
     
     'comment_management'     => (new AdminController())->comment_management(),
     'comment_destails'       => (new AdminController())->comment_destails($id),
