@@ -42,6 +42,9 @@
         button:hover{
         background-color: rgba(169, 57, 169, 1);
         }
+        .a_center {
+            white-space: nowrap; /* không cho xuống dòng */
+        }
     </style>
 </head>
 <body>
@@ -95,9 +98,9 @@
                             <?=$tt->hot?>
                         </td>
                         <td><?= $tt->quantity?></td>
-                        <td>
-                            <a style="color:rgba(221, 7, 213, 1);" href="?act=update_product&id=<?=$tt->id?>">Sửa /</a>
-                            <a style="color:red;" href="?act=delete_product&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
+                        <td class="a_center">
+                            <a style="color:white; margin:10px; border:1px solid black; padding:2px 10px; background-color:rgba(221, 7, 213, 1);border-radius:5px;" href="?act=update_product&id=<?=$tt->id?>">Sửa </a>
+                            <a style="color:white; margin:10px; border:1px solid black; padding:2px 10px; background-color:red;border-radius:5px;" href="?act=delete_product&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
                         </td>
                         </tr>
                         <?php

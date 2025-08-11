@@ -79,8 +79,8 @@
                 <td><?=$tt->sum?></td>
                 <td><?=$tt->date?></td>
                 <td>
-                <a style="color:rgba(221, 7, 213, 1);;" href="?act=update_category&id=<?=$tt->id?>">Sửa / </a>
-                <a style="color:red;" href="?act=delete_category&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
+                <a style=" margin:0px;color:white; margin:10px; border:1px solid black; padding:2px 10px; background-color:rgba(221, 7, 213, 1); border-radius:5px;" href="?act=update_category&id=<?=$tt->id?>">Sửa  </a>
+                <a style="color:white; margin:10px; border:1px solid black; padding:2px 10px; background-color:red; border-radius:5px;" href="?act=delete_category&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
                 </td>
             </tr>
             <?php

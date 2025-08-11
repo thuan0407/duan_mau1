@@ -132,13 +132,13 @@
                 <td>0<?=$tt->number?></td>
                 <td><?=$tt->address?></td>
                 <td>
-                    <a style="color:red; margin-left:30px;" href="?act=delete_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này không?')">Xoá</a>
+                    <a style="color:white;  border:1px solid black; padding:2px 10px; background-color:red; border-radius:5px;" href="?act=delete_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa tài khoản này không?')">Xoá</a>
                     <?php
                     if($tt->active === 1){?>
-                        <a style="color:red; margin-left:30px;" href="?act=lock_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn khóa tài khoản này không?')">Khóa tài khoản</a><br>
+                        <a style="color:white; border:1px solid black; padding:2px 10px; background-color:rgba(221, 7, 213, 1);border-radius:5px;" href="?act=lock_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn khóa tài khoản này không?')">Khóa tài khoản</a><br>
                     <?php }
                     else{ ?>
-                        <a style="color:green; margin-left:30px;" href="?act=open_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn mở tài khoản này không?')">mở tài khoản</a><br>
+                        <a style="color:white;  border:1px solid black; padding:2px 10px; background-color:green;border-radius:5px;" href="?act=open_account&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn mở tài khoản này không?')">mở tài khoản</a><br>
                     <?php }
                     ?>
                 </td>
