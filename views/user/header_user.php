@@ -87,9 +87,9 @@ $nameUser = $_SESSION['user']['name'] ?? '';
             <p style="color:white;">lot line: 1900 0102 4</p>
          <form action="" method="post">
         <?php if(!empty($_SESSION['user']['name'])): ?>
-            <a style="text-decoration: none;color:white;" href="?act=dangxuat">Đăng xuất</a>
+            <a style="text-decoration: none;color:white;" href="?act=logout">Đăng xuất</a>
             <?php else :?>
-            <a style="text-decoration: none;color:white;" href="?act=dangnhap">Đăng nhập</a>
+            <a style="text-decoration: none;color:white;" href="?act=login">Đăng nhập</a>
                 <?php endif;
             ?>
       </form>

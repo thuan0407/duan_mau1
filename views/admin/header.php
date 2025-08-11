@@ -9,7 +9,7 @@ if (isset($_GET['act']) && $_GET['act'] === 'dangxuat') {
     exit;
 }
 $user = $_SESSION['user']['name'] ?? 'Khách';
-$currentPage = $_GET['act'] ?? 'trangchu_admin';
+$currentPage = $_GET['act'] ?? 'admin_home';
 $page = $_GET['page'] ?? 'dashboard'; // Mặc định trang dashboard
 
 ?>
@@ -40,9 +40,9 @@ $page = $_GET['page'] ?? 'dashboard'; // Mặc định trang dashboard
 </a>
     
   </div>
-        <li><a href="?act=<?='trangchu_admin'?>"  class="<?=$currentPage == 'trangchu_admin' ?'active':''?>">Trang chủ</a></li>
+        <li><a href="?act=<?='admin_home'?>"  class="<?=$currentPage == 'admin_home' ?'active':''?>">Trang chủ</a></li>
         <li><a href="?act=<?='quanly_danhmuc'?>"  class="<?=$currentPage == 'quanly_danhmuc' ?'active':''?>">Quản lý danh mục</a></li>
-        <li><a href="?act=<?='quanly_sanpham'?>"  class="<?=$currentPage == 'quanly_sanpham' ?'active':''?>">Quản lý sản phẩm</a></li>
+        <li><a href="?act=<?='product_management'?>"  class="<?=$currentPage == 'product_management' ?'active':''?>">Quản lý sản phẩm</a></li>
         <li><a href="?act=<?='quanly_taikhoan'?>" class="<?=$currentPage == 'quanly_taikhoan' ?'active':''?>">Quản lý tài khoản</a></li>
         <li><a href="?act=<?='quanly_binhluan'?>" class="<?=$currentPage == 'quanly_binhluan' ?'active':''?>">Quản lý bình luận</a></li>
         <li><a href="?act=<?='dangxuat'?>" name="dangxuat" onclick="return confirm('Bạn có chắc là muốn đăng xuất không?')" class="<?=$currentPage == 'dangxuat' ?'active':''?>">Đăng xuất</a></li>

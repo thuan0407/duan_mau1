@@ -1,8 +1,8 @@
 <?php
 $hotText = '';
-if ((int)$sanpham->hot === 1) {
+if ((int)$product->hot === 1) {
     $hotText = 'Sản phẩm hot';
-} elseif ((int)$sanpham->hot === 2) {
+} elseif ((int)$product->hot === 2) {
     $hotText = 'Sản phẩm mới';
 } else {
     $hotText = 'Sản phẩm khuyến mãi';
@@ -62,18 +62,18 @@ if ((int)$sanpham->hot === 1) {
         <table>
             <tr>
                 <th>Tên sản phẩm</th>
-                <td><input type="text" name="name" value="<?=$sanpham->name?>"></td>
+                <td><input type="text" name="name" value="<?=$product->name?>"></td>
             </tr>
             <tr>
                 <th>Ảnh</th>
                 <td><input type="file" name="anh_sp"></td>
-                <img src="<?= ANH_IMG . $sanpham->image ?>" alt="ảnh sản phẩm" width="100" height="120">
+                <img src="<?= ANH_IMG . $product->image ?>" alt="ảnh sản phẩm" width="100" height="120">
             </tr>
             <tr>
                 <th>Danh mục</th>
                 <td>
                     <select name="category_id" id="">   
-                        <option value="<?=$sanpham->category_id?>"><?=$sanpham->name_category?></option>
+                        <option value="<?=$product->category_id?>"><?=$product->name_category?></option>
                     <?php
                         foreach($danhsach as $tt){
                             ?>
@@ -88,7 +88,7 @@ if ((int)$sanpham->hot === 1) {
             <tr>
                 <th>loại</th>
                 <td> <select name="hot" id="">
-                <option value="<?=$sanpham->hot?>"> <?=$hotText?></option>   
+                <option value="<?=$product->hot?>"> <?=$hotText?></option>   
                 <option value="1">hot</option>
                 <option value="2">sản phẩm mới</option>
                 <option value="3">sản phẩm khuyến mãi</option>
@@ -96,27 +96,27 @@ if ((int)$sanpham->hot === 1) {
             </tr>
             <tr>
                 <th>Giá</th>
-                <td><input type="number" name="price" value="<?=$sanpham->price?>"></td>
+                <td><input type="number" name="price" value="<?=$product->price?>"></td>
             </tr>
             <tr>
                 <th>Giảm giá</th>
-                <td><input type="number" name="discount" value="<?=$sanpham->discount?>"></td>
+                <td><input type="number" name="discount" value="<?=$product->discount?>"></td>
             </tr>
             <tr>
                 <th>Miêu tả</th>
-                <td><input type="text" name="description" value="<?=$sanpham->description?>"></td>
+                <td><input type="text" name="description" value="<?=$product->description?>"></td>
             </tr>
             <tr>
                 <th>Số lượng</th>
-                <td><input type="number" name="quantity" value="<?=$sanpham->quantity?>"></td>
+                <td><input type="number" name="quantity" value="<?=$product->quantity?>"></td>
             </tr>
             <tr>
-                <td><a style="border: none;"  href="?act=<?='quanly_sanpham'?>">quay lại</a></td>
-                <td><button style="border: none;"  type="submit" name="update_sanpham">update</button></td>
+                <td><a style="border: none;"  href="?act=<?='product_management'?>">quay lại</a></td>
+                <td><button style="border: none;"  type="submit" name="update_product">update</button></td>
             </tr>
         </table>
-            <span style="color:red;"><?= $loi?></span>
-            <span style="color:green;"><?= $thanhcong?></span>
+            <span style="color:red;"><?= $err?></span>
+            <span style="color:green;"><?= $success?></span>
     </form>
     </main>
 

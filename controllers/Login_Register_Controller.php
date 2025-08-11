@@ -3,7 +3,7 @@ require_once __DIR__ . '/../models/ProductModel.php';
 require_once __DIR__ . '/../models/UserModel.php';
 require_once __DIR__ . '/../models/CommentModel.php';
 require_once __DIR__ . '/../models/CategoryModel.php';
-class Dangnhap_dangkyController {
+class Login_Register_Controller {
     public $productModel;
     public $userModel;
     public $commentModel;
@@ -25,7 +25,7 @@ class Dangnhap_dangkyController {
         $loi="";
         $account_data = $this->userModel->all();
 
-        if(isset($_POST['dangnhap'])){
+        if(isset($_POST['login'])){
             $email    = trim($_POST['email']);
             $password = trim($_POST['password']);
             $role     = (int)$_POST['role'];
@@ -42,7 +42,7 @@ class Dangnhap_dangkyController {
                 ];
 
                     if($role ===0){
-                        header("Location: ?act=trangchu_admin");
+                        header("Location: ?act=admin_home");
                         exit;
                     }
                     elseif($role ===1){
@@ -108,7 +108,7 @@ class Dangnhap_dangkyController {
        include "views/Login_Register/register.php";
     }
 
-    public function dangxuat(){
+    public function logout(){
         session_start();
         session_destroy();
         header("Location: ?act=/"); // chuyển về trang điều hướng

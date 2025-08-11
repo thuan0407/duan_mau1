@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Trang điều hướng</h1>
-    <a href="?act=trangchu_user">Trang web</a><br>
+    <a href="?act=user_home">Trang web</a><br>
     <a href="?act=login">Đăng nhập đăng ký / đăng nhập tài khoản admin</a>
 </body>
 </html>

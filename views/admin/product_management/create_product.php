@@ -107,14 +107,14 @@
         </tr>
 
         <tr>
-            <td><a href="?act=<?='quanly_sanpham'?>">quay lại</a></td>
-            <td><button  type="submit" name="create_sanpham">Tạo</button></td>
+            <td><a href="?act=<?='product_management'?>">quay lại</a></td>
+            <td><button  type="submit" name="create_product">Tạo</button></td>
         </tr>
 
     </table>
 
-    <span style="color:red;"><?= $loi?></span>
-    <span style="color:green;"><?= $thanhcong?></span>
+    <span style="color:red;"><?= $err?></span>
+    <span style="color:green;"><?= $success?></span>
     </main>
     
 </form>

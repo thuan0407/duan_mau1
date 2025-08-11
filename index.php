@@ -8,7 +8,7 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 // Require toàn bộ file Controllers
 require_once './controllers/AdminController.php';
 require_once './controllers/UserController.php';
-require_once './controllers/Dangnhap_dangkyController.php';
+require_once './controllers/Login_Register_Controller.php';
 
 // Require toàn bộ file Models
 require_once './models/ProductModel.php';
@@ -22,10 +22,10 @@ $id = $_GET['id'] ?? '';
 
 match ($act) {
     //phẩn của đăng nhập đăng xuất đăng ký
-    '/'               =>(new Dangnhap_dangkyController())->navigation(),
-    'dangxuat'        =>(new Dangnhap_dangkyController())->dangxuat(),
-    'login'           =>(new Dangnhap_dangkyController())->login(),
-    'register'        =>(new Dangnhap_dangkyController())->register(),
+    '/'               =>(new Login_Register_Controller())->navigation(),
+    'logout'          =>(new Login_Register_Controller())->logout(),
+    'login'           =>(new Login_Register_Controller())->login(),
+    'register'        =>(new Login_Register_Controller())->register(),
 
 
     //phần user
@@ -44,17 +44,17 @@ match ($act) {
 
     
     //phần của admin
-    'trangchu_admin'         => (new AdminController())->trangchu_admin(),
+    'admin_home'             => (new AdminController())->admin_home(),
 
     'quanly_danhmuc'         => (new AdminController())->quanly_danhmuc(),
     'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
     'delete_danhmuc'         => (new AdminController())->delete_danhmuc($id),
     'update_danhmuc'         => (new AdminController())->update_danhmuc($id),
 
-    'quanly_sanpham'         => (new AdminController())->quanly_sanpham(),
-    'delete_sanpham'         => (new AdminController())->delete_sanpham($id),
-    'update_sanpham'         => (new AdminController())->update_sanpham($id),
-    'create_sanpham'         => (new AdminController())->create_sanpham(),
+    'product_management'     => (new AdminController())->product_management(),
+    'delete_product'         => (new AdminController())->delete_product($id),
+    'update_product'         => (new AdminController())->update_product($id),
+    'create_product'         => (new AdminController())->create_product(),
     
     'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
     'chi_tiet_bl'            => (new AdminController())->chi_tiet_bl($id),

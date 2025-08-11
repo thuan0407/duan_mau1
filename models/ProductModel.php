@@ -105,11 +105,11 @@ class ProductModel
                 }
             }
 
-        public function create(Product $sanpham){        //thêm sản phẩm
+        public function create(Product $product){        //thêm sản phẩm
             try{
                 $sql="INSERT INTO `product` (`id`, `image`, `price`, `category_id`, `hot`, `quantity`, `description`, `discount`, `name`) VALUES 
-                (NULL, '".$sanpham->image."', '".$sanpham->price."', '".$sanpham->category_id."', '".$sanpham->hot."'
-                , '".$sanpham->quantity."', '".$sanpham->description."', '".$sanpham->discount."', '".$sanpham->name."');";
+                (NULL, '".$product->image."', '".$product->price."', '".$product->category_id."', '".$product->hot."'
+                , '".$product->quantity."', '".$product->description."', '".$product->discount."', '".$product->name."');";
                 $data=$this->conn->exec($sql);
                 return $data;
 
@@ -119,7 +119,7 @@ class ProductModel
         }
 
 
-        public function delete_sanpham($id){                                //xóa sản phẩm
+        public function delete_product($id){                                //xóa sản phẩm
             try{
                 $sql="DELETE FROM product WHERE `product`.`id` = $id";
                 $data=$this->conn->exec($sql);
@@ -130,12 +130,12 @@ class ProductModel
         }
         }
 
-        public function update(Product $sanpham){                  //upate sản phẩm
+        public function update(Product $product){                  //upate sản phẩm
             try{
-                $id=(int)$sanpham->id;
-                $sql="UPDATE `product` SET `image` = '".$sanpham->image."', `price` = '".$sanpham->price."',
-                 `category_id` = '".$sanpham->category_id."', `hot` = '".$sanpham->hot."', `quantity` = '".$sanpham->quantity."', `description` = '".$sanpham->description."', 
-                 `discount` = '".$sanpham->discount."', `name` = '".$sanpham->name."' WHERE `product`.`id` = $id;";
+                $id=(int)$product->id;
+                $sql="UPDATE `product` SET `image` = '".$product->image."', `price` = '".$product->price."',
+                 `category_id` = '".$product->category_id."', `hot` = '".$product->hot."', `quantity` = '".$product->quantity."', `description` = '".$product->description."', 
+                 `discount` = '".$product->discount."', `name` = '".$product->name."' WHERE `product`.`id` = $id;";
                 $data=$this->conn->exec($sql);
                 return $data;
 

@@ -48,11 +48,11 @@
         <div class="content">
             <h1>Sản phẩm</h1>
             <div class="right">
-                <a style="border:1px solid black; padding:2px 5px; color:white; background-color: #992fe4; border-radius: 10px; border: none;" href="?act=create_sanpham">Thêm sản phẩm</a><br>
+                <a style="border:1px solid black; padding:2px 5px; color:white; background-color: #992fe4; border-radius: 10px; border: none;" href="?act=create_product">Thêm sản phẩm</a><br>
 
                 <form action="" method="post" enctype="multipart/form-data">
                 <button style="" type="submit" name="tim">Tìm</button> 
-                <input type="text" name="tukhoa" style="margin:10px 0px; border-radius:20px; height:30px; width:250px;">
+                <input type="text" name="key_words" style="margin:10px 0px; border-radius:20px; height:30px; width:250px;">
                 <span style="color:red;"> <?=$err?></span>
                 </form>
 
@@ -69,7 +69,7 @@
                     <th>Hành động</th>
                 </tr>
                     <?php
-                    foreach($danhsach as $tt){
+                    foreach($product_list as $tt){
                         ?>
                         <tr>
                         <td>
@@ -96,8 +96,8 @@
                         </td>
                         <td><?= $tt->quantity?></td>
                         <td>
-                            <a style="color:rgba(221, 7, 213, 1);" href="?act=update_sanpham&id=<?=$tt->id?>">Sửa /</a>
-                            <a style="color:red;" href="?act=delete_sanpham&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
+                            <a style="color:rgba(221, 7, 213, 1);" href="?act=update_product&id=<?=$tt->id?>">Sửa /</a>
+                            <a style="color:red;" href="?act=delete_product&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa sản phẩm này không?')">Xoá</a>
                         </td>
                         </tr>
                         <?php

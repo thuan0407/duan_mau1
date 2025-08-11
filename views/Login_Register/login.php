@@ -79,7 +79,7 @@
         
     </table><br>
 
-        <button type="submit" name="dangnhap">Đăng nhập</button>
+        <button type="submit" name="login">Đăng nhập</button>
         <br>
         <span><?=$loi?></span>
         <br> <a href="?act=register">Đăng ký tài khoản</a>

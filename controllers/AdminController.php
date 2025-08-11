@@ -17,9 +17,9 @@ class AdminController {
         $this->categoryModel = new CategoryModel();
     }
 
-    public function trangchu_admin() {
+    public function admin_home() {
         $today = date("y-m-d");
-        include "views/admin/trangchu_admin.php";
+        include "views/admin/admin_home.php";
     }
 
     public function quanly_danhmuc() {
@@ -121,127 +121,127 @@ class AdminController {
         include "views/admin/quanly_taikhoan/noidung.php";
     }
 
-    public function quanly_sanpham() {
+    public function product_management() {
         $err = "";
-        $danhsach = $this->productModel->all();
+        $product_list = $this->productModel->all();
 
         if (isset($_POST['tim'])) {
-            $tukhoa = $_POST['tukhoa'];
+            $key_words = $_POST['key_words'];
 
-            if (empty($tukhoa)) {
+            if (empty($key_words)) {
                 $err = "bạn chưa nhập nội dung";
             }
 
-            foreach ($danhsach as $tt) {
-                if (stripos($tt->name, $tukhoa) !== false) {
-                    $ketqua[] = $tt;
+            foreach ($product_list as $tt) {
+                if (stripos($tt->name, $key_words) !== false) {
+                    $result[] = $tt;
                 }
             }
 
-            if (empty($ketqua)) {
+            if (empty($result)) {
                 $err = "không tìm thấy";
-                $danhsach = [];
+                $product_list = [];
             } else {
-                $danhsach = $ketqua;
+                $product_list= $result;
             }
         }
 
-        include "views/admin/quanly_sanpham/noidung.php";
+        include "views/admin/product_management/content.php";
     }
 
-    public function create_sanpham() {
-        $loi = "";
-        $thanhcong = "";
-        $sanpham = new Product();
-        $danhsach = $this->categoryModel->all();
+    public function create_product() {
+        $err = "";
+        $success = "";
+        $product = new Product();
+        $category_list = $this->categoryModel->all();
 
-        if (isset($_POST['create_sanpham'])) {
-            $sanpham->name = $_POST['name'];
+        if (isset($_POST['create_product'])) {
+            $product->name = $_POST['name'];
 
             if ($_FILES['anh_sp']['size'] > 0) {
                 $uploadPath = uploadFile($_FILES['anh_sp'], 'public/uploads/');
                 if ($uploadPath) {
-                    $sanpham->image = str_replace('public/uploads/', '', $uploadPath);
+                    $product->image = str_replace('public/uploads/', '', $uploadPath);
                 }
             }
 
-            $sanpham->price = $_POST['price'];
-            $sanpham->category_id = $_POST['category_id'];
-            $sanpham->description = $_POST['description'];
-            $sanpham->hot = $_POST['hot'];
-            $sanpham->discount = $_POST['discount'];
-            $sanpham->quantity = $_POST['quantity'];
+            $product->price = $_POST['price'];
+            $product->category_id = $_POST['category_id'];
+            $product->description = $_POST['description'];
+            $product->hot = $_POST['hot'];
+            $product->discount = $_POST['discount'];
+            $product->quantity = $_POST['quantity'];
 
-            if ($sanpham->name === "") {
-                $loi = "kiểm tra lại các trường giữ liệu";
+            if ($product->name === "") {
+                $err = "kiểm tra lại các trường giữ liệu";
             } else {
-                $ketqua_update = $this->productModel->create($sanpham);
-                if ($ketqua_update === 1) {
-                    $thanhcong = "create sản phẩm thành công";
+                $result_update = $this->productModel->create($product);
+                if ($result_update === 1) {
+                    $success = "create sản phẩm thành công";
                 } else {
-                    $loi = "create sản phẩm thất bại";
+                    $err = "create sản phẩm thất bại";
                 }
             }
         }
 
-        include "views/admin/quanly_sanpham/create_sanpham.php";
+        include "views/admin/product_management/create_product.php";
     }
 
-    public function delete_sanpham($id) {                            /////xóa sản phẩm
-        $ketqua = $this->productModel->delete_sanpham($id);
-        if ($ketqua === 1) {
-            header("Location: ?act=quanly_sanpham");
+    public function delete_product($id) {                            /////xóa sản phẩm
+        $result = $this->productModel->delete_product($id);
+        if ($result === 1) {
+            header("Location: ?act=product_management");
             exit;
         } else {
-            $loi = "không thể xóa";
-            $danhsach = $this->productModel->all();
-            include "views/admin/quanly_sanpham/noidung.php";
+            $err = "không thể xóa";
+            $product_list = $this->productModel->all();
+            include "views/admin/product_management/content.php";
         }
     }
 
 
-public function update_sanpham($id) {
+public function update_product($id) {
     // Lấy sản phẩm theo ID để hiển thị lên form
-    $loi ="";
-    $thanhcong="";
-    $sanpham     = $this->productModel->find($id);
-    $danhsach    =$this->categoryModel->all();
-    if (isset($_POST['update_sanpham'])) {
+    $err    ="";
+    $success="";
+    $product          = $this->productModel->find($id);
+    $category_list    =$this->categoryModel->all();
+    if (isset($_POST['update_product'])) {
         // Cập nhật dữ liệu mới từ form
 
-        $sanpham->id         =$id;
-        $sanpham->name        = $_POST['name'];
+        $product->id          =$id;
+        $product->name        = $_POST['name'];
         
         if ($_FILES['anh_sp']['size'] > 0) {
             $uploadPath = uploadFile($_FILES['anh_sp'], 'public/uploads/');
             if ($uploadPath) {
-                $sanpham->image = str_replace('public/uploads/', '', $uploadPath);
+                $product->image = str_replace('public/uploads/', '', $uploadPath);
             }
         }
-        $sanpham->price       = $_POST['price'];
-        $sanpham->category_id  = $_POST['category_id'];
-        $sanpham->description = $_POST['description'];
-        $sanpham->hot         = $_POST['hot'];
-        $sanpham->discount    = $_POST['discount'];
-        $sanpham->quantity    = $_POST['quantity'];
+        $product->price       = $_POST['price'];
+        $product->category_id = $_POST['category_id'];
+        $product->description = $_POST['description'];
+        $product->hot         = $_POST['hot'];
+        $product->discount    = $_POST['discount'];
+        $product->quantity    = $_POST['quantity'];
 
-        if($sanpham->name ===""){
-            $loi = "kiểm tra lại các trường giữ liệu";
+        if($product->name ===""){
+            $err = "kiểm tra lại các trường giữ liệu";
         }
         else{
-            $ketqua_update = $this->productModel->update($sanpham);
-                if($ketqua_update >0){
-                    $thanhcong="update sản phẩm thành công";
+            $result_update = $this->productModel->update($product);
+                if($result_update >0){
+                    $success="sửa sản phẩm thành công";
                 }
                 else{
-                    $loi ='update sản phẩm thất bại';
+                    $err ='sửa sản phẩm thất bại';
                 }
             }
         }
     
 
     // Hiển thị giao diện sửa
-    include "views/admin/quanly_sanpham/update_sanpham.php";
+    include "views/admin/product_management/update_product.php";
 }
 
 
