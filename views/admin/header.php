@@ -41,7 +41,7 @@ $page = $_GET['page'] ?? 'dashboard'; // Mặc định trang dashboard
     
   </div>
         <li><a href="?act=<?='admin_home'?>"  class="<?=$currentPage == 'admin_home' ?'active':''?>">Trang chủ</a></li>
-        <li><a href="?act=<?='quanly_danhmuc'?>"  class="<?=$currentPage == 'quanly_danhmuc' ?'active':''?>">Quản lý danh mục</a></li>
+        <li><a href="?act=<?='category_management'?>"  class="<?=$currentPage == 'category_management' ?'active':''?>">Quản lý danh mục</a></li>
         <li><a href="?act=<?='product_management'?>"  class="<?=$currentPage == 'product_management' ?'active':''?>">Quản lý sản phẩm</a></li>
         <li><a href="?act=<?='quanly_taikhoan'?>" class="<?=$currentPage == 'quanly_taikhoan' ?'active':''?>">Quản lý tài khoản</a></li>
         <li><a href="?act=<?='quanly_binhluan'?>" class="<?=$currentPage == 'quanly_binhluan' ?'active':''?>">Quản lý bình luận</a></li>

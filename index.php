@@ -46,15 +46,16 @@ match ($act) {
     //phần của admin
     'admin_home'             => (new AdminController())->admin_home(),
 
-    'quanly_danhmuc'         => (new AdminController())->quanly_danhmuc(),
-    'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
-    'delete_danhmuc'         => (new AdminController())->delete_danhmuc($id),
-    'update_danhmuc'         => (new AdminController())->update_danhmuc($id),
+    'category_management'   => (new AdminController())->category_management(),
+    'delete_category'         => (new AdminController())->delete_category($id),
+    'update_category'         => (new AdminController())->update_category($id),
 
     'product_management'     => (new AdminController())->product_management(),
     'delete_product'         => (new AdminController())->delete_product($id),
     'update_product'         => (new AdminController())->update_product($id),
     'create_product'         => (new AdminController())->create_product(),
+
+    'quanly_taikhoan'        => (new AdminController())->quanly_taikhoan(),
     
     'quanly_binhluan'        => (new AdminController())->quanly_binhluan(),
     'chi_tiet_bl'            => (new AdminController())->chi_tiet_bl($id),

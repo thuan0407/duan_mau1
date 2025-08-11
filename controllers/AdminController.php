@@ -22,77 +22,76 @@ class AdminController {
         include "views/admin/admin_home.php";
     }
 
-    public function quanly_danhmuc() {
-        $danhsach = $this->categoryModel->all();
-        $thanhcong = "";
-        $loi = "";
-        $danhmuc = new Category();
+    public function category_management() {
+        $category_list = $this->categoryModel->all();
+        $success       = "";
+        $err           = "";
+        $category = new Category();
 
-        if (isset($_POST['create_danhmuc'])) {
-            $danhmuc->name  = $_POST['name_danhmuc'];
-            $danhmuc->date  = date("Y-m-d H:i:s");
+        if (isset($_POST['create_category'])) {
+            $category->name  = $_POST['name_category'];
+            $category->date  = date("Y-m-d H:i:s");
 
-            if (empty($danhmuc->name)) {
-                $loi = "kiểm tra lại dữ liệu";
+            if (empty($category->name)) {
+                $err = "kiểm tra lại dữ liệu";
             } else {
-                $ketqua = $this->categoryModel->create_danhmuc($danhmuc);
-                if ($ketqua === 1) {
-                    $thanhcong = "tạo danh mục thành công";
-                    $danhsach = $this->categoryModel->all();
+                $result = $this->categoryModel->create_category($category);
+                if ($result === 1) {
+                    $success       = "tạo danh mục thành công";
+                    $category_list = $this->categoryModel->all();
                 } else {
-                    $loi = "tạo danh mục thất bại";
+                    $err = "tạo danh mục thất bại";
                 }
             }
         }
 
-        include "views/admin/quanly_danhmuc/noidung.php";
+        include "views/admin/category_management/content.php";
     }
 
-    public function delete_danhmuc($id) {
-        $danhmuc = $this->categoryModel->find($id);
-        $thongbao = "";
-        $loi = "";
-        $thanhcong = "";
+    public function delete_category($id) {
+        $category = $this->categoryModel->find($id);
+        $err = "";
+        $success = "";
 
-        if (!$danhmuc) {
-            $thongbao = "Danh mục không tồn tại!";
-        } else if ($danhmuc->sum > 0) {
-            $thongbao = "Không thể xóa khi danh mục vẫn còn sản phẩm.";
+        if (!$category) {
+            $err = "Danh mục không tồn tại!";
+        } else if ($category->sum > 0) {
+            $err = "Không thể xóa khi danh mục vẫn còn sản phẩm.";
         } else {
-            $ketqua = $this->categoryModel->delete_danhmuc($id);
-            if ($ketqua === 1) {
-                header("Location: ?act=quanly_danhmuc");
+            $result = $this->categoryModel->delete_category($id);
+            if ($result === 1) {
+                header("Location: ?act=category_management");
                 exit;
             } else {
-                $thongbao = "Xóa danh mục thất bại.";
+                $err = "Xóa danh mục thất bại.";
             }
         }
 
-        $danhsach = $this->categoryModel->all();
-        include "views/admin/quanly_danhmuc/noidung.php";
+        $category = $this->categoryModel->all();
+        include "views/admin/category_management/content.php";
     }
 
-    public function update_danhmuc($id) {
-        $ten_danhmuc_cu = $this->categoryModel->find($id);
-        $thanhcong = "";
-        $loi = "";
-        $danhmuc = new Category();
+    public function update_category($id) {
+        $name_category_old = $this->categoryModel->find($id);
+        $success = "";
+        $err     = "";
+        $category = new Category();
 
-        if (isset($_POST['update_danhmuc'])) {
-            $danhmuc->id = $id;
-            $danhmuc->name = $_POST['name_danhmuc'];
+        if (isset($_POST['update_category'])) {
+            $category->id = $id;
+            $category->name = $_POST['name_category'];
 
-            if (empty($danhmuc->name)) {
-                $loi = "kiểm tra lại dữ liệu";
+            if (empty($category->name)) {
+                $err = "kiểm tra lại dữ liệu";
             } else {
-                $ketqua = $this->categoryModel->update_danhmuc($danhmuc);
-                if ($ketqua > 0) {
-                    $thanhcong = "sửa thành công tên thư mục";
+                $result = $this->categoryModel->update_category($category);
+                if ($result > 0) {
+                    $success = "sửa thành công tên thư mục";
                 }
             }
         }
 
-        include "views/admin/quanly_danhmuc/update_danhmuc.php";
+        include "views/admin/category_management/update_category.php";
     }
 
     public function quanly_taikhoan() {

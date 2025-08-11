@@ -54,16 +54,16 @@
             <table>
                 <tr>
                     <th>Tên danh mục</th>
-                    <td><input type="text" name="name_danhmuc" style="height:30px; width:200px;border-radius:20px;">
-                    <button style="border: none;" tpye="submit" name="create_danhmuc">Tạo</button>
-                    <span style="color:green;"><?=$thanhcong?></span>
-                    <span style="color:red;"><?=$loi?></span>
+                    <td><input type="text" name="name_category" style="height:30px; width:200px;border-radius:20px;">
+                    <button style="border: none;" tpye="submit" name="create_category">Tạo</button>
+                    <span style="color:green;"><?=$success?></span>
+                    <span style="color:red;"><?=$err?></span>
                     </td></tr>
             </table>
         </form>
 
     <table>
-        <span><?=$thongbao?></span>
+        <span><?=$success?></span>
         <tr>
             <th>Tên danh mục</th>
             <th>Tổng lượng sản phẩm </th>
@@ -72,15 +72,15 @@
 
         </tr>
         <?php
-        foreach($danhsach as $tt){
+        foreach($category_list as $tt){
             ?>
             <tr>
                 <td><?=$tt->name?></td>
                 <td><?=$tt->sum?></td>
                 <td><?=$tt->date?></td>
                 <td>
-                <a style="color:rgba(221, 7, 213, 1);;" href="?act=update_danhmuc&id=<?=$tt->id?>">Sửa / </a>
-                <a style="color:red;" href="?act=delete_danhmuc&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
+                <a style="color:rgba(221, 7, 213, 1);;" href="?act=update_category&id=<?=$tt->id?>">Sửa / </a>
+                <a style="color:red;" href="?act=delete_category&id=<?=$tt->id?>" onclick="return confirm('Bạn có chắc là muốn xóa không?')">Xóa</a>
                 </td>
             </tr>
             <?php

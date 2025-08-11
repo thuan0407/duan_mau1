@@ -80,11 +80,11 @@
 <h1>Trang update danh mục</h1>
 <form action="" method="post" enctype="multipart/form-data">
  <label for="">Tên danh mục</label> <br>
- <input type="text" name="name_danhmuc" value="<?= $ten_danhmuc_cu->name?>">
- <button type="submit" name="update_danhmuc">sửa</button>
- <a style="color:black;" href="?act=quanly_danhmuc">Quay lại</a>
- <span style="color:green;"> <?=$thanhcong?></span>
- <span style="color:red;"> <?=$loi?></span>
+ <input type="text" name="name_category" value="<?= $name_category_old->name?>">
+ <button type="submit" name="update_category">sửa</button>
+ <a style="color:black;" href="?act=category_management">Quay lại</a>
+ <span style="color:green;"> <?=$success?></span>
+ <span style="color:red;"> <?=$err?></span>
 </form>
 </main>
 </body>

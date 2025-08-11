@@ -22,12 +22,12 @@ class CategoryModel
                 $data=$this->conn->query($sql)->fetchAll();
                 $danhsach=[];
                 foreach($data as $tt){
-                    $danhmuc = new Category();
-                    $danhmuc->id          =$tt['id'];
-                    $danhmuc->name        =$tt['name'];
-                    $danhmuc->date        =$tt['date'];
-                    $danhmuc->sum         =$tt['sum'];
-                    $danhsach[]=$danhmuc;
+                    $category = new Category();
+                    $category->id          =$tt['id'];
+                    $category->name        =$tt['name'];
+                    $category->date        =$tt['date'];
+                    $category->sum         =$tt['sum'];
+                    $danhsach[]=$category;
                 }
                 return $danhsach;
 
@@ -36,10 +36,10 @@ class CategoryModel
         }
         }
 
-        public function create_danhmuc(Category $danhmuc){        //thêm danh mục
+        public function create_category(Category $category){        //thêm danh mục
             try{
                 $sql="INSERT INTO `category` (`id`, `name`, `date`)
-                 VALUES (NULL, '".$danhmuc->name."', '$danhmuc->date');";
+                 VALUES (NULL, '".$category->name."', '$category->date');";
                 $data=$this->conn->exec($sql);
                 return $data;
 
@@ -48,7 +48,7 @@ class CategoryModel
         }
         }
 
-        public function delete_danhmuc($id){        //thêm danh mục
+        public function delete_category($id){        //thêm danh mục
             try{
                 $sql="DELETE FROM category WHERE `category`.`id` = $id";
                 $data=$this->conn->exec($sql);
@@ -64,12 +64,12 @@ class CategoryModel
                 $sql="SELECT * FROM `category` Where id = $id";
                 $data=$this->conn->query($sql)->fetch();
                 if($data !== false){
-                    $danhmuc = new Category();
-                    $danhmuc->id          = $data['id'];
-                    $danhmuc->name        = $data['name'];
-                    $danhmuc->date        = $data['date'];
+                    $category = new Category();
+                    $category->id          = $data['id'];
+                    $category->name        = $data['name'];
+                    $category->date        = $data['date'];
 
-                    return $danhmuc;
+                    return $category;
                 }
 
             }catch (PDOException $err) {
@@ -77,10 +77,10 @@ class CategoryModel
         }
         }
 
-        public function update_danhmuc(Category $danhmuc){        //sửa danh mục
+        public function update_category(Category $category){        //sửa danh mục
             try{
-                $id = (int)$danhmuc->id;
-                $sql="UPDATE `category` SET `name` = '".$danhmuc->name."' WHERE `category`.`id` = $id;";
+                $id = (int)$category->id;
+                $sql="UPDATE `category` SET `name` = '".$category->name."' WHERE `category`.`id` = $id;";
                 $data=$this->conn->exec($sql);
                 return $data;
 
