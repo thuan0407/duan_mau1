@@ -54,7 +54,7 @@
                 <a style="border:1px solid black; padding:2px 5px; color:white; background-color: #992fe4; border-radius: 10px; border: none;" href="?act=create_product">Thêm sản phẩm</a><br>
 
                 <form action="" method="post" enctype="multipart/form-data">
-                <button style="" type="submit" name="tim">Tìm</button> 
+                <button style="" type="submit" name="search">Tìm</button> 
                 <input type="text" name="key_words" style="margin:10px 0px; border-radius:20px; height:30px; width:250px;">
                 <span style="color:red;"> <?=$err?></span>
                 </form>

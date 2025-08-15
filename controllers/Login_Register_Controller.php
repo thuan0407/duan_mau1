@@ -15,11 +15,7 @@ class Login_Register_Controller {
         $this->commentModel  = new CommentModel();
         $this->categoryModel = new CategoryModel();
     }
-
-    public function navigation(){
-        include "views/Login_Register/navigation.php";
-    }
-
+    
     public function login(){
         session_start();
         $err="";

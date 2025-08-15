@@ -71,7 +71,7 @@
                 <select name="category_id" id="">
                     <option value="disabled">chọn danh mục</option>
                     <?php
-                    foreach($danhsach as $tt){
+                    foreach($category_list as $tt){
                         ?>
                     <option value="<?=$tt->id?>"><?=$tt->name?></option>
                         <?php

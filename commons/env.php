@@ -1,7 +1,6 @@
 <?php 
 
-// Biến môi trường, dùng chung toàn hệ thống
-// Khai báo dưới dạng HẰNG SỐ để không phải dùng $GLOBALS
+
 
 define('BASE_URL'       , 'http://localhost/mvc-oop-basic-duanmau/');
 

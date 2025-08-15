@@ -22,7 +22,6 @@ $id = $_GET['id'] ?? '';
 
 match ($act) {
     //phẩn của đăng nhập đăng xuất đăng ký
-    '/'               =>(new Login_Register_Controller())->navigation(),
     'logout'          =>(new Login_Register_Controller())->logout(),
     'login'           =>(new Login_Register_Controller())->login(),
     'register'        =>(new Login_Register_Controller())->register(),
@@ -30,6 +29,7 @@ match ($act) {
 
     //phần user
     // Trang chủ
+    '/'                       =>(new UserController())->user_home(),
     'danhsach_sanpham'        =>(new UserController())->user_producs(),
     'user_home'               =>(new UserController())->user_home(),
     'user_producs'            =>(new UserController())->user_producs(),
