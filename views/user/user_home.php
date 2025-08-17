@@ -53,7 +53,7 @@
             text-align: center;
             padding:20px;
             margin:10px;
-            height:320px;
+            height:350px;
             border-radius:5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 
@@ -63,7 +63,7 @@
             background-color: #f9f4f8ff;
         }
         .item img{
-            width:70%;
+            width:200;
             height:200px;;
         }
         .chiadoi{
@@ -140,7 +140,7 @@
             <img src="<?=ANH_IMG .$tt->image?>" alt=""><br>
             <span class="ten_sp" style="font-size:20px;"><?=$tt->name?></span> <br>
             <span class="gia_sp" style="color:red;"><?= number_format($quantity_khuyen_mai, 0, ',', '.') ?>đ</span>
-            <del class="gia_sp" style="color:black;"><?= number_format($tt->discount, 0, ',', '.') ?>đ</del> <br> 
+            <del class="gia_sp" style="color:black;"><?= number_format($tt->price, 0, ',', '.') ?>đ</del> <br> 
             <a href="?act=product_destails&id=<?=$tt->id?>" style="color:black;">>>Xem chi tiết</a>
             <div class="chiadoi">
                 <a href="#" class="mua">Mua</a>

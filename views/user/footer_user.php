@@ -106,7 +106,7 @@
     <div class="footer-container">
         <!-- Thông tin cửa hàng -->
         <div class="footer-section">
-            <h3>MobeShop</h3>
+            <h3>Mobile Shop</h3>
             <p>Địa chỉ: 174 Phương Canh, Nam Từ Liêm, Hà Nội<br>
             Quận 7, TP.HCM | Đà Nẵng<br>
             Hotline: <b>1900 0102 4</b><br>

@@ -215,8 +215,8 @@ require_once "header_user.php";
             background-color: #f9f4f8ff;
         }
         .item img {
-            width: 80%;
-            height: 230px;
+            width: 200px;
+            height: 250px;
         }
         .chiadoi {
             display: flex;

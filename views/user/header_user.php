@@ -96,7 +96,7 @@ $nameUser = $_SESSION['user']['name'] ?? '';
         </div>
     <nav>
         <div class="header">
-            <a style="text-decoration: none;" href="?act=user_home"><div class="logo">Mobishop</div></a>
+            <a style="text-decoration: none;" href="?act=user_home"><div class="logo">Mobile Shop</div></a>
     
             <div class="menu_tren">
                 <ul>

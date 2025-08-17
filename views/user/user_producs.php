@@ -36,13 +36,13 @@
             text-align: center;
             padding:20px;
             margin:10px;
-            height:320px;
+            height:350px;
             border-radius:5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 
         }
         .item img{
-            width:70%;
+            width:200px;
             height:200px;;
         }
         .item:hover{
