@@ -3,17 +3,20 @@ require_once __DIR__ . '/../models/ProductModel.php';
 require_once __DIR__ . '/../models/UserModel.php';
 require_once __DIR__ . '/../models/CommentModel.php';
 require_once __DIR__ . '/../models/CategoryModel.php';
+require_once __DIR__ . '/../models/Product_typeModel.php';
 class Login_Register_Controller {
     public $productModel;
     public $userModel;
     public $commentModel;
     public $categoryModel;
+    public $product_typeModel;
 
     public function __construct(){
         $this->productModel  = new ProductModel();
         $this->userModel     = new UserModel();
         $this->commentModel  = new CommentModel();
         $this->categoryModel = new CategoryModel();
+        $this->product_typeModel  = new Product_typeModel();
     }
     
     public function login(){

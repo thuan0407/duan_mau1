@@ -44,7 +44,7 @@
                     <th>Giá</th>
                     <th>Khuyến mãi</th>
                     <th>Danh mục </th>
-                    <th>Hot</th>
+                    <th>Loại sản phẩm</th>
                     <th>Số lượng</th>
                 </tr>
                         <tr>
@@ -56,7 +56,21 @@
                         <td><?= $product->price?></td>
                         <td><?= $product->discount?></td>
                         <td><?= $product->category_id?></td>
-                        <td><?= $product->hot?></td>
+                        <td>
+                            <?php
+                            if($product->product_type_id===1){
+                                $product->product_type_id="Sản phẩm khuyến mãi";
+                            }
+                            else if($product->product_type_id===2){
+                                $product->product_type_id="Sản phẩm hot";
+                            }
+                            else{
+                                $product->product_type_id="Sản phẩm mới";
+                            }
+                        
+                            ?>
+                            <?= $product->product_type_id?>
+                        </td>
                         <td><?= $product->quantity?></td>
                         
             </table>

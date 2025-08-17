@@ -1,11 +1,11 @@
 <?php
-$hotText = '';
-if ((int)$product->hot === 1) {
-    $hotText = 'Sản phẩm hot';
-} elseif ((int)$product->hot === 2) {
-    $hotText = 'Sản phẩm mới';
+$product_type_idText = '';
+if ((int)$product->product_type_id === 1) {
+    $product_type_idText = 'Sản phẩm khuyến mãi';
+} elseif ((int)$product->product_type_id === 2) {
+    $product_type_idText = 'Sản phẩm hot';
 } else {
-    $hotText = 'Sản phẩm khuyến mãi';
+    $product_type_idText = 'Sản phẩm mới';
 }
 ?>
 <!DOCTYPE html>
@@ -87,11 +87,11 @@ if ((int)$product->hot === 1) {
 
             <tr>
                 <th>loại</th>
-                <td> <select name="hot" id="">
-                <option value="<?=$product->hot?>"> <?=$hotText?></option>   
-                <option value="1">hot</option>
-                <option value="2">sản phẩm mới</option>
-                <option value="3">sản phẩm khuyến mãi</option>
+                <td> <select name="product_type_id" id="">
+                <option value="<?=$product->product_type_id?>"> <?=$product_type_idText?></option>   
+                <option value="1">Sản phẩm khuyến mãi</option>
+                <option value="2">sản phẩm hot</option>
+                <option value="3">sản phẩm mới</option>
             </select></td>
             </tr>
             <tr>

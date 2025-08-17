@@ -85,17 +85,17 @@
                         <td><?= $tt->category_id?></td>
                         <td>
                             <?php
-                            if($tt->hot ===1){
-                                $tt->hot="sản phẩm hot";
+                            if($tt->product_type_id ===1){
+                                $tt->product_type_id="sản phẩm khuyến mãi";
                             }
-                            elseif($tt->hot ===2){
-                                $tt->hot ="sản phẩm mới";
+                            elseif($tt->product_type_id ===2){
+                                $tt->product_type_id ="sản phẩm hot";
                             }
                             else{
-                                $tt->hot="sản phẩm khuyến mãi";
+                                $tt->product_type_id="sản phẩm mới";
                             }
                             ?>
-                            <?=$tt->hot?>
+                            <?=$tt->product_type_id?>
                         </td>
                         <td><?= $tt->quantity?></td>
                         <td class="a_center">

@@ -3,26 +3,29 @@
     require_once __DIR__ . '/../models/UserModel.php';
     require_once __DIR__ . '/../models/CommentModel.php';
     require_once __DIR__ . '/../models/CategoryModel.php';
+    require_once __DIR__ . '/../models/Product_typeModel.php';
     class UserController {
         public $productModel;
         public $userModel;
         public $commentModel;
         public $categoryModel;
+        public $product_typeModel;
 
         public function __construct(){
             $this->productModel  = new ProductModel();
             $this->userModel     = new UserModel();
             $this->commentModel  = new CommentModel();
             $this->categoryModel = new CategoryModel();
+            $this->product_typeModel  = new Product_typeModel();
         }
 
         //trang chủ
 public function user_home(){
-    $thongbao = "";
-    $sanpham_hot = $this->productModel->all_hot();
-    $sanpham_moi = $this->productModel->all_moi();
-    $khuyen_mai  = $this->productModel->all_khuyenmai();
-    $list_product = $this->productModel->all();
+    $thongbao         = "";
+    $promotion        = $this->productModel->all_promotion();
+    $product_hot      = $this->productModel->all_hot();
+    $prudcut_new      = $this->productModel->all_new();
+    $list_product     = $this->productModel->all();
 
     // Xử lý tìm kiếm
     if (isset($_GET['search'])) {
@@ -96,18 +99,18 @@ public function user_home(){
         include "views/user/introduce.php";
         }
 
-        public function sanpham_hot(){
-            $sanpham_hot =$this->productModel->all_hot();
+        public function product_hot(){
+            $product_hot =$this->productModel->all_hot();
             include "views/user/user_home.php";
         }
 
-        public function sanpham_moi(){
-            $sanpham_moi =$this->productModel->all_moi();
+        public function product_new(){
+            $product_new =$this->productModel->all_new();
             include "views/user/user_home.php";
         }
 
-        public function khuyen_mai(){
-            $khuyen_mai =$this->productModel->all_khuyenmai();
+        public function promotion(){
+            $promotion =$this->productModel->all_promotion();
             include "views/user/user_home.php";
         }
 

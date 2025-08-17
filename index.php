@@ -35,9 +35,9 @@ match ($act) {
     'user_producs'            =>(new UserController())->user_producs(),
     'contact'                 =>(new UserController())->contact(),
     'introduce'               =>(new UserController())->introduce(),
-    'sanpham_hot'             =>(new UserController())->sanpham_hot(),
-    'sanpham_moi'             =>(new UserController())->sanpham_moi(),
-    'khuyen_mai'              =>(new UserController())->khuyen_mai(),
+    'product_hot'             =>(new UserController())->product_hot(),
+    'product_new'             =>(new UserController())->product_new(),
+    'promotion'               =>(new UserController())->promotion(),
     'product_destails'        =>(new UserController())->product_destails($id),
     
 

@@ -3,18 +3,21 @@ require_once __DIR__ . '/../models/ProductModel.php';
 require_once __DIR__ . '/../models/UserModel.php';
 require_once __DIR__ . '/../models/CommentModel.php';
 require_once __DIR__ . '/../models/CategoryModel.php';
+require_once __DIR__ . '/../models/Product_typeModel.php';
 
 class AdminController {
     public $productModel;
     public $userModel;
     public $commentModel;
     public $categoryModel;
+    public $product_typeModel;
 
     public function __construct() {
         $this->productModel  = new ProductModel();
         $this->userModel     = new UserModel();
         $this->commentModel  = new CommentModel();
         $this->categoryModel = new CategoryModel();
+        $this->product_typeModel  = new Product_typeModel();
     }
 
     public function admin_home() {
@@ -154,6 +157,7 @@ class AdminController {
         $success = "";
         $product = new Product();
         $category_list = $this->categoryModel->all();
+        $product_list = $this->product_typeModel->all();
 
         if (isset($_POST['create_product'])) {
             $product->name = $_POST['name'];
@@ -165,12 +169,12 @@ class AdminController {
                 }
             }
 
-            $product->price = $_POST['price'];
-            $product->category_id = $_POST['category_id'];
-            $product->description = $_POST['description'];
-            $product->hot = $_POST['hot'];
-            $product->discount = $_POST['discount'];
-            $product->quantity = $_POST['quantity'];
+            $product->price           = $_POST['price'];
+            $product->category_id     = $_POST['category_id'];
+            $product->description     = $_POST['description'];
+            $product->product_type_id = $_POST['product_type_id'];
+            $product->discount        = $_POST['discount'];
+            $product->quantity        = $_POST['quantity'];
 
             if ($product->name === "") {
                 $err = "kiểm tra lại các trường giữ liệu";
@@ -221,7 +225,7 @@ public function update_product($id) {
         $product->price       = $_POST['price'];
         $product->category_id = $_POST['category_id'];
         $product->description = $_POST['description'];
-        $product->hot         = $_POST['hot'];
+        $product->product_type_id         = $_POST['product_type_id'];
         $product->discount    = $_POST['discount'];
         $product->quantity    = $_POST['quantity'];
 

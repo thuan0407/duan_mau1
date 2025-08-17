@@ -6,7 +6,7 @@
         public $price;
         public $category_id;
         public $description;
-        public $hot;
+        public $prduct_type_id;
         public $discount;
         public $quantity;
         public $name_category;
@@ -29,14 +29,14 @@ class ProductModel
                 foreach($data as $tt){
                     $sanpham = new Product();
                     $sanpham->id=$tt['id'];
-                    $sanpham->name        = $tt['name'];
-                    $sanpham->image       = $tt['image'];
-                    $sanpham->price       = $tt['price'];
-                    $sanpham->category_id = $tt['category_id'];
-                    $sanpham->description = $tt['description'];
-                    $sanpham->hot         = $tt['hot'];
-                    $sanpham->discount    = $tt['discount'];
-                    $sanpham->quantity    = $tt['quantity'];
+                    $sanpham->name             = $tt['name'];
+                    $sanpham->image            = $tt['image'];
+                    $sanpham->price            = $tt['price'];
+                    $sanpham->category_id      = $tt['category_id'];
+                    $sanpham->description      = $tt['description'];
+                    $sanpham->product_type_id  = $tt['product_type_id'];
+                    $sanpham->discount         = $tt['discount'];
+                    $sanpham->quantity         = $tt['quantity'];
                     $dulieu[]=$sanpham;
                 }
                 return $dulieu;
@@ -62,7 +62,7 @@ class ProductModel
                     $sanpham->price            = $data['price'];
                     $sanpham->category_id      = $data['category_id'];
                     $sanpham->description      = $data['description'];
-                    $sanpham->hot              = $data['hot'];
+                    $sanpham->product_type_id             = $data['product_type_id'];
                     $sanpham->discount         = $data['discount'];
                     $sanpham->quantity         = $data['quantity'];
                     $sanpham->name_category    = $data['name_category'];
@@ -91,7 +91,7 @@ class ProductModel
                         $sanpham->price       = $data['price'];
                         $sanpham->category_id = $data['category_id']; 
                         $sanpham->description = $data['description'];
-                        $sanpham->hot         = $data['hot'];
+                        $sanpham->product_type_id        = $data['product_type_id'];
                         $sanpham->discount    = $data['discount'];
                         $sanpham->quantity    = $data['quantity'];
 
@@ -107,8 +107,8 @@ class ProductModel
 
         public function create(Product $product){        //thêm sản phẩm
             try{
-                $sql="INSERT INTO `product` (`id`, `image`, `price`, `category_id`, `hot`, `quantity`, `description`, `discount`, `name`) VALUES 
-                (NULL, '".$product->image."', '".$product->price."', '".$product->category_id."', '".$product->hot."'
+                $sql="INSERT INTO `product` (`id`, `image`, `price`, `category_id`, `product_type_id`, `quantity`, `description`, `discount`, `name`) VALUES 
+                (NULL, '".$product->image."', '".$product->price."', '".$product->category_id."', '".$product->product_type_id."'
                 , '".$product->quantity."', '".$product->description."', '".$product->discount."', '".$product->name."');";
                 $data=$this->conn->exec($sql);
                 return $data;
@@ -134,7 +134,7 @@ class ProductModel
             try{
                 $id=(int)$product->id;
                 $sql="UPDATE `product` SET `image` = '".$product->image."', `price` = '".$product->price."',
-                 `category_id` = '".$product->category_id."', `hot` = '".$product->hot."', `quantity` = '".$product->quantity."', `description` = '".$product->description."', 
+                 `category_id` = '".$product->category_id."', `product_type_id` = '".$product->product_type_id."', `quantity` = '".$product->quantity."', `description` = '".$product->description."', 
                  `discount` = '".$product->discount."', `name` = '".$product->name."' WHERE `product`.`id` = $id;";
                 $data=$this->conn->exec($sql);
                 return $data;
@@ -144,9 +144,35 @@ class ProductModel
         }
         }
 
+
+        public function all_promotion(){//hiện toàn bộ thông tin
+            try{
+                $sql="SELECT * FROM `product` Where `product_type_id` = 1 LIMIT 8";
+                $data=$this->conn->query($sql)->fetchAll();
+                $dulieu=[];
+                foreach($data as $tt){
+                    $sanpham = new Product();
+                    $sanpham->id=$tt['id'];
+                    $sanpham->name        = $tt['name'];
+                    $sanpham->image       = $tt['image'];
+                    $sanpham->price       = $tt['price'];
+                    $sanpham->category_id = $tt['category_id'];
+                    $sanpham->description = $tt['description'];
+                    $sanpham->product_type_id        = $tt['product_type_id'];
+                    $sanpham->discount    = $tt['discount'];
+                    $sanpham->quantity    = $tt['quantity'];
+                    $dulieu[]=$sanpham;
+                }
+                return $dulieu;
+
+            }catch (PDOException $err) {
+            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
+        }
+        }
+
         public function all_hot(){//hiện toàn bộ thông tin
             try{
-                $sql="SELECT * FROM `product` Where `hot` = 1 LIMIT 8";
+                $sql="SELECT * FROM `product` Where `product_type_id` = 2 LIMIT 8";
                 $data=$this->conn->query($sql)->fetchAll();
                 $dulieu=[];
                 foreach($data as $tt){
@@ -157,7 +183,7 @@ class ProductModel
                     $sanpham->price       = $tt['price'];
                     $sanpham->category_id = $tt['category_id'];
                     $sanpham->description = $tt['description'];
-                    $sanpham->hot         = $tt['hot'];
+                    $sanpham->product_type_id        = $tt['product_type_id'];
                     $sanpham->discount    = $tt['discount'];
                     $sanpham->quantity    = $tt['quantity'];
                     $dulieu[]=$sanpham;
@@ -169,9 +195,10 @@ class ProductModel
         }
         }
 
-        public function all_moi(){//hiện toàn bộ thông tin
+
+        public function all_new(){//hiện toàn bộ thông tin
             try{
-                $sql="SELECT * FROM `product` Where `hot` = 2 LIMIT 8";
+                $sql="SELECT * FROM `product` Where `product_type_id` = 3 LIMIT 8";
                 $data=$this->conn->query($sql)->fetchAll();
                 $dulieu=[];
                 foreach($data as $tt){
@@ -182,7 +209,7 @@ class ProductModel
                     $sanpham->price       = $tt['price'];
                     $sanpham->category_id = $tt['category_id'];
                     $sanpham->description = $tt['description'];
-                    $sanpham->hot         = $tt['hot'];
+                    $sanpham->product_type_id        = $tt['product_type_id'];
                     $sanpham->discount    = $tt['discount'];
                     $sanpham->quantity    = $tt['quantity'];
                     $dulieu[]=$sanpham;
@@ -193,32 +220,6 @@ class ProductModel
             echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
         }
         }
-
-        public function all_khuyenmai(){//hiện toàn bộ thông tin
-            try{
-                $sql="SELECT * FROM `product` Where `hot` = 3 LIMIT 8";
-                $data=$this->conn->query($sql)->fetchAll();
-                $dulieu=[];
-                foreach($data as $tt){
-                    $sanpham = new Product();
-                    $sanpham->id=$tt['id'];
-                    $sanpham->name        = $tt['name'];
-                    $sanpham->image       = $tt['image'];
-                    $sanpham->price       = $tt['price'];
-                    $sanpham->category_id = $tt['category_id'];
-                    $sanpham->description = $tt['description'];
-                    $sanpham->hot         = $tt['hot'];
-                    $sanpham->discount    = $tt['discount'];
-                    $sanpham->quantity    = $tt['quantity'];
-                    $dulieu[]=$sanpham;
-                }
-                return $dulieu;
-
-            }catch (PDOException $err) {
-            echo "Lỗi truy vấn sản phẩm: " . $err->getMessage();
-        }
-        }
-
         public function all_product_user($sql){//hiện toàn bộ thông tin
             try{
                 $data=$this->conn->query($sql)->fetchAll();
@@ -231,7 +232,7 @@ class ProductModel
                     $sanpham->price       = $tt['price'];
                     $sanpham->category_id = $tt['category_id'];
                     $sanpham->description = $tt['description'];
-                    $sanpham->hot         = $tt['hot'];
+                    $sanpham->product_type_id        = $tt['product_type_id'];
                     $sanpham->discount    = $tt['discount'];
                     $sanpham->quantity    = $tt['quantity'];
                     $dulieu[]=$sanpham;

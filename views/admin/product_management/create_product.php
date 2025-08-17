@@ -81,12 +81,16 @@
             </td>
         </tr>
         <tr>
-            <th>loại</th>
-            <td> <select name="hot" id="">
-                <option value="disabled"><<--chọn loại-->></option>
-                <option value="1">hot</option>
-                <option value="2">sản phẩm mới</option>
-                <option value="3">sản phẩm khuyến mãi</option>
+            <th>loại sản phẩm</th>
+            <td> <select name="product_type_id" id="">
+                    <option value="disabled">chọn loại sản phẩm</option>
+                    <?php
+                    foreach($product_list as $tt){
+                        ?>
+                    <option value="<?=$tt->id?>"><?=$tt->name?></option>
+                        <?php
+                    }
+                    ?>
             </select></td>
         </tr>
         <tr>
