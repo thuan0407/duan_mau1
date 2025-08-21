@@ -1,5 +1,6 @@
-<?php require_once "header_user.php" ?>
-
+<?php require_once "header_user.php" ;
+$currentPage = $_GET['act'] ?? 'promotion'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,6 +99,11 @@
         .chiadoi a{
             text-decoration: none;
         }
+        .menu a.active {
+            color: #DA70D6;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body onload="start()">
@@ -107,9 +113,9 @@
         <img id="anh_banner" src="../mvc-oop-basic-duanmau/public/img/banner0.jpg" alt="">
 
 <div class="menu">
-    <a href="?act=promotion" >Sản phẩm khuyến mãi</a>
-    <a href="?act=product_hot">Sản phẩm hot</a>
-    <a href="?act=product_new">Sản phẩm mới</a>
+    <a href="?act=promotion"   class="<?= $currentPage == 'promotion'       ? 'active' : '' ?>">Sản phẩm khuyến mãi</a>
+    <a href="?act=product_hot" class="<?= $currentPage == 'product_hot'     ? 'active' : '' ?>">Sản phẩm hot</a>
+    <a href="?act=product_new" class="<?= $currentPage == 'product_new'     ? 'active' : '' ?>">Sản phẩm mới</a>
 </div>
 
 <!-- Iframe -->

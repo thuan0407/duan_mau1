@@ -32,7 +32,7 @@ match ($act) {
     '/'                       =>(new UserController())->user_home(),
     'danhsach_sanpham'        =>(new UserController())->user_producs(),
     'user_home'               =>(new UserController())->user_home(),
-    'user_producs'            =>(new UserController())->user_producs(),
+    'user_product'            =>(new UserController())->user_product(),
     'contact'                 =>(new UserController())->contact(),
     'introduce'               =>(new UserController())->introduce(),
     'product_hot'             =>(new UserController())->product_hot(),

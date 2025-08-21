@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $nameUser = $_SESSION['user']['name'] ?? '';
+$currentPage = $_GET['act'] ?? 'user_home'; // mặc định về trang chủ
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,6 +79,10 @@ $nameUser = $_SESSION['user']['name'] ?? '';
         }
         .gio_hang{
         }
+        .menu_tren ul li a.active {
+            color: red;
+            font-weight: bold;
+        }
 
     </style>
 </head>
@@ -87,7 +92,7 @@ $nameUser = $_SESSION['user']['name'] ?? '';
             <p style="color:white;">lot line: 1900 0102 4</p>
          <form action="" method="post">
         <?php if(!empty($_SESSION['user']['name'])): ?>
-            <a style="text-decoration: none;color:white;" href="?act=logout">Đăng xuất</a>
+            <a style="text-decoration: none;color:white;" href="?act=logout">  Đăng xuất</a>
             <?php else :?>
             <a style="text-decoration: none;color:white;" href="?act=login">Đăng nhập</a>
                 <?php endif;
@@ -100,10 +105,10 @@ $nameUser = $_SESSION['user']['name'] ?? '';
     
             <div class="menu_tren">
                 <ul>
-                    <li><a href="?act=user_home">Trang chủ</a></li>
-                    <li><a href="?act=user_producs">Sản phẩm</a></li>
-                    <li><a href="?act=introduce">Giới thiệu</a></li>
-                    <li><a href="?act=contact">liên hệ</a></li>
+                    <li><a href="?act=user_home"    class="<?= $currentPage == 'user_home'     ? 'active' : '' ?>">Trang chủ</a></li>
+                    <li><a href="?act=user_product" class="<?= $currentPage == 'user_product'  ? 'active' : '' ?>">Sản phẩm</a></li>
+                    <li><a href="?act=introduce"    class="<?= $currentPage == 'introduce'     ? 'active' : '' ?>">Giới thiệu</a></li>
+                    <li><a href="?act=contact"      class="<?= $currentPage == 'contact'       ? 'active' : '' ?>">liên hệ</a></li>
                 </ul>
             </div>
 

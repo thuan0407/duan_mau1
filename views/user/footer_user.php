@@ -110,7 +110,7 @@
             <p>Địa chỉ: 174 Phương Canh, Nam Từ Liêm, Hà Nội<br>
             Quận 7, TP.HCM | Đà Nẵng<br>
             Hotline: <b>1900 0102 4</b><br>
-            Email: <a href="mailto:sptshop@gmail.com" style="color:#ffd700;">mobeshop@gmail.com</a></p>
+            Email: <a href="mailto:sptshop@gmail.com" style="color:#ffd700;">mobileshop@gmail.com</a></p>
         </div>
 
         <!-- Liên kết nhanh -->

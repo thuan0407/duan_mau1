@@ -68,7 +68,7 @@
         </tr>
         
     </table>
-    <span style="margin-left:100px;";><?=$err?></span><br>
+    <span style="margin-left:100px; color:red;";><?=$err?></span><br>
         <button type="submit" name="login">Đăng nhập</button>
         <br>
         <br> <a href="?act=register">Đăng ký tài khoản</a>

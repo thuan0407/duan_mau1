@@ -59,7 +59,7 @@ public function user_home(){
     include "views/user/user_home.php";
 }
 
-        public function user_producs(){
+        public function user_product(){
             $thongbao="";
             $priceFilter = isset($_GET['price']) ? $_GET['price'] : null; // khai báo biến
                         
