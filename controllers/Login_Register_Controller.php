@@ -17,6 +17,9 @@ class Login_Register_Controller {
         $this->commentModel  = new CommentModel();
         $this->categoryModel = new CategoryModel();
         $this->product_typeModel  = new Product_typeModel();
+
+
+        // kiểm tra đường dẫn bắt buộc phải đăng nhập kể cả khi có đường dẫn 
     }
     
     public function login(){
@@ -42,6 +45,7 @@ class Login_Register_Controller {
                         $_SESSION['user'] = [        //lấyy thông tin người dùng tạo session
                         'id'   => $tt->id,
                         'name' => $tt->name,
+                        'role' => $tt->role,
                 ];
 
                     if($tt->role ===0){

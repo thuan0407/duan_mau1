@@ -83,6 +83,14 @@
 </tr>
 
 <tr>
+    <td>Nhập lại mật khẩu:</td>
+    <td>
+        <input id="lai_password" type="text" name="password"  placeholder="Nhập lại mật khẩu"><br>
+        <span id="err-password" style="color:red;font-size:12px"></span>
+    </td>
+</tr>
+
+<tr>
     <td>Địa chỉ</td>
     <td>
         <input id="adress" type="text" name="address"  placeholder="Nhập địa chỉ"><br>
@@ -125,6 +133,7 @@
     let password = document.getElementById('password').value;
     let adress = document.getElementById('adress').value;
     let number = document.getElementById('number').value;
+    let lai_password = document.getElementById('lai_password').value;
 
     //xóa lỗi 
     document.querySelectorAll('span').forEach(span=>span.textContent='');
@@ -143,6 +152,11 @@
         document.getElementById('err-password').textContent='không được bỏ trống';
         check =false;
     }
+    if(lai_password.trim()!== password.trim()){
+        document.getElementById('err-password').textContent='Mật khẩu không trùng password';
+        check =false;
+    }
+    
     if(adress.trim()===''){
         document.getElementById('err-adress').textContent='không được bỏ trống';
         check =false;

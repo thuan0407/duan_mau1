@@ -325,7 +325,7 @@ require_once "header_user.php";
                 <button type="submit" name="gui" style="background-color:red; color:white; border-radius:10px;">Gửi</button>
             </form>
         <?php else: ?>
-            <a href="?act=dangnhap">Đăng nhập</a>
+            <a href="?act=login">Đăng nhập</a>
         <?php endif; ?>
 
         <div class="binhluan_truoc">

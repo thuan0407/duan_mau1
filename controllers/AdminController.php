@@ -13,6 +13,20 @@ class AdminController {
     public $product_typeModel;
 
     public function __construct() {
+
+
+        session_start(); // đảm bảo session hoạt động
+
+        if (!isset($_SESSION['user']) || !isset($_SESSION['user']['role'])) {
+            header("Location: ?act=login");
+            exit;
+        }
+
+        if ((int)$_SESSION['user']['role'] !== 0) {
+            header("Location: ?act=user_home");
+            exit;
+        }
+
         $this->productModel  = new ProductModel();
         $this->userModel     = new UserModel();
         $this->commentModel  = new CommentModel();
